@@ -1,0 +1,62 @@
+---
+title: "Windows"
+---
+
+If you are using Windows, follow these steps.
+
+## Basic requirements
+
+First, make sure your system is up to date.
+
+- Open `Settings` > Windows Update.
+
+Next, enable Developer Mode:
+
+- Open `Settings` > Update & Security > For developers.
+- Toggle Developer Mode and accept the disclaimer. 
+
+## Command-line basics
+
+We use Git Bash as our terminal. Download the latest **Git for Windows** installer from [git-scm.com](https://git-scm.com/download/win) and complete the setup (Git Bash is included). After installation, open Git Bash from the Start menu.
+
+::: {.callout-note collapse="true" title="Why Git Bash?"}
+Git Bash provides a Unix-like terminal experience on Windows, making it easier to follow along with commands that are commonly used in macOS and Linux environments. 
+:::
+
+Keep the terminal window open while you work through the chapters.
+
+### uv
+
+We use **uv**, a Python package manager that is extremely fast. It replaces `pip`, `poetry`, and `virtualenv`.
+
+To install uv, follow [this guide](https://github.com/kirenz/uv-setup)
+
+## Server Tools
+
+The Microsoft ODBC Driver for SQL Server enables native connectivity from Windows applications to Microsoft SQL Server and Azure SQL databases.
+
+Follow the steps below to install the ODBC Driver (version 18) and command-line tools on your Windows machine:
+
+- [Installation Instructions](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver17)   
+
+For most users, the "**Download Microsoft ODBC Driver 18 for SQL Server (x64)**" installer is the right choice.
+
+## Verify the Tools
+
+After the installations, check the most important commands:
+
+```bash
+uv --version
+python --version
+sqlcmd -?
+```
+
+## Install the Python Packages
+
+Inside the project folder, run:
+
+```bash
+uv sync
+```
+
+This command creates the local virtual environment and installs all packages from `pyproject.toml` and `uv.lock`.
