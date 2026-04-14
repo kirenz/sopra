@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jan Kirenz">
 
-<title>9&nbsp; Streamlit Application – Python Enterprise CRUD Demo</title>
+<title>5&nbsp; Warm-up Repositories – Python Enterprise CRUD Demo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mssql-example.html" rel="prev">
+<link href="./mssql-vscode.html" rel="next">
+<link href="./mac-setup.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -123,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./streamlit.html">Application</a></li><li class="breadcrumb-item"><a href="./streamlit.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Streamlit Application</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./practice-repositories.html">Warm-up Repositories</a></li><li class="breadcrumb-item"><a href="./practice-repositories.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Warm-up Repositories</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -192,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./practice-repositories.html" class="sidebar-item-text sidebar-link">
+  <a href="./practice-repositories.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Warm-up Repositories</span></span></a>
   </div>
 </li>
@@ -238,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./streamlit.html" class="sidebar-item-text sidebar-link active">
+  <a href="./streamlit.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Streamlit Application</span></span></a>
   </div>
 </li>
@@ -254,27 +255,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#warm-up-repository" id="toc-warm-up-repository" class="nav-link active" data-scroll-target="#warm-up-repository"><span class="header-section-number">9.1</span> Warm-up Repository</a></li>
-  <li><a href="#start-the-app" id="toc-start-the-app" class="nav-link" data-scroll-target="#start-the-app"><span class="header-section-number">9.2</span> Start the App</a></li>
-  <li><a href="#user-interface-structure" id="toc-user-interface-structure" class="nav-link" data-scroll-target="#user-interface-structure"><span class="header-section-number">9.3</span> User Interface Structure</a></li>
-  <li><a href="#layer-responsibilities" id="toc-layer-responsibilities" class="nav-link" data-scroll-target="#layer-responsibilities"><span class="header-section-number">9.4</span> Layer Responsibilities</a>
-  <ul class="collapse">
-  <li><a href="#presentation-layer" id="toc-presentation-layer" class="nav-link" data-scroll-target="#presentation-layer"><span class="header-section-number">9.4.1</span> Presentation Layer</a></li>
-  <li><a href="#business-logic-layer" id="toc-business-logic-layer" class="nav-link" data-scroll-target="#business-logic-layer"><span class="header-section-number">9.4.2</span> Business Logic Layer</a></li>
-  <li><a href="#data-access-layer" id="toc-data-access-layer" class="nav-link" data-scroll-target="#data-access-layer"><span class="header-section-number">9.4.3</span> Data Access Layer</a></li>
-  </ul></li>
-  <li><a href="#why-this-separation-matters" id="toc-why-this-separation-matters" class="nav-link" data-scroll-target="#why-this-separation-matters"><span class="header-section-number">9.5</span> Why This Separation Matters</a></li>
-  <li><a href="#error-handling" id="toc-error-handling" class="nav-link" data-scroll-target="#error-handling"><span class="header-section-number">9.6</span> Error Handling</a></li>
-  <li><a href="#suggested-exercises" id="toc-suggested-exercises" class="nav-link" data-scroll-target="#suggested-exercises"><span class="header-section-number">9.7</span> Suggested Exercises</a></li>
+  <li><a href="#repository-1-sql-server-connection" id="toc-repository-1-sql-server-connection" class="nav-link active" data-scroll-target="#repository-1-sql-server-connection"><span class="header-section-number">5.1</span> Repository 1: SQL Server Connection</a></li>
+  <li><a href="#repository-2-streamlit-and-sql-server" id="toc-repository-2-streamlit-and-sql-server" class="nav-link" data-scroll-target="#repository-2-streamlit-and-sql-server"><span class="header-section-number">5.2</span> Repository 2: Streamlit and SQL Server</a></li>
+  <li><a href="#repository-3-full-crud-application" id="toc-repository-3-full-crud-application" class="nav-link" data-scroll-target="#repository-3-full-crud-application"><span class="header-section-number">5.3</span> Repository 3: Full CRUD Application</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./streamlit.html">Application</a></li><li class="breadcrumb-item"><a href="./streamlit.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Streamlit Application</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./practice-repositories.html">Warm-up Repositories</a></li><li class="breadcrumb-item"><a href="./practice-repositories.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Warm-up Repositories</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Streamlit Application</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Warm-up Repositories</span></h1>
 </div>
 
 
@@ -291,95 +283,88 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The file <code>app.py</code> is the presentation layer of the project. It contains the Streamlit user interface and deliberately avoids direct SQL statements.</p>
-<section id="warm-up-repository" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="warm-up-repository"><span class="header-section-number">9.1</span> Warm-up Repository</h2>
-<p>Before starting the full CRUD app, use the smaller Streamlit and SQL Server repository:</p>
+<p>Before working in the full CRUD project, use two smaller repositories to check the technical basics.</p>
+<p>The goal is to separate setup problems from application design problems:</p>
+<ol type="1">
+<li>First, confirm that Python can connect to SQL Server.</li>
+<li>Then, confirm that Streamlit can display SQL query results in the browser.</li>
+<li>After that, move to the full CRUD application.</li>
+</ol>
+<section id="repository-1-sql-server-connection" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="repository-1-sql-server-connection"><span class="header-section-number">5.1</span> Repository 1: SQL Server Connection</h2>
+<p>Use this repository first:</p>
+<ul>
+<li><a href="https://github.com/kirenz/mssql-example">Open mssql-example on GitHub</a></li>
+<li><a href="https://github.com/kirenz/mssql-example/archive/refs/heads/main.zip">Download mssql-example as ZIP</a></li>
+</ul>
+<p>With Git:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/kirenz/mssql-example.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> mssql-example</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .env.example .env</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python sql_example.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This repository is intentionally small. It focuses on:</p>
+<ul>
+<li>loading database credentials from <code>.env</code></li>
+<li>building a SQLAlchemy connection</li>
+<li>running a simple SQL query</li>
+<li>reading the result into a <code>pandas</code> DataFrame</li>
+</ul>
+<p>If this step fails, fix the driver, credentials, or network access before continuing.</p>
+</section>
+<section id="repository-2-streamlit-and-sql-server" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="repository-2-streamlit-and-sql-server"><span class="header-section-number">5.2</span> Repository 2: Streamlit and SQL Server</h2>
+<p>Use this repository after the plain SQL connection works:</p>
 <ul>
 <li><a href="https://github.com/kirenz/streamlit-mssql">Open streamlit-mssql on GitHub</a></li>
 <li><a href="https://github.com/kirenz/streamlit-mssql/archive/refs/heads/main.zip">Download streamlit-mssql as ZIP</a></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/kirenz/streamlit-mssql.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> streamlit-mssql</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .env.example .env</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run streamlit run app.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This step confirms that Streamlit can start locally, connect to SQL Server, and display query results in the browser.</p>
-</section>
-<section id="start-the-app" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="start-the-app"><span class="header-section-number">9.2</span> Start the App</h2>
-<p>After the warm-up repository works, return to the full <code>sopra</code> project and run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run streamlit run app.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="user-interface-structure" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="user-interface-structure"><span class="header-section-number">9.3</span> User Interface Structure</h2>
-<p>The application uses three tabs:</p>
+<p>With Git:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/kirenz/streamlit-mssql.git</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> streamlit-mssql</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .env.example .env</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run streamlit run app.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This repository adds the browser interface. It focuses on:</p>
 <ul>
-<li><code>List Discounts</code></li>
-<li><code>Create Discount</code></li>
-<li><code>Edit Discount</code></li>
+<li>starting a Streamlit app</li>
+<li>connecting Streamlit to SQL Server</li>
+<li>entering and running a SQL query</li>
+<li>displaying the result as a table</li>
 </ul>
-<p>This mirrors a classic CRUD workflow and makes the mapping between UI actions and backend logic very explicit.</p>
+<p>If this step works, the basic Streamlit and SQL Server setup is ready.</p>
 </section>
-<section id="layer-responsibilities" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="layer-responsibilities"><span class="header-section-number">9.4</span> Layer Responsibilities</h2>
-<section id="presentation-layer" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="presentation-layer"><span class="header-section-number">9.4.1</span> Presentation Layer</h3>
-<p><code>app.py</code> is responsible for:</p>
+<section id="repository-3-full-crud-application" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="repository-3-full-crud-application"><span class="header-section-number">5.3</span> Repository 3: Full CRUD Application</h2>
+<p>Use the main repository after the two warm-up steps:</p>
 <ul>
-<li>rendering Streamlit widgets</li>
-<li>collecting user input</li>
-<li>showing success and error messages</li>
-<li>calling the service layer</li>
+<li><a href="https://github.com/kirenz/sopra">Open sopra on GitHub</a></li>
+<li><a href="https://github.com/kirenz/sopra/archive/refs/heads/main.zip">Download sopra as ZIP</a></li>
 </ul>
-</section>
-<section id="business-logic-layer" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="business-logic-layer"><span class="header-section-number">9.4.2</span> Business Logic Layer</h3>
-<p><code>services/discount_service.py</code> is responsible for:</p>
+<p>With Git:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/kirenz/sopra.git</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> sopra</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .env.example .env</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python sql_example.py</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run streamlit run app.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The main project introduces the application architecture:</p>
 <ul>
-<li>validating quantities, dates, and discount percentages</li>
-<li>preventing overlapping discounts for the same customer</li>
-<li>translating repository errors into business-oriented messages</li>
+<li><code>app.py</code> handles the Streamlit user interface</li>
+<li><code>services/</code> contains business rules and validation</li>
+<li><code>repositories/</code> contains SQL Server access</li>
+<li><code>models/</code> contains domain data structures</li>
 </ul>
-</section>
-<section id="data-access-layer" class="level3" data-number="9.4.3">
-<h3 data-number="9.4.3" class="anchored" data-anchor-id="data-access-layer"><span class="header-section-number">9.4.3</span> Data Access Layer</h3>
-<p><code>repositories/discount_repo.py</code> is responsible for:</p>
-<ul>
-<li>reading the overview and LOV data with <code>pandas.read_sql(...)</code></li>
-<li>inserting rows through <code>ins_views.V_INS_B2B_DISCOUNT</code></li>
-<li>updating rows through <code>upd_views.V_UPD_B2B_DISCOUNT</code></li>
-<li>isolating SQL-specific details from the rest of the code</li>
-</ul>
-</section>
-</section>
-<section id="why-this-separation-matters" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="why-this-separation-matters"><span class="header-section-number">9.5</span> Why This Separation Matters</h2>
-<p>This design makes it easier to reason about the application:</p>
-<ul>
-<li>if the SQL is wrong, you inspect the repository</li>
-<li>if the business rule is wrong, you inspect the service</li>
-<li>if the layout or form flow is wrong, you inspect the Streamlit UI</li>
-</ul>
-<p>That is exactly why layered architectures are common in enterprise systems.</p>
-</section>
-<section id="error-handling" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="error-handling"><span class="header-section-number">9.6</span> Error Handling</h2>
-<p>The application demonstrates two important error categories:</p>
-<ol type="1">
-<li>local validation errors, such as invalid quantity ranges</li>
-<li>database errors returned by SQL Server</li>
-</ol>
-<p>Students should notice that both categories are shown to the user, but they originate in different layers.</p>
-</section>
-<section id="suggested-exercises" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="suggested-exercises"><span class="header-section-number">9.7</span> Suggested Exercises</h2>
-<ul>
-<li>add a delete workflow with a separate database view</li>
-<li>add unit tests for the validation rules</li>
-<li>add more business rules, for example maximum discount thresholds by customer type</li>
-<li>add a detail page or KPI cards above the table</li>
-</ul>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Each repository has its own <code>.env</code> file. Credentials stay local on your machine and are not committed to GitHub.</p>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -787,11 +772,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mssql-example.html" class="pagination-link" aria-label="Example SQL Server Connection">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Example SQL Server Connection</span></span>
+      <a href="./mac-setup.html" class="pagination-link" aria-label="macOS">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">macOS</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./mssql-vscode.html" class="pagination-link" aria-label="VS Code">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">VS Code</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -14,7 +14,17 @@
     "href": "index.html#course-files",
     "title": "Python Enterprise CRUD Demo",
     "section": "1.1 Course Files",
-    "text": "1.1 Course Files\nDownload or clone the full project before you start. The repository contains all Python files used in this book, the Quarto source files, and .env.example.\n\nDownload ZIP\nOpen GitHub repository\n\nIf you use Git:\ngit clone https://github.com/kirenz/sopra.git\ncd sopra\nuv sync\nIf you download the ZIP file, unzip the folder, open it in Visual Studio Code, and then run:\nuv sync\nThe local .env file is not part of the download. Create it from .env.example and add the course-specific SQL Server credentials.",
+    "text": "1.1 Course Files\nThis book uses three GitHub repositories. Start with the small examples first, then move to the full CRUD project.\n\n\n\nStep\nRepository\nPurpose\n\n\n\n\n1\nmssql-example\nTest a plain Python connection to Microsoft SQL Server\n\n\n2\nstreamlit-mssql\nRun a small Streamlit app that queries SQL Server\n\n\n3\nsopra\nWork with the full layered CRUD application\n\n\n\nDownload or clone the full project when you reach the main application part. The repository contains all Python files used in this book, the Quarto source files, and .env.example.\n\nDownload ZIP\nOpen GitHub repository\n\nIf you use Git:\ngit clone https://github.com/kirenz/sopra.git\ncd sopra\nuv sync\nIf you download the ZIP file, unzip the folder, open it in Visual Studio Code, and then run:\nuv sync\nThe local .env file is not part of the download. Create it from .env.example and add the course-specific SQL Server credentials.\n\n\n\n\n\n\nKeep the three repositories in separate folders. Do not copy files from the warm-up repositories into the full CRUD project unless an exercise explicitly asks you to do so.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#recommended-learning-path",
+    "href": "index.html#recommended-learning-path",
+    "title": "Python Enterprise CRUD Demo",
+    "section": "1.2 Recommended Learning Path",
+    "text": "1.2 Recommended Learning Path\n\nUse mssql-example to verify that the ODBC driver, .env file, and SQL Server login work.\nUse streamlit-mssql to run a small browser-based SQL query interface.\nUse this sopra project to study the larger CRUD application with presentation, business logic, and data access layers.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -23,8 +33,8 @@
     "objectID": "index.html#learning-goals",
     "href": "index.html#learning-goals",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.2 Learning Goals",
-    "text": "1.2 Learning Goals\nBy the end of this project, students should be able to:\n\nset up a Python 3.13 project with uv\nconnect to Microsoft SQL Server with pyodbc, sqlalchemy, and pandas\nimplement typical CRUD-style flows in a Streamlit user interface\nhandle database errors and validation messages in a user-friendly way",
+    "section": "1.3 Learning Goals",
+    "text": "1.3 Learning Goals\nBy the end of this project, students should be able to:\n\nset up a Python 3.13 project with uv\nconnect to Microsoft SQL Server with pyodbc, sqlalchemy, and pandas\nimplement typical CRUD-style flows in a Streamlit user interface\nhandle database errors and validation messages in a user-friendly way",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -33,8 +43,8 @@
     "objectID": "index.html#business-scenario",
     "href": "index.html#business-scenario",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.3 Business Scenario",
-    "text": "1.3 Business Scenario\nThe application manages quantity-based B2B discounts. Sales staff need an internal tool to:\n\nview existing discount rules\nadd a new discount for a selected customer\nedit an existing discount if business conditions change\n\nThe SQL Server already exposes role-based views for this workflow, so the Python application does not work directly on the base table. This mirrors a common enterprise setup where database permissions are restricted through views.",
+    "section": "1.4 Business Scenario",
+    "text": "1.4 Business Scenario\nThe application manages quantity-based B2B discounts. Sales staff need an internal tool to:\n\nview existing discount rules\nadd a new discount for a selected customer\nedit an existing discount if business conditions change\n\nThe SQL Server already exposes role-based views for this workflow, so the Python application does not work directly on the base table. This mirrors a common enterprise setup where database permissions are restricted through views.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -43,8 +53,8 @@
     "objectID": "index.html#architecture-overview",
     "href": "index.html#architecture-overview",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.4 Architecture Overview",
-    "text": "1.4 Architecture Overview\n\n\n\n\n\nflowchart TD\n    U[\"User in Browser\"] --&gt; A[\"Presentation Layer&lt;br&gt;app.py&lt;br&gt;Streamlit tabs\"]\n    A --&gt; B[\"Business Logic Layer&lt;br&gt;services/discount_service.py&lt;br&gt;validation and rules\"]\n    B --&gt; C[\"Data Access Layer&lt;br&gt;repositories/db.py&lt;br&gt;repositories/discount_repo.py\"]\n    C --&gt; D[\"Role-Based Views&lt;br&gt;list_views / ins_views / upd_views&lt;br&gt;dbo.LOV_CUSTOMER\"]\n    D --&gt; E[\"SQL Server Database&lt;br&gt;ERPDEV\"]",
+    "section": "1.5 Architecture Overview",
+    "text": "1.5 Architecture Overview\n\n\n\n\n\nflowchart TD\n    U[\"User in Browser\"] --&gt; A[\"Presentation Layer&lt;br&gt;app.py&lt;br&gt;Streamlit tabs\"]\n    A --&gt; B[\"Business Logic Layer&lt;br&gt;services/discount_service.py&lt;br&gt;validation and rules\"]\n    B --&gt; C[\"Data Access Layer&lt;br&gt;repositories/db.py&lt;br&gt;repositories/discount_repo.py\"]\n    C --&gt; D[\"Role-Based Views&lt;br&gt;list_views / ins_views / upd_views&lt;br&gt;dbo.LOV_CUSTOMER\"]\n    D --&gt; E[\"SQL Server Database&lt;br&gt;ERPDEV\"]",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -53,8 +63,8 @@
     "objectID": "index.html#database-objects-used-in-the-demo",
     "href": "index.html#database-objects-used-in-the-demo",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.5 Database Objects Used in the Demo",
-    "text": "1.5 Database Objects Used in the Demo\n\n\n\nPurpose\nObject\n\n\n\n\nRead discount overview\nlist_views.V_LIST_B2B_DISCOUNT\n\n\nInsert new discount\nins_views.V_INS_B2B_DISCOUNT\n\n\nUpdate existing discount\nupd_views.V_UPD_B2B_DISCOUNT\n\n\nFill customer dropdown\ndbo.LOV_CUSTOMER",
+    "section": "1.6 Database Objects Used in the Demo",
+    "text": "1.6 Database Objects Used in the Demo\n\n\n\nPurpose\nObject\n\n\n\n\nRead discount overview\nlist_views.V_LIST_B2B_DISCOUNT\n\n\nInsert new discount\nins_views.V_INS_B2B_DISCOUNT\n\n\nUpdate existing discount\nupd_views.V_UPD_B2B_DISCOUNT\n\n\nFill customer dropdown\ndbo.LOV_CUSTOMER",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -63,8 +73,8 @@
     "objectID": "index.html#project-structure",
     "href": "index.html#project-structure",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.6 Project Structure",
-    "text": "1.6 Project Structure\n.\n├── app.py\n├── models/discount.py\n├── repositories/db.py\n├── repositories/discount_repo.py\n├── services/discount_service.py\n├── sql_example.py\n└── README.md",
+    "section": "1.7 Project Structure",
+    "text": "1.7 Project Structure\n.\n├── app.py\n├── models/discount.py\n├── repositories/db.py\n├── repositories/discount_repo.py\n├── services/discount_service.py\n├── sql_example.py\n└── README.md",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -73,8 +83,8 @@
     "objectID": "index.html#what-you-should-notice",
     "href": "index.html#what-you-should-notice",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.7 What You Should Notice",
-    "text": "1.7 What You Should Notice\n\napp.py contains no raw SQL. The presentation layer only deals with user interaction.\ndiscount_service.py contains no Streamlit code. It focuses on validation and business meaning.\ndiscount_repo.py is the only place where SQL statements are written.\n.env keeps credentials out of the source code.\n\n\n\n\n\n\n\nThis separation is not just a style preference. It makes the application easier to test, easier to explain in class, and easier to extend later.",
+    "section": "1.8 What You Should Notice",
+    "text": "1.8 What You Should Notice\n\napp.py contains no raw SQL. The presentation layer only deals with user interaction.\ndiscount_service.py contains no Streamlit code. It focuses on validation and business meaning.\ndiscount_repo.py is the only place where SQL statements are written.\n.env keeps credentials out of the source code.\n\n\n\n\n\n\n\nThis separation is not just a style preference. It makes the application easier to test, easier to explain in class, and easier to extend later.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -83,8 +93,8 @@
     "objectID": "index.html#suggested-workflow",
     "href": "index.html#suggested-workflow",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.8 Suggested Workflow",
-    "text": "1.8 Suggested Workflow\n\nComplete the operating-system-specific setup steps.\nConfigure your .env file.\nTest the MSSQL connection with sql_example.py.\nStart the Streamlit application with uv run streamlit run app.py.\nInspect how each UI action maps to the business and data layers.",
+    "section": "1.9 Suggested Workflow",
+    "text": "1.9 Suggested Workflow\n\nComplete the operating-system-specific setup steps.\nConfigure your .env file.\nTest the MSSQL connection with sql_example.py.\nStart the Streamlit application with uv run streamlit run app.py.\nInspect how each UI action maps to the business and data layers.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -288,300 +298,366 @@
     ]
   },
   {
+    "objectID": "practice-repositories.html",
+    "href": "practice-repositories.html",
+    "title": "5  Warm-up Repositories",
+    "section": "",
+    "text": "5.1 Repository 1: SQL Server Connection\nBefore working in the full CRUD project, use two smaller repositories to check the technical basics.\nThe goal is to separate setup problems from application design problems:\nUse this repository first:\nWith Git:\nThis repository is intentionally small. It focuses on:\nIf this step fails, fix the driver, credentials, or network access before continuing.",
+    "crumbs": [
+      "Warm-up Repositories",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Warm-up Repositories</span>"
+    ]
+  },
+  {
+    "objectID": "practice-repositories.html#repository-1-sql-server-connection",
+    "href": "practice-repositories.html#repository-1-sql-server-connection",
+    "title": "5  Warm-up Repositories",
+    "section": "",
+    "text": "Open mssql-example on GitHub\nDownload mssql-example as ZIP\n\n\ngit clone https://github.com/kirenz/mssql-example.git\ncd mssql-example\nuv sync\ncp .env.example .env\nuv run python sql_example.py\n\n\nloading database credentials from .env\nbuilding a SQLAlchemy connection\nrunning a simple SQL query\nreading the result into a pandas DataFrame",
+    "crumbs": [
+      "Warm-up Repositories",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Warm-up Repositories</span>"
+    ]
+  },
+  {
+    "objectID": "practice-repositories.html#repository-2-streamlit-and-sql-server",
+    "href": "practice-repositories.html#repository-2-streamlit-and-sql-server",
+    "title": "5  Warm-up Repositories",
+    "section": "5.2 Repository 2: Streamlit and SQL Server",
+    "text": "5.2 Repository 2: Streamlit and SQL Server\nUse this repository after the plain SQL connection works:\n\nOpen streamlit-mssql on GitHub\nDownload streamlit-mssql as ZIP\n\nWith Git:\ngit clone https://github.com/kirenz/streamlit-mssql.git\ncd streamlit-mssql\nuv sync\ncp .env.example .env\nuv run streamlit run app.py\nThis repository adds the browser interface. It focuses on:\n\nstarting a Streamlit app\nconnecting Streamlit to SQL Server\nentering and running a SQL query\ndisplaying the result as a table\n\nIf this step works, the basic Streamlit and SQL Server setup is ready.",
+    "crumbs": [
+      "Warm-up Repositories",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Warm-up Repositories</span>"
+    ]
+  },
+  {
+    "objectID": "practice-repositories.html#repository-3-full-crud-application",
+    "href": "practice-repositories.html#repository-3-full-crud-application",
+    "title": "5  Warm-up Repositories",
+    "section": "5.3 Repository 3: Full CRUD Application",
+    "text": "5.3 Repository 3: Full CRUD Application\nUse the main repository after the two warm-up steps:\n\nOpen sopra on GitHub\nDownload sopra as ZIP\n\nWith Git:\ngit clone https://github.com/kirenz/sopra.git\ncd sopra\nuv sync\ncp .env.example .env\nuv run python sql_example.py\nuv run streamlit run app.py\nThe main project introduces the application architecture:\n\napp.py handles the Streamlit user interface\nservices/ contains business rules and validation\nrepositories/ contains SQL Server access\nmodels/ contains domain data structures\n\n\n\n\n\n\n\nEach repository has its own .env file. Credentials stay local on your machine and are not committed to GitHub.",
+    "crumbs": [
+      "Warm-up Repositories",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Warm-up Repositories</span>"
+    ]
+  },
+  {
     "objectID": "mssql-vscode.html",
     "href": "mssql-vscode.html",
-    "title": "5  VS Code",
+    "title": "6  VS Code",
     "section": "",
-    "text": "5.1 Install VS Code\nVisual Studio Code acts as your code editor, terminal, and database explorer. In this project, it is useful for both Python development and direct SQL inspection.\nIf you haven’t already, install Visual Studio Code:\nLaunch VS Code once to allow it to finish installing components.",
+    "text": "6.1 Install VS Code\nVisual Studio Code acts as your code editor, terminal, and database explorer. In this project, it is useful for both Python development and direct SQL inspection.\nIf you haven’t already, install Visual Studio Code:\nLaunch VS Code once to allow it to finish installing components.",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-vscode.html#install-vs-code",
     "href": "mssql-vscode.html#install-vs-code",
-    "title": "5  VS Code",
+    "title": "6  VS Code",
     "section": "",
     "text": "macOS: Download the from code.visualstudio.com and drag Visual Studio Code into Applications.\nWindows: Download the installer and click through the setup, leaving the default options enabled (add to PATH, register the code command, etc.).",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-vscode.html#essential-extensions",
     "href": "mssql-vscode.html#essential-extensions",
-    "title": "5  VS Code",
-    "section": "5.2 Essential extensions",
-    "text": "5.2 Essential extensions\nOpen the Extensions view and install:\n\nPython (ms-python.python) – language support and linting.\nSQL Server (mssql) (ms-mssql.mssql) – database connections and query runner.\nvscode-icons (vscode-icons-team.vscode-icons) – optional, but helpful for identifying files quickly.",
+    "title": "6  VS Code",
+    "section": "6.2 Essential extensions",
+    "text": "6.2 Essential extensions\nOpen the Extensions view and install:\n\nPython (ms-python.python) – language support and linting.\nSQL Server (mssql) (ms-mssql.mssql) – database connections and query runner.\nvscode-icons (vscode-icons-team.vscode-icons) – optional, but helpful for identifying files quickly.",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-vscode.html#enable-the-code-command",
     "href": "mssql-vscode.html#enable-the-code-command",
-    "title": "5  VS Code",
-    "section": "5.3 Enable the code command",
-    "text": "5.3 Enable the code command\n\n5.3.1 macOS Terminal\n\nLaunch VS Code, press Cmd+Shift+P, and run Shell Command: Install ‘code’ command in PATH.\nClose any open Terminal windows, then open a new one and run\n\ncode --version\nto confirm the CLI is available.\n\nFrom the folder you want to open, run\n\ncode .\nto launch VS Code in that location.\n\n\n5.3.2 Windows\n\nFrom the folder you want to open, run this in Git Bash\n\ncode .\nto launch VS Code in that location.\n\nIf the command is missing, add VS Code’s bin directory to your Git Bash PATH by appending the snippet below to ~/.bashrc (create the file if it doesn’t exist):\n\n    VS_CODE=\"/c/Users/$USERNAME/AppData/Local/Programs/Microsoft VS Code/bin\"\n    if [ -d \"$VS_CODE\" ] && [[ \":$PATH:\" != *\":$VS_CODE:\"* ]]; then\n      PATH=\"$VS_CODE:$PATH\"\n    fi\n\nReload Git Bash\n\nsource ~/.bashrc\n\nTry again:\n\ncode .",
+    "title": "6  VS Code",
+    "section": "6.3 Enable the code command",
+    "text": "6.3 Enable the code command\n\n6.3.1 macOS Terminal\n\nLaunch VS Code, press Cmd+Shift+P, and run Shell Command: Install ‘code’ command in PATH.\nClose any open Terminal windows, then open a new one and run\n\ncode --version\nto confirm the CLI is available.\n\nFrom the folder you want to open, run\n\ncode .\nto launch VS Code in that location.\n\n\n6.3.2 Windows\n\nFrom the folder you want to open, run this in Git Bash\n\ncode .\nto launch VS Code in that location.\n\nIf the command is missing, add VS Code’s bin directory to your Git Bash PATH by appending the snippet below to ~/.bashrc (create the file if it doesn’t exist):\n\n    VS_CODE=\"/c/Users/$USERNAME/AppData/Local/Programs/Microsoft VS Code/bin\"\n    if [ -d \"$VS_CODE\" ] && [[ \":$PATH:\" != *\":$VS_CODE:\"* ]]; then\n      PATH=\"$VS_CODE:$PATH\"\n    fi\n\nReload Git Bash\n\nsource ~/.bashrc\n\nTry again:\n\ncode .",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-vscode.html#integrated-terminal-tips",
     "href": "mssql-vscode.html#integrated-terminal-tips",
-    "title": "5  VS Code",
-    "section": "5.4 Integrated terminal tips",
-    "text": "5.4 Integrated terminal tips\n\nOpen the integrated terminal in VS Code. On Windows, set Git Bash as the default shell so every VS Code terminal matches the rest of this guide.\nSet your default terminal profile via Terminal &gt; Configure Default Profile… so that VS Code opens the same shell you used during installation.",
+    "title": "6  VS Code",
+    "section": "6.4 Integrated terminal tips",
+    "text": "6.4 Integrated terminal tips\n\nOpen the integrated terminal in VS Code. On Windows, set Git Bash as the default shell so every VS Code terminal matches the rest of this guide.\nSet your default terminal profile via Terminal &gt; Configure Default Profile… so that VS Code opens the same shell you used during installation.",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-vscode.html#create-the-sql-server-connection",
     "href": "mssql-vscode.html#create-the-sql-server-connection",
-    "title": "5  VS Code",
-    "section": "5.5 Create the SQL Server Connection",
-    "text": "5.5 Create the SQL Server Connection\nUse the SQL Server extension to create a saved connection profile.\n\nOpen the SQL Server view.\nClick Add Connection.\nFill in the connection dialog:\n\nServer name: edu.hdm-server.eu\nAuthentication type: SQL Login\nUser name: use your course login\nPassword: use the matching password\nDatabase name: ERPDEV\nTrust server certificate: true\n\nSave the profile so you can reuse it later.",
+    "title": "6  VS Code",
+    "section": "6.5 Create the SQL Server Connection",
+    "text": "6.5 Create the SQL Server Connection\nUse the SQL Server extension to create a saved connection profile.\n\nOpen the SQL Server view.\nClick Add Connection.\nFill in the connection dialog:\n\nServer name: edu.hdm-server.eu\nAuthentication type: SQL Login\nUser name: use your course login\nPassword: use the matching password\nDatabase name: ERPDEV\nTrust server certificate: true\n\nSave the profile so you can reuse it later.",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-vscode.html#first-query",
     "href": "mssql-vscode.html#first-query",
-    "title": "5  VS Code",
-    "section": "5.6 First Query",
-    "text": "5.6 First Query\nAfter the connection is established, create a new SQL file and run:\nSELECT TOP (10)\n    RabattID,\n    Kunde,\n    MengeVon,\n    MengeBis,\n    RabattProzent,\n    GiltVon,\n    GiltBis\nFROM list_views.V_LIST_B2B_DISCOUNT\nORDER BY RabattID DESC;\nIf you see rows in the results grid, your VS Code setup is ready.",
+    "title": "6  VS Code",
+    "section": "6.6 First Query",
+    "text": "6.6 First Query\nAfter the connection is established, create a new SQL file and run:\nSELECT TOP (10)\n    RabattID,\n    Kunde,\n    MengeVon,\n    MengeBis,\n    RabattProzent,\n    GiltVon,\n    GiltBis\nFROM list_views.V_LIST_B2B_DISCOUNT\nORDER BY RabattID DESC;\nIf you see rows in the results grid, your VS Code setup is ready.",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-connection.html",
     "href": "mssql-connection.html",
-    "title": "6  Server Connection",
+    "title": "7  Server Connection",
     "section": "",
-    "text": "6.1 The Connection Settings\nWe connect to SQL Server from Python with four building blocks:\nThe project stores the database configuration in .env:",
+    "text": "7.1 The Connection Settings\nWe connect to SQL Server from Python with four building blocks:\nThe project stores the database configuration in .env:",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Server Connection</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-connection.html#the-connection-settings",
     "href": "mssql-connection.html#the-connection-settings",
-    "title": "6  Server Connection",
+    "title": "7  Server Connection",
     "section": "",
     "text": "MSSQL_SERVER=...\nMSSQL_DATABASE=...\nMSSQL_USERNAME=...\nMSSQL_PASSWORD=...\nMSSQL_DRIVER=ODBC Driver 18 for SQL Server\nTRUST_SERVER_CERTIFICATE=true\nAPP_USER=...",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Server Connection</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-connection.html#why-the-connection-logic-lives-in-repositoriesdb.py",
     "href": "mssql-connection.html#why-the-connection-logic-lives-in-repositoriesdb.py",
-    "title": "6  Server Connection",
-    "section": "6.2 Why the Connection Logic Lives in repositories/db.py",
-    "text": "6.2 Why the Connection Logic Lives in repositories/db.py\nrepositories/db.py has two responsibilities:\n\nload and validate the environment variables\ncreate one shared SQLAlchemy engine for the application\n\nThis keeps the rest of the project clean:\n\nthe Streamlit UI does not need to know how ODBC strings work\nthe service layer does not need to know where credentials come from\nthe repository layer can focus on SQL statements only",
+    "title": "7  Server Connection",
+    "section": "7.2 Why the Connection Logic Lives in repositories/db.py",
+    "text": "7.2 Why the Connection Logic Lives in repositories/db.py\nrepositories/db.py has two responsibilities:\n\nload and validate the environment variables\ncreate one shared SQLAlchemy engine for the application\n\nThis keeps the rest of the project clean:\n\nthe Streamlit UI does not need to know how ODBC strings work\nthe service layer does not need to know where credentials come from\nthe repository layer can focus on SQL statements only",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Server Connection</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-connection.html#how-the-connection-string-works",
     "href": "mssql-connection.html#how-the-connection-string-works",
-    "title": "6  Server Connection",
-    "section": "6.3 How the Connection String Works",
-    "text": "6.3 How the Connection String Works\nThe SQLAlchemy engine uses the dialect mssql+pyodbc, which means:\n\nSQLAlchemy handles connection management and parameterized SQL\npyodbc uses the installed Microsoft ODBC Driver 18 underneath\nthe actual server communication still happens through the native SQL Server driver",
+    "title": "7  Server Connection",
+    "section": "7.3 How the Connection String Works",
+    "text": "7.3 How the Connection String Works\nThe SQLAlchemy engine uses the dialect mssql+pyodbc, which means:\n\nSQLAlchemy handles connection management and parameterized SQL\npyodbc uses the installed Microsoft ODBC Driver 18 underneath\nthe actual server communication still happens through the native SQL Server driver",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Server Connection</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-connection.html#why-we-still-use-pandas",
     "href": "mssql-connection.html#why-we-still-use-pandas",
-    "title": "6  Server Connection",
-    "section": "6.4 Why We Still Use pandas",
-    "text": "6.4 Why We Still Use pandas\npandas.read_sql(...) is convenient for read operations because the result is immediately available as a DataFrame. That is useful for:\n\ndisplaying tables in Streamlit\nfiltering data\nchecking business rules, such as overlapping discounts\n\nFor writes, the repository uses parameterized SQL statements with sqlalchemy.text(...), because that is clearer and safer for INSERT and UPDATE.",
+    "title": "7  Server Connection",
+    "section": "7.4 Why We Still Use pandas",
+    "text": "7.4 Why We Still Use pandas\npandas.read_sql(...) is convenient for read operations because the result is immediately available as a DataFrame. That is useful for:\n\ndisplaying tables in Streamlit\nfiltering data\nchecking business rules, such as overlapping discounts\n\nFor writes, the repository uses parameterized SQL statements with sqlalchemy.text(...), because that is clearer and safer for INSERT and UPDATE.",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Server Connection</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-connection.html#next-step",
     "href": "mssql-connection.html#next-step",
-    "title": "6  Server Connection",
-    "section": "6.5 Next Step",
-    "text": "6.5 Next Step\nIn the next chapter, you will run the standalone script sql_example.py and inspect the exact SQL views that power the CRUD application.",
+    "title": "7  Server Connection",
+    "section": "7.5 Next Step",
+    "text": "7.5 Next Step\nIn the next chapter, you will run the standalone script sql_example.py and inspect the exact SQL views that power the CRUD application.",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Server Connection</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-example.html",
     "href": "mssql-example.html",
-    "title": "7  Example SQL Server Connection",
+    "title": "8  Example SQL Server Connection",
     "section": "",
-    "text": "7.1 Run the Example Script\nNow we test the Python-based connection before we start the full Streamlit app.\nThe script does three things:",
+    "text": "8.1 Warm-up Repository\nNow we test the Python-based connection before we start the full Streamlit app.\nBefore running the full project script, use the smaller SQL Server connection repository:\nThis step confirms that the ODBC driver, SQL Server credentials, and network access work before you debug the larger application.",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-example.html#warm-up-repository",
+    "href": "mssql-example.html#warm-up-repository",
+    "title": "8  Example SQL Server Connection",
+    "section": "",
+    "text": "Open mssql-example on GitHub\nDownload mssql-example as ZIP\n\ngit clone https://github.com/kirenz/mssql-example.git\ncd mssql-example\nuv sync\ncp .env.example .env\nuv run python sql_example.py",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-example.html#run-the-example-script",
     "href": "mssql-example.html#run-the-example-script",
-    "title": "7  Example SQL Server Connection",
-    "section": "",
-    "text": "uv run python sql_example.py\n\n\nopens the SQLAlchemy engine from repositories/db.py\nprints the SQL Server version\nloads sample rows from the discount view and the customer LOV table",
+    "title": "8  Example SQL Server Connection",
+    "section": "8.2 Run the Example Script",
+    "text": "8.2 Run the Example Script\nAfter the warm-up repository works, return to the full sopra project and run:\nuv run python sql_example.py\nThe script does three things:\n\nopens the SQLAlchemy engine from repositories/db.py\nprints the SQL Server version\nloads sample rows from the discount view and the customer LOV table",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-example.html#example-read-query",
     "href": "mssql-example.html#example-read-query",
-    "title": "7  Example SQL Server Connection",
-    "section": "7.2 Example Read Query",
-    "text": "7.2 Example Read Query\nThe script reads from the overview view:\nSELECT TOP (5)\n    RabattID,\n    Kunde,\n    MengeVon,\n    MengeBis,\n    RabattProzent,\n    GiltVon,\n    GiltBis\nFROM list_views.V_LIST_B2B_DISCOUNT\nORDER BY RabattID DESC;",
+    "title": "8  Example SQL Server Connection",
+    "section": "8.3 Example Read Query",
+    "text": "8.3 Example Read Query\nThe script reads from the overview view:\nSELECT TOP (5)\n    RabattID,\n    Kunde,\n    MengeVon,\n    MengeBis,\n    RabattProzent,\n    GiltVon,\n    GiltBis\nFROM list_views.V_LIST_B2B_DISCOUNT\nORDER BY RabattID DESC;",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-example.html#example-lov-query",
     "href": "mssql-example.html#example-lov-query",
-    "title": "7  Example SQL Server Connection",
-    "section": "7.3 Example LOV Query",
-    "text": "7.3 Example LOV Query\nThe customer dropdown in the Streamlit app is populated from:\nSELECT TOP (5)\n    CUSTOMER_ID,\n    CUSTOMER_LONG\nFROM dbo.LOV_CUSTOMER\nORDER BY CUSTOMER_ID;",
+    "title": "8  Example SQL Server Connection",
+    "section": "8.4 Example LOV Query",
+    "text": "8.4 Example LOV Query\nThe customer dropdown in the Streamlit app is populated from:\nSELECT TOP (5)\n    CUSTOMER_ID,\n    CUSTOMER_LONG\nFROM dbo.LOV_CUSTOMER\nORDER BY CUSTOMER_ID;",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-example.html#insert-example",
     "href": "mssql-example.html#insert-example",
-    "title": "7  Example SQL Server Connection",
-    "section": "7.4 Insert Example",
-    "text": "7.4 Insert Example\nThe Create tab uses the insert view:\nINSERT INTO ins_views.V_INS_B2B_DISCOUNT (\n    KundenNr,\n    MengeVon,\n    MengeBis,\n    RabattProzent,\n    GiltVon,\n    GiltBis,\n    Bemerkung,\n    ErfasstAm,\n    GeaendertVon\n)\nVALUES (\n    51,\n    100,\n    250,\n    12.50,\n    '2026-05-01',\n    '2026-06-30',\n    'Semester demo',\n    'your_user',\n    'your_user'\n);\n\n\n\n\n\n\nThe insert view exposes one audit column under a confusing alias: ErfasstAm actually maps to the insert user in the base table. The repository hides this detail so the rest of the Python code can stay readable.",
+    "title": "8  Example SQL Server Connection",
+    "section": "8.5 Insert Example",
+    "text": "8.5 Insert Example\nThe Create tab uses the insert view:\nINSERT INTO ins_views.V_INS_B2B_DISCOUNT (\n    KundenNr,\n    MengeVon,\n    MengeBis,\n    RabattProzent,\n    GiltVon,\n    GiltBis,\n    Bemerkung,\n    ErfasstAm,\n    GeaendertVon\n)\nVALUES (\n    51,\n    100,\n    250,\n    12.50,\n    '2026-05-01',\n    '2026-06-30',\n    'Semester demo',\n    'your_user',\n    'your_user'\n);\n\n\n\n\n\n\nThe insert view exposes one audit column under a confusing alias: ErfasstAm actually maps to the insert user in the base table. The repository hides this detail so the rest of the Python code can stay readable.",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-example.html#update-example",
     "href": "mssql-example.html#update-example",
-    "title": "7  Example SQL Server Connection",
-    "section": "7.5 Update Example",
-    "text": "7.5 Update Example\nThe Edit tab uses the update view:\nUPDATE upd_views.V_UPD_B2B_DISCOUNT\nSET\n    RabattProzent = 15.00,\n    Bemerkung = 'Updated during class',\n    GeaendertAm = CURRENT_TIMESTAMP,\n    GeaendertVon = 'your_user'\nWHERE RabattID = 1003;",
+    "title": "8  Example SQL Server Connection",
+    "section": "8.6 Update Example",
+    "text": "8.6 Update Example\nThe Edit tab uses the update view:\nUPDATE upd_views.V_UPD_B2B_DISCOUNT\nSET\n    RabattProzent = 15.00,\n    Bemerkung = 'Updated during class',\n    GeaendertAm = CURRENT_TIMESTAMP,\n    GeaendertVon = 'your_user'\nWHERE RabattID = 1003;",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-example.html#why-we-test-here-first",
     "href": "mssql-example.html#why-we-test-here-first",
-    "title": "7  Example SQL Server Connection",
-    "section": "7.6 Why We Test Here First",
-    "text": "7.6 Why We Test Here First\nIf sql_example.py works, you know that:\n\nthe ODBC driver is installed correctly\nthe .env file is loaded correctly\nthe SQL login can reach the required views\n\nThat removes a large source of confusion before you start debugging the Streamlit user interface.",
+    "title": "8  Example SQL Server Connection",
+    "section": "8.7 Why We Test Here First",
+    "text": "8.7 Why We Test Here First\nIf sql_example.py works, you know that:\n\nthe ODBC driver is installed correctly\nthe .env file is loaded correctly\nthe SQL login can reach the required views\n\nThat removes a large source of confusion before you start debugging the Streamlit user interface.",
     "crumbs": [
       "MSSQL",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
     ]
   },
   {
     "objectID": "streamlit.html",
     "href": "streamlit.html",
-    "title": "8  Streamlit Application",
+    "title": "9  Streamlit Application",
     "section": "",
-    "text": "8.1 Start the App\nThe file app.py is the presentation layer of the project. It contains the Streamlit user interface and deliberately avoids direct SQL statements.",
+    "text": "9.1 Warm-up Repository\nThe file app.py is the presentation layer of the project. It contains the Streamlit user interface and deliberately avoids direct SQL statements.\nBefore starting the full CRUD app, use the smaller Streamlit and SQL Server repository:\nThis step confirms that Streamlit can start locally, connect to SQL Server, and display query results in the browser.",
     "crumbs": [
       "Application",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Streamlit Application</span>"
+    ]
+  },
+  {
+    "objectID": "streamlit.html#warm-up-repository",
+    "href": "streamlit.html#warm-up-repository",
+    "title": "9  Streamlit Application",
+    "section": "",
+    "text": "Open streamlit-mssql on GitHub\nDownload streamlit-mssql as ZIP\n\ngit clone https://github.com/kirenz/streamlit-mssql.git\ncd streamlit-mssql\nuv sync\ncp .env.example .env\nuv run streamlit run app.py",
+    "crumbs": [
+      "Application",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Streamlit Application</span>"
     ]
   },
   {
     "objectID": "streamlit.html#start-the-app",
     "href": "streamlit.html#start-the-app",
-    "title": "8  Streamlit Application",
-    "section": "",
-    "text": "uv run streamlit run app.py",
+    "title": "9  Streamlit Application",
+    "section": "9.2 Start the App",
+    "text": "9.2 Start the App\nAfter the warm-up repository works, return to the full sopra project and run:\nuv run streamlit run app.py",
     "crumbs": [
       "Application",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Streamlit Application</span>"
     ]
   },
   {
     "objectID": "streamlit.html#user-interface-structure",
     "href": "streamlit.html#user-interface-structure",
-    "title": "8  Streamlit Application",
-    "section": "8.2 User Interface Structure",
-    "text": "8.2 User Interface Structure\nThe application uses three tabs:\n\nList Discounts\nCreate Discount\nEdit Discount\n\nThis mirrors a classic CRUD workflow and makes the mapping between UI actions and backend logic very explicit.",
+    "title": "9  Streamlit Application",
+    "section": "9.3 User Interface Structure",
+    "text": "9.3 User Interface Structure\nThe application uses three tabs:\n\nList Discounts\nCreate Discount\nEdit Discount\n\nThis mirrors a classic CRUD workflow and makes the mapping between UI actions and backend logic very explicit.",
     "crumbs": [
       "Application",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Streamlit Application</span>"
     ]
   },
   {
     "objectID": "streamlit.html#layer-responsibilities",
     "href": "streamlit.html#layer-responsibilities",
-    "title": "8  Streamlit Application",
-    "section": "8.3 Layer Responsibilities",
-    "text": "8.3 Layer Responsibilities\n\n8.3.1 Presentation Layer\napp.py is responsible for:\n\nrendering Streamlit widgets\ncollecting user input\nshowing success and error messages\ncalling the service layer\n\n\n\n8.3.2 Business Logic Layer\nservices/discount_service.py is responsible for:\n\nvalidating quantities, dates, and discount percentages\npreventing overlapping discounts for the same customer\ntranslating repository errors into business-oriented messages\n\n\n\n8.3.3 Data Access Layer\nrepositories/discount_repo.py is responsible for:\n\nreading the overview and LOV data with pandas.read_sql(...)\ninserting rows through ins_views.V_INS_B2B_DISCOUNT\nupdating rows through upd_views.V_UPD_B2B_DISCOUNT\nisolating SQL-specific details from the rest of the code",
+    "title": "9  Streamlit Application",
+    "section": "9.4 Layer Responsibilities",
+    "text": "9.4 Layer Responsibilities\n\n9.4.1 Presentation Layer\napp.py is responsible for:\n\nrendering Streamlit widgets\ncollecting user input\nshowing success and error messages\ncalling the service layer\n\n\n\n9.4.2 Business Logic Layer\nservices/discount_service.py is responsible for:\n\nvalidating quantities, dates, and discount percentages\npreventing overlapping discounts for the same customer\ntranslating repository errors into business-oriented messages\n\n\n\n9.4.3 Data Access Layer\nrepositories/discount_repo.py is responsible for:\n\nreading the overview and LOV data with pandas.read_sql(...)\ninserting rows through ins_views.V_INS_B2B_DISCOUNT\nupdating rows through upd_views.V_UPD_B2B_DISCOUNT\nisolating SQL-specific details from the rest of the code",
     "crumbs": [
       "Application",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Streamlit Application</span>"
     ]
   },
   {
     "objectID": "streamlit.html#why-this-separation-matters",
     "href": "streamlit.html#why-this-separation-matters",
-    "title": "8  Streamlit Application",
-    "section": "8.4 Why This Separation Matters",
-    "text": "8.4 Why This Separation Matters\nThis design makes it easier to reason about the application:\n\nif the SQL is wrong, you inspect the repository\nif the business rule is wrong, you inspect the service\nif the layout or form flow is wrong, you inspect the Streamlit UI\n\nThat is exactly why layered architectures are common in enterprise systems.",
+    "title": "9  Streamlit Application",
+    "section": "9.5 Why This Separation Matters",
+    "text": "9.5 Why This Separation Matters\nThis design makes it easier to reason about the application:\n\nif the SQL is wrong, you inspect the repository\nif the business rule is wrong, you inspect the service\nif the layout or form flow is wrong, you inspect the Streamlit UI\n\nThat is exactly why layered architectures are common in enterprise systems.",
     "crumbs": [
       "Application",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Streamlit Application</span>"
     ]
   },
   {
     "objectID": "streamlit.html#error-handling",
     "href": "streamlit.html#error-handling",
-    "title": "8  Streamlit Application",
-    "section": "8.5 Error Handling",
-    "text": "8.5 Error Handling\nThe application demonstrates two important error categories:\n\nlocal validation errors, such as invalid quantity ranges\ndatabase errors returned by SQL Server\n\nStudents should notice that both categories are shown to the user, but they originate in different layers.",
+    "title": "9  Streamlit Application",
+    "section": "9.6 Error Handling",
+    "text": "9.6 Error Handling\nThe application demonstrates two important error categories:\n\nlocal validation errors, such as invalid quantity ranges\ndatabase errors returned by SQL Server\n\nStudents should notice that both categories are shown to the user, but they originate in different layers.",
     "crumbs": [
       "Application",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Streamlit Application</span>"
     ]
   },
   {
     "objectID": "streamlit.html#suggested-exercises",
     "href": "streamlit.html#suggested-exercises",
-    "title": "8  Streamlit Application",
-    "section": "8.6 Suggested Exercises",
-    "text": "8.6 Suggested Exercises\n\nadd a delete workflow with a separate database view\nadd unit tests for the validation rules\nadd more business rules, for example maximum discount thresholds by customer type\nadd a detail page or KPI cards above the table",
+    "title": "9  Streamlit Application",
+    "section": "9.7 Suggested Exercises",
+    "text": "9.7 Suggested Exercises\n\nadd a delete workflow with a separate database view\nadd unit tests for the validation rules\nadd more business rules, for example maximum discount thresholds by customer type\nadd a detail page or KPI cards above the table",
     "crumbs": [
       "Application",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Streamlit Application</span>"
     ]
   }
 ]
