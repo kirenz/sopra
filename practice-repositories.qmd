@@ -1,17 +1,17 @@
 ---
-title: "Warm-up Repositories"
+title: "Practice Repositories"
 ---
 
-Before working in the full CRUD project, use two smaller repositories to check the technical basics.
+Before working in the full project, we use two smaller repositories to check the technical basics.
 
 The goal is to separate setup problems from application design problems:
 
 1. First, confirm that Python can connect to SQL Server.
 2. Then, confirm that Streamlit can display SQL query results in the browser.
-3. After that, move to the full CRUD application.
+3. After that, move to the full application.
 
 :::{.callout-note}
-The full SOPRA project uses `APP_USER` for audit fields when records are created or updated. The two warm-up repositories only run read queries, so they do not need `APP_USER` for their SQL logic. It is still useful to fill it consistently in `.env` when you prepare for the CRUD project.
+The full SOPRA project uses `APP_USER` for audit fields when records are created or updated. The two practice repositories only run read queries, so they do not need `APP_USER` for their SQL logic. It is still useful to fill it consistently in `.env` when you prepare for the CRUD project.
 :::
 
 ## Repository 1: SQL Server Connection
@@ -21,7 +21,7 @@ Use this repository first:
 - [Open mssql-example on GitHub](https://github.com/kirenz/mssql-example)
 - [Download mssql-example as ZIP](https://github.com/kirenz/mssql-example/archive/refs/heads/main.zip)
 
-With Git:
+With Git, use the following commands in your terminal (one at a time):
 
 ```bash
 git clone https://github.com/kirenz/mssql-example.git
@@ -37,6 +37,31 @@ This repository is intentionally small. It focuses on:
 - building a SQLAlchemy connection
 - running a simple SQL query against the SOPRA views
 - reading the result into a `pandas` DataFrame
+
+The SOPRA example script reads the discount overview:
+
+```sql
+SELECT TOP (5)
+    RabattID,
+    Kunde,
+    MengeVon,
+    MengeBis,
+    RabattProzent,
+    GiltVon,
+    GiltBis
+FROM list_views.V_LIST_B2B_DISCOUNT
+ORDER BY RabattID DESC;
+```
+
+It also reads the customer list of values used later by the Streamlit dropdown:
+
+```sql
+SELECT TOP (5)
+    CUSTOMER_ID,
+    CUSTOMER_LONG
+FROM dbo.LOV_CUSTOMER
+ORDER BY CUSTOMER_ID;
+```
 
 If this step fails, fix the driver, credentials, network access, or SOPRA database permissions before continuing.
 
@@ -68,7 +93,7 @@ If this step works, the basic Streamlit and SQL Server setup is ready.
 
 ## Repository 3: Full CRUD Application
 
-Use the main repository after the two warm-up steps:
+Use the main repository after the two practice steps:
 
 - [Open sopra on GitHub](https://github.com/kirenz/sopra)
 - [Download sopra as ZIP](https://github.com/kirenz/sopra/archive/refs/heads/main.zip)

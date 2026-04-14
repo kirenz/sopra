@@ -1,133 +1,65 @@
 # Python Enterprise CRUD Demo
 
-This documentation walks through a small enterprise application demo. 
+This guide introduces a small enterprise application built with Python, Streamlit, and Microsoft SQL Server.
 
-The example focuses on a B2B discount maintenance scenario and demonstrates how Python applications are typically structured when they read from and write to a Microsoft SQL Server database.
+The goal is not to learn every technical detail at once. Start with the small practice repositories, check that your setup works, and then move to the full CRUD application.
 
-::: {.overview-grid}
-::: {.overview-item}
-::: {.overview-label}
-Stack
-:::
-Python 3.13, `uv`, Streamlit, `pandas`, `sqlalchemy`, `pyodbc`
+:::{.callout-note}
+Use this page as orientation. The concrete commands and code examples are explained in the later chapters.
 :::
 
-::: {.overview-item}
-::: {.overview-label}
-Database
-:::
-MSSQL Server with role-based views for data access
-:::
-:::
+## Learning Path
 
-## Course Files
+Follow the chapters in this order:
 
-This book uses three GitHub repositories. Start with the small examples first, then move to the full CRUD project.
-
-| Step | Repository | Purpose |
+| Step | What you do | Where |
 | --- | --- | --- |
-| 1 | [mssql-example](https://github.com/kirenz/mssql-example) | Test a plain Python connection to Microsoft SQL Server |
-| 2 | [streamlit-mssql](https://github.com/kirenz/streamlit-mssql) | Run a small Streamlit app that queries SQL Server |
-| 3 | [sopra](https://github.com/kirenz/sopra) | Work with the full layered CRUD application |
+| 1 | Prepare your SQL Server credentials | [Credentials](credentials.qmd) |
+| 2 | Install the required tools | [Windows Setup](windows-setup.qmd) or [macOS Setup](mac-setup.qmd) |
+| 3 | Test the small practice repositories | [Practice Repositories](practice-repositories.qmd) |
+| 4 | Understand the database connection | [Server Connection](mssql-connection.qmd) |
+| 5 | Run and inspect the Streamlit app | [Streamlit Application](streamlit.qmd) |
 
-Download or clone the full project when you reach the main application part. The repository contains all Python files used in this book, the Quarto source files, and `.env.example`.
+## Repositories
 
-- [Download ZIP](https://github.com/kirenz/sopra/archive/refs/heads/main.zip)
-- [Open GitHub repository](https://github.com/kirenz/sopra)
+The course uses three GitHub repositories:
 
-If you use Git:
+| Repository | Purpose |
+| --- | --- |
+| [mssql-example](https://github.com/kirenz/mssql-example) | Test a basic Python connection to SQL Server |
+| [streamlit-mssql](https://github.com/kirenz/streamlit-mssql) | Run a small Streamlit app with SQL Server data |
+| [sopra](https://github.com/kirenz/sopra) | Work with the full layered CRUD application |
 
-```bash
-git clone https://github.com/kirenz/sopra.git
-cd sopra
-uv sync
-```
+Keep the repositories in separate folders. Each repository is a separate learning step.
 
-If you download the ZIP file, unzip the folder, open it in Visual Studio Code, and then run:
+## What This Project Demonstrates
 
-```bash
-uv sync
-```
+The full application manages quantity-based B2B discounts. It shows how a typical Python application can:
 
-The local `.env` file is not part of the download. Create it from `.env.example` and add the course-specific SQL Server credentials.
+- read from and write to Microsoft SQL Server
+- keep database credentials out of the source code
+- separate the user interface from business logic and database access
+- use database views for controlled enterprise data access
 
-:::{.callout-tip}
-Keep the three repositories in separate folders. Do not copy files from the warm-up repositories into the full CRUD project unless an exercise explicitly asks you to do so.
-:::
-
-## Recommended Learning Path
-
-1. Use `mssql-example` to verify that the ODBC driver, `.env` file, and SQL Server login work.
-2. Use `streamlit-mssql` to run a small browser-based SQL query interface.
-3. Use this `sopra` project to study the larger CRUD application with presentation, business logic, and data access layers.
-
-## Learning Goals
-
-By the end of this project, students should be able to:
-
-- set up a Python 3.13 project with `uv`
-- connect to Microsoft SQL Server with `pyodbc`, `sqlalchemy`, and `pandas`
-- implement typical CRUD-style flows in a Streamlit user interface
-- handle database errors and validation messages in a user-friendly way
-
-## Business Scenario
-
-The application manages quantity-based B2B discounts. Sales staff need an internal tool to:
-
-- view existing discount rules
-- add a new discount for a selected customer
-- edit an existing discount if business conditions change
-
-The SQL Server already exposes role-based views for this workflow, so the Python application does not work directly on the base table. This mirrors a common enterprise setup where database permissions are restricted through views.
-
-## Architecture Overview
+## Architecture At A Glance
 
 ```{mermaid}
-flowchart TD
-    U["User in Browser"] --> A["Presentation Layer<br>app.py<br>Streamlit tabs"]
-    A --> B["Business Logic Layer<br>services/discount_service.py<br>validation and rules"]
-    B --> C["Data Access Layer<br>repositories/db.py<br>repositories/discount_repo.py"]
-    C --> D["Role-Based Views<br>list_views / ins_views / upd_views<br>dbo.LOV_CUSTOMER"]
-    D --> E["SQL Server Database<br>ERPDEV"]
+flowchart LR
+    U["Browser"] --> A["Streamlit UI"]
+    A --> B["Business Logic"]
+    B --> C["Database Access"]
+    C --> D["SQL Server Views"]
+    D --> E["SQL Server"]
 ```
 
-## Database Objects Used in the Demo
+You do not need to understand every layer before starting. The important idea is that each layer has one clear responsibility.
 
-| Purpose | Object |
-| --- | --- |
-| Read discount overview | `list_views.V_LIST_B2B_DISCOUNT` |
-| Insert new discount | `ins_views.V_INS_B2B_DISCOUNT` |
-| Update existing discount | `upd_views.V_UPD_B2B_DISCOUNT` |
-| Fill customer dropdown | `dbo.LOV_CUSTOMER` |
+## What To Focus On First
 
-## Project Structure
+When working through the material, focus on these questions:
 
-```text
-.
-├── app.py
-├── models/discount.py
-├── repositories/db.py
-├── repositories/discount_repo.py
-├── services/discount_service.py
-├── sql_example.py
-└── README.md
-```
+- Can Python connect to the SQL Server database?
+- Can Streamlit display data from SQL Server in the browser?
+- Where does the full application handle user input, business rules, and SQL access?
 
-## What You Should Notice
-
-- `app.py` contains no raw SQL. The presentation layer only deals with user interaction.
-- `discount_service.py` contains no Streamlit code. It focuses on validation and business meaning.
-- `discount_repo.py` is the only place where SQL statements are written.
-- `.env` keeps credentials out of the source code.
-
-:::{.callout-tip}
-This separation is not just a style preference. It makes the application easier to test, easier to explain in class, and easier to extend later.
-:::
-
-## Suggested Workflow
-
-1. Complete the operating-system-specific setup steps.
-2. Configure your `.env` file.
-3. Test the MSSQL connection with `sql_example.py`.
-4. Start the Streamlit application with `uv run streamlit run app.py`.
-5. Inspect how each UI action maps to the business and data layers.
+If one step fails, fix that step before moving on. This keeps setup problems separate from application design problems.
