@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jan Kirenz">
 
-<title>8&nbsp; Streamlit Application – Python SQL Setup Guide</title>
+<title>7&nbsp; Streamlit Application – Python SQL Setup Guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./practice-repositories.html" rel="prev">
+<link href="./mssql-connection.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./streamlit.html">Application</a></li><li class="breadcrumb-item"><a href="./streamlit.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Streamlit Application</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mssql-connection.html">Application</a></li><li class="breadcrumb-item"><a href="./streamlit.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streamlit Application</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -179,12 +179,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mssql-connection.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -198,14 +192,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./credentials.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Credentials</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./practice-repositories.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practice Repositories</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Practice Repositories</span></span></a>
   </div>
 </li>
       </ul>
@@ -221,8 +209,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./mssql-connection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./streamlit.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Streamlit Application</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streamlit Application</span></span></a>
   </div>
 </li>
       </ul>
@@ -237,26 +231,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#start-the-app" id="toc-start-the-app" class="nav-link active" data-scroll-target="#start-the-app"><span class="header-section-number">8.1</span> Start the App</a></li>
-  <li><a href="#user-interface-structure" id="toc-user-interface-structure" class="nav-link" data-scroll-target="#user-interface-structure"><span class="header-section-number">8.2</span> User Interface Structure</a></li>
-  <li><a href="#layer-responsibilities" id="toc-layer-responsibilities" class="nav-link" data-scroll-target="#layer-responsibilities"><span class="header-section-number">8.3</span> Layer Responsibilities</a>
+  <li><a href="#start-the-app" id="toc-start-the-app" class="nav-link active" data-scroll-target="#start-the-app"><span class="header-section-number">7.1</span> Start the App</a></li>
+  <li><a href="#user-interface-structure" id="toc-user-interface-structure" class="nav-link" data-scroll-target="#user-interface-structure"><span class="header-section-number">7.2</span> User Interface Structure</a></li>
+  <li><a href="#layer-responsibilities" id="toc-layer-responsibilities" class="nav-link" data-scroll-target="#layer-responsibilities"><span class="header-section-number">7.3</span> Layer Responsibilities</a>
   <ul class="collapse">
-  <li><a href="#presentation-layer" id="toc-presentation-layer" class="nav-link" data-scroll-target="#presentation-layer"><span class="header-section-number">8.3.1</span> Presentation Layer</a></li>
-  <li><a href="#business-logic-layer" id="toc-business-logic-layer" class="nav-link" data-scroll-target="#business-logic-layer"><span class="header-section-number">8.3.2</span> Business Logic Layer</a></li>
-  <li><a href="#data-access-layer" id="toc-data-access-layer" class="nav-link" data-scroll-target="#data-access-layer"><span class="header-section-number">8.3.3</span> Data Access Layer</a></li>
+  <li><a href="#presentation-layer" id="toc-presentation-layer" class="nav-link" data-scroll-target="#presentation-layer"><span class="header-section-number">7.3.1</span> Presentation Layer</a></li>
+  <li><a href="#business-logic-layer" id="toc-business-logic-layer" class="nav-link" data-scroll-target="#business-logic-layer"><span class="header-section-number">7.3.2</span> Business Logic Layer</a></li>
+  <li><a href="#data-access-layer" id="toc-data-access-layer" class="nav-link" data-scroll-target="#data-access-layer"><span class="header-section-number">7.3.3</span> Data Access Layer</a></li>
   </ul></li>
-  <li><a href="#why-this-separation-matters" id="toc-why-this-separation-matters" class="nav-link" data-scroll-target="#why-this-separation-matters"><span class="header-section-number">8.4</span> Why This Separation Matters</a></li>
-  <li><a href="#error-handling" id="toc-error-handling" class="nav-link" data-scroll-target="#error-handling"><span class="header-section-number">8.5</span> Error Handling</a></li>
-  <li><a href="#suggested-exercises" id="toc-suggested-exercises" class="nav-link" data-scroll-target="#suggested-exercises"><span class="header-section-number">8.6</span> Suggested Exercises</a></li>
+  <li><a href="#why-this-separation-matters" id="toc-why-this-separation-matters" class="nav-link" data-scroll-target="#why-this-separation-matters"><span class="header-section-number">7.4</span> Why This Separation Matters</a></li>
+  <li><a href="#error-handling" id="toc-error-handling" class="nav-link" data-scroll-target="#error-handling"><span class="header-section-number">7.5</span> Error Handling</a></li>
+  <li><a href="#suggested-exercises" id="toc-suggested-exercises" class="nav-link" data-scroll-target="#suggested-exercises"><span class="header-section-number">7.6</span> Suggested Exercises</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./streamlit.html">Application</a></li><li class="breadcrumb-item"><a href="./streamlit.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Streamlit Application</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mssql-connection.html">Application</a></li><li class="breadcrumb-item"><a href="./streamlit.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streamlit Application</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Streamlit Application</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Streamlit Application</span></h1>
 </div>
 
 
@@ -274,13 +268,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>The file <code>app.py</code> is the presentation layer of the project. It contains the Streamlit user interface and deliberately avoids direct SQL statements.</p>
-<section id="start-the-app" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="start-the-app"><span class="header-section-number">8.1</span> Start the App</h2>
+<section id="start-the-app" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="start-the-app"><span class="header-section-number">7.1</span> Start the App</h2>
 <p>After the two practice repositories work, return to the full <code>sopra</code> project and run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run streamlit run app.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="user-interface-structure" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="user-interface-structure"><span class="header-section-number">8.2</span> User Interface Structure</h2>
+<section id="user-interface-structure" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="user-interface-structure"><span class="header-section-number">7.2</span> User Interface Structure</h2>
 <p>The application uses three tabs:</p>
 <ul>
 <li><code>List Discounts</code></li>
@@ -289,10 +283,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>This mirrors a classic CRUD workflow and makes the mapping between UI actions and backend logic very explicit.</p>
 </section>
-<section id="layer-responsibilities" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="layer-responsibilities"><span class="header-section-number">8.3</span> Layer Responsibilities</h2>
-<section id="presentation-layer" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="presentation-layer"><span class="header-section-number">8.3.1</span> Presentation Layer</h3>
+<section id="layer-responsibilities" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="layer-responsibilities"><span class="header-section-number">7.3</span> Layer Responsibilities</h2>
+<section id="presentation-layer" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="presentation-layer"><span class="header-section-number">7.3.1</span> Presentation Layer</h3>
 <p><code>app.py</code> is responsible for:</p>
 <ul>
 <li>rendering Streamlit widgets</li>
@@ -301,8 +295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>calling the service layer</li>
 </ul>
 </section>
-<section id="business-logic-layer" class="level3" data-number="8.3.2">
-<h3 data-number="8.3.2" class="anchored" data-anchor-id="business-logic-layer"><span class="header-section-number">8.3.2</span> Business Logic Layer</h3>
+<section id="business-logic-layer" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="business-logic-layer"><span class="header-section-number">7.3.2</span> Business Logic Layer</h3>
 <p><code>services/discount_service.py</code> is responsible for:</p>
 <ul>
 <li>validating quantities, dates, and discount percentages</li>
@@ -310,8 +304,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>translating repository errors into business-oriented messages</li>
 </ul>
 </section>
-<section id="data-access-layer" class="level3" data-number="8.3.3">
-<h3 data-number="8.3.3" class="anchored" data-anchor-id="data-access-layer"><span class="header-section-number">8.3.3</span> Data Access Layer</h3>
+<section id="data-access-layer" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="data-access-layer"><span class="header-section-number">7.3.3</span> Data Access Layer</h3>
 <p><code>repositories/discount_repo.py</code> is responsible for:</p>
 <ul>
 <li>reading the overview and LOV data with <code>pandas.read_sql(...)</code></li>
@@ -321,8 +315,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="why-this-separation-matters" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="why-this-separation-matters"><span class="header-section-number">8.4</span> Why This Separation Matters</h2>
+<section id="why-this-separation-matters" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="why-this-separation-matters"><span class="header-section-number">7.4</span> Why This Separation Matters</h2>
 <p>This design makes it easier to reason about the application:</p>
 <ul>
 <li>if the SQL is wrong, you inspect the repository</li>
@@ -331,8 +325,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>That is exactly why layered architectures are common in enterprise systems.</p>
 </section>
-<section id="error-handling" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="error-handling"><span class="header-section-number">8.5</span> Error Handling</h2>
+<section id="error-handling" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="error-handling"><span class="header-section-number">7.5</span> Error Handling</h2>
 <p>The application demonstrates two important error categories:</p>
 <ol type="1">
 <li>local validation errors, such as invalid quantity ranges</li>
@@ -340,8 +334,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>Students should notice that both categories are shown to the user, but they originate in different layers.</p>
 </section>
-<section id="suggested-exercises" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="suggested-exercises"><span class="header-section-number">8.6</span> Suggested Exercises</h2>
+<section id="suggested-exercises" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="suggested-exercises"><span class="header-section-number">7.6</span> Suggested Exercises</h2>
 <ul>
 <li>add a delete workflow with a separate database view</li>
 <li>add unit tests for the validation rules</li>
@@ -755,8 +749,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./practice-repositories.html" class="pagination-link" aria-label="Practice Repositories">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practice Repositories</span></span>
+      <a href="./mssql-connection.html" class="pagination-link" aria-label="Server Connection">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Server Connection</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
