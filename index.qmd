@@ -14,10 +14,10 @@ Follow the chapters in this order:
 
 | Step | What you do | Where |
 | --- | --- | --- |
-| 1 | Prepare your SQL Server credentials | [Credentials](credentials.qmd) |
-| 2 | Install the required tools | [Windows Setup](windows-setup.qmd) or [macOS Setup](mac-setup.qmd) |
+| 1 | Install the required tools | [Windows Setup](windows-setup.qmd) or [macOS Setup](mac-setup.qmd) |
+| 2 | Connect VS Code to SQL Server | [MSSQL in VS Code](mssql-vscode.qmd) |
 | 3 | Test the small practice repositories | [Practice Repositories](practice-repositories.qmd) |
-| 4 | Understand the database connection | [Server Connection](mssql-connection.qmd) |
+| 4 | Understand the application's database connection | [Server Connection](mssql-connection.qmd) |
 | 5 | Run and inspect the Streamlit app | [Streamlit Application](streamlit.qmd) |
 
 ## Repositories

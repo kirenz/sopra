@@ -21,18 +21,15 @@ book:
     - index.qmd
     - part: "Preparation"
       chapters:
-        - credentials.qmd
         - windows-setup.qmd
         - mac-setup.qmd
+        - mssql-vscode.qmd
     - part: "Repositories"
       chapters:
         - practice-repositories.qmd
-    - part: "MSSQL"
-      chapters:
-        - mssql-vscode.qmd
-        - mssql-connection.qmd
     - part: "Application"
       chapters:
+        - mssql-connection.qmd
         - streamlit.qmd
 
 number-sections: true

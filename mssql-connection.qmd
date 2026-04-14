@@ -2,7 +2,13 @@
 title: "Server Connection"
 ---
 
-We connect to SQL Server from Python with four building blocks:
+At this point, the setup should already work. You have prepared the `.env` file, installed the required tools, and tested the practice repositories.
+
+This chapter explains how the full `sopra` application connects to SQL Server. It is a short orientation chapter, not another setup guide.
+
+## The Basic Idea
+
+The application uses four building blocks:
 
 | Package | Why we use it |
 | --- | --- |
@@ -11,51 +17,43 @@ We connect to SQL Server from Python with four building blocks:
 | `sqlalchemy` | manages the engine, connections, and parameter binding |
 | `pandas` | turns SQL results into DataFrames |
 
-## The Connection Settings
+You do not need to configure these packages separately. They are already part of the project environment.
 
-The project stores the database configuration in `.env`:
+## Where The Settings Come From
 
-```bash
-MSSQL_SERVER=...
-MSSQL_DATABASE=...
-MSSQL_USERNAME=...
-MSSQL_PASSWORD=...
-MSSQL_DRIVER=ODBC Driver 18 for SQL Server
-TRUST_SERVER_CERTIFICATE=true
-APP_USER=...
-```
+The database settings come from the local `.env` file. You already created this file when working through the practice repositories.
 
-## Why the Connection Logic Lives in `repositories/db.py`
+The important point here is: credentials stay outside the Python source code. The application reads them at runtime.
+
+## Where The Connection Logic Lives
 
 `repositories/db.py` has two responsibilities:
 
 1. load and validate the environment variables
 2. create one shared SQLAlchemy engine for the application
 
-This keeps the rest of the project clean:
+This keeps the rest of the application simpler:
 
 - the Streamlit UI does not need to know how ODBC strings work
 - the service layer does not need to know where credentials come from
 - the repository layer can focus on SQL statements only
 
-## How the Connection String Works
+## What Students Should Notice
 
-The SQLAlchemy engine uses the dialect `mssql+pyodbc`, which means:
+The full application separates three concerns:
 
-- SQLAlchemy handles connection management and parameterized SQL
-- `pyodbc` uses the installed Microsoft ODBC Driver 18 underneath
-- the actual server communication still happens through the native SQL Server driver
+- `app.py` handles the user interface
+- `services/` handles business rules and validation
+- `repositories/` handles SQL Server access
 
-## Why We Still Use `pandas`
+The connection setup belongs in `repositories/db.py` because it is infrastructure code. The user interface should not contain database passwords, connection strings, or driver details.
 
-`pandas.read_sql(...)` is convenient for read operations because the result is immediately available as a DataFrame. That is useful for:
+## Read And Write Operations
 
-- displaying tables in Streamlit
-- filtering data
-- checking business rules, such as overlapping discounts
+Read operations use `pandas` because SQL results can be displayed directly as tables in Streamlit.
 
-For writes, the repository uses parameterized SQL statements with `sqlalchemy.text(...)`, because that is clearer and safer for `INSERT` and `UPDATE`.
+Write operations use SQLAlchemy with parameters. This is safer and clearer for `INSERT` and `UPDATE` statements than building SQL strings manually.
 
 ## Next Step
 
-In the next chapter, you will run the standalone script `sql_example.py` and inspect the exact SQL views that power the CRUD application.
+Next, open the Streamlit application and inspect how the interface uses this connection indirectly through the service and repository layers.
