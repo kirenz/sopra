@@ -17,7 +17,7 @@ cp .env.example .env
 uv run streamlit run app.py
 ```
 
-This step confirms that Streamlit can start locally, connect to SQL Server, and display query results in the browser.
+This step confirms that Streamlit can start locally, connect to SQL Server, and display SOPRA query results in the browser.
 
 ## Start the App
 

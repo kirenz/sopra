@@ -16,10 +16,10 @@ git clone https://github.com/kirenz/mssql-example.git
 cd mssql-example
 uv sync
 cp .env.example .env
-uv run python sql_example.py
+uv run python sql_example_sopra.py
 ```
 
-This step confirms that the ODBC driver, SQL Server credentials, and network access work before you debug the larger application.
+This step confirms that the ODBC driver, SQL Server credentials, network access, and SOPRA database permissions work before you debug the larger application.
 
 ## Run the Example Script
 

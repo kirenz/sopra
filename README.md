@@ -63,6 +63,8 @@ If you are on macOS, open the built-in **Terminal** app. On Windows, open **Git 
 
    Open the new `.env` file and replace the placeholder values with the SQL Server hostname, database, username, password, driver, and account information provided by your instructor.
 
+   `APP_USER` should contain your HdM account name. The app writes this value into audit fields when you create or update discount records.
+
 5. Test the SQL Server connection
 
    ```bash
@@ -90,6 +92,7 @@ If you are on macOS, open the built-in **Terminal** app. On Windows, open **Git 
 - `app.py` - Streamlit app with the user interface for listing, creating, and editing discounts.
 - `sql_example.py` - standalone SQL Server connection test before launching the full app.
 - `.env.example` - template with placeholders for your connection parameters. Copy this to `.env` and update the values before running the app.
+  `APP_USER` identifies the logical application user written into audit fields during create and edit operations.
 - `models/discount.py` - domain data structure for discount records.
 - `repositories/db.py` - SQLAlchemy connection setup.
 - `repositories/discount_repo.py` - data access code for reading, inserting, and updating discount data.

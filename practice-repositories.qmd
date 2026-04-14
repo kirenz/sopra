@@ -10,6 +10,10 @@ The goal is to separate setup problems from application design problems:
 2. Then, confirm that Streamlit can display SQL query results in the browser.
 3. After that, move to the full CRUD application.
 
+:::{.callout-note}
+The full SOPRA project uses `APP_USER` for audit fields when records are created or updated. The two warm-up repositories only run read queries, so they do not need `APP_USER` for their SQL logic. It is still useful to fill it consistently in `.env` when you prepare for the CRUD project.
+:::
+
 ## Repository 1: SQL Server Connection
 
 Use this repository first:
@@ -24,17 +28,17 @@ git clone https://github.com/kirenz/mssql-example.git
 cd mssql-example
 uv sync
 cp .env.example .env
-uv run python sql_example.py
+uv run python sql_example_sopra.py
 ```
 
 This repository is intentionally small. It focuses on:
 
 - loading database credentials from `.env`
 - building a SQLAlchemy connection
-- running a simple SQL query
+- running a simple SQL query against the SOPRA views
 - reading the result into a `pandas` DataFrame
 
-If this step fails, fix the driver, credentials, or network access before continuing.
+If this step fails, fix the driver, credentials, network access, or SOPRA database permissions before continuing.
 
 ## Repository 2: Streamlit and SQL Server
 
@@ -57,7 +61,7 @@ This repository adds the browser interface. It focuses on:
 
 - starting a Streamlit app
 - connecting Streamlit to SQL Server
-- entering and running a SQL query
+- entering and running a SQL query against the SOPRA views
 - displaying the result as a table
 
 If this step works, the basic Streamlit and SQL Server setup is ready.
