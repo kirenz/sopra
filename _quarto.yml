@@ -9,13 +9,13 @@ execute:
   warning: false
 
 book:
-  title: "Python Enterprise CRUD Demo"
-  subtitle: "B2B Discount Maintenance with MSSQL and Streamlit"
+  title: "Python SQL Setup Guide"
+  subtitle: "MSSQL & Streamlit"
   search:
     type: overlay
   page-footer:
     left: |
-      © [Jan Kirenz](https://www.kirenz.com/), 2026
+      © Jan Kirenz, 2026
 
   chapters:
     - index.qmd
