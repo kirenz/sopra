@@ -205,16 +205,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#python-enterprise-crud-demo" id="toc-python-enterprise-crud-demo" class="nav-link active" data-scroll-target="#python-enterprise-crud-demo"><span class="header-section-number">1</span> Python Enterprise CRUD Demo</a>
-  <ul class="collapse">
-  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals"><span class="header-section-number">1.1</span> Learning Goals</a></li>
-  <li><a href="#business-scenario" id="toc-business-scenario" class="nav-link" data-scroll-target="#business-scenario"><span class="header-section-number">1.2</span> Business Scenario</a></li>
-  <li><a href="#architecture-overview" id="toc-architecture-overview" class="nav-link" data-scroll-target="#architecture-overview"><span class="header-section-number">1.3</span> Architecture Overview</a></li>
-  <li><a href="#database-objects-used-in-the-demo" id="toc-database-objects-used-in-the-demo" class="nav-link" data-scroll-target="#database-objects-used-in-the-demo"><span class="header-section-number">1.4</span> Database Objects Used in the Demo</a></li>
-  <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure"><span class="header-section-number">1.5</span> Project Structure</a></li>
-  <li><a href="#what-students-should-notice" id="toc-what-students-should-notice" class="nav-link" data-scroll-target="#what-students-should-notice"><span class="header-section-number">1.6</span> What Students Should Notice</a></li>
-  <li><a href="#suggested-workflow" id="toc-suggested-workflow" class="nav-link" data-scroll-target="#suggested-workflow"><span class="header-section-number">1.7</span> Suggested Workflow</a></li>
-  </ul></li>
+  <li><a href="#python-enterprise-crud-demo" id="toc-python-enterprise-crud-demo" class="nav-link active" data-scroll-target="#python-enterprise-crud-demo"><span class="header-section-number">1</span> Python Enterprise CRUD Demo</a></li>
   </ul>
 </nav>
     </div>
@@ -243,26 +234,20 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="python-enterprise-crud-demo" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Python Enterprise CRUD Demo</h1>
-<p>This Quarto book walks through a small but realistic enterprise application for third-semester Management Information Systems students. The example focuses on a B2B discount maintenance scenario and demonstrates how Python applications are typically structured when they read from and write to a Microsoft SQL Server database.</p>
+<p>This documentation walks through a small enterprise application demo.</p>
+<p>The example focuses on a B2B discount maintenance scenario and demonstrates how Python applications are typically structured when they read from and write to a Microsoft SQL Server database.</p>
 <div class="overview-grid">
 <div class="overview-item">
 <div class="overview-label">
 <p>Stack</p>
 </div>
-<p>Python 3.13, <code>uv</code>, Streamlit, <code>pandas</code>, <code>sqlalchemy</code>, <code>pyodbc</code>, and Quarto.</p>
+<p>Python 3.13, <code>uv</code>, Streamlit, <code>pandas</code>, <code>sqlalchemy</code>, <code>pyodbc</code></p>
 </div>
 <div class="overview-item">
 <div class="overview-label">
 <p>Database</p>
 </div>
-<p>Read, insert, and update operations are routed through role-based SQL Server views instead of the base table.</p>
-</div>
-<div class="overview-item">
-<div class="overview-label">
-<p>Architecture</p>
-</div>
-<p>The codebase is separated into presentation, business logic, and data access so each layer has one clear responsibility.</p>
-</div>
+<p>MSSQL Server with role-based views for data access</p>
 </div>
 <section id="learning-goals" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="learning-goals"><span class="header-section-number">1.1</span> Learning Goals</h2>
@@ -270,7 +255,6 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>set up a Python 3.13 project with <code>uv</code></li>
 <li>connect to Microsoft SQL Server with <code>pyodbc</code>, <code>sqlalchemy</code>, and <code>pandas</code></li>
-<li>separate presentation, business logic, and data access into clear layers</li>
 <li>implement typical CRUD-style flows in a Streamlit user interface</li>
 <li>handle database errors and validation messages in a user-friendly way</li>
 </ul>
@@ -292,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart LR
+<pre class="mermaid mermaid-js">flowchart TD
     U["User in Browser"] --&gt; A["Presentation Layer&lt;br&gt;app.py&lt;br&gt;Streamlit tabs"]
     A --&gt; B["Business Logic Layer&lt;br&gt;services/discount_service.py&lt;br&gt;validation and rules"]
     B --&gt; C["Data Access Layer&lt;br&gt;repositories/db.py&lt;br&gt;repositories/discount_repo.py"]
@@ -345,8 +329,8 @@ ul.task-list li input[type="checkbox"] {
 ├── sql_example.py
 └── README.md</code></pre>
 </section>
-<section id="what-students-should-notice" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="what-students-should-notice"><span class="header-section-number">1.6</span> What Students Should Notice</h2>
+<section id="what-you-should-notice" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="what-you-should-notice"><span class="header-section-number">1.6</span> What You Should Notice</h2>
 <ul>
 <li><code>app.py</code> contains no raw SQL. The presentation layer only deals with user interaction.</li>
 <li><code>discount_service.py</code> contains no Streamlit code. It focuses on validation and business meaning.</li>
@@ -376,6 +360,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 </section>
+</div>
 </section>
 
 </main> <!-- /main -->

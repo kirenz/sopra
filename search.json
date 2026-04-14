@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Python Enterprise CRUD Demo",
     "section": "",
-    "text": "1 Python Enterprise CRUD Demo\nThis Quarto book walks through a small but realistic enterprise application for third-semester Management Information Systems students. The example focuses on a B2B discount maintenance scenario and demonstrates how Python applications are typically structured when they read from and write to a Microsoft SQL Server database.",
+    "text": "1 Python Enterprise CRUD Demo\nThis documentation walks through a small enterprise application demo.\nThe example focuses on a B2B discount maintenance scenario and demonstrates how Python applications are typically structured when they read from and write to a Microsoft SQL Server database.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -14,7 +14,7 @@
     "href": "index.html#learning-goals",
     "title": "Python Enterprise CRUD Demo",
     "section": "1.1 Learning Goals",
-    "text": "1.1 Learning Goals\nBy the end of this project, students should be able to:\n\nset up a Python 3.13 project with uv\nconnect to Microsoft SQL Server with pyodbc, sqlalchemy, and pandas\nseparate presentation, business logic, and data access into clear layers\nimplement typical CRUD-style flows in a Streamlit user interface\nhandle database errors and validation messages in a user-friendly way",
+    "text": "1.1 Learning Goals\nBy the end of this project, students should be able to:\n\nset up a Python 3.13 project with uv\nconnect to Microsoft SQL Server with pyodbc, sqlalchemy, and pandas\nimplement typical CRUD-style flows in a Streamlit user interface\nhandle database errors and validation messages in a user-friendly way",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -34,7 +34,7 @@
     "href": "index.html#architecture-overview",
     "title": "Python Enterprise CRUD Demo",
     "section": "1.3 Architecture Overview",
-    "text": "1.3 Architecture Overview\n\n\n\n\n\nflowchart LR\n    U[\"User in Browser\"] --&gt; A[\"Presentation Layer&lt;br&gt;app.py&lt;br&gt;Streamlit tabs\"]\n    A --&gt; B[\"Business Logic Layer&lt;br&gt;services/discount_service.py&lt;br&gt;validation and rules\"]\n    B --&gt; C[\"Data Access Layer&lt;br&gt;repositories/db.py&lt;br&gt;repositories/discount_repo.py\"]\n    C --&gt; D[\"Role-Based Views&lt;br&gt;list_views / ins_views / upd_views&lt;br&gt;dbo.LOV_CUSTOMER\"]\n    D --&gt; E[\"SQL Server Database&lt;br&gt;ERPDEV\"]",
+    "text": "1.3 Architecture Overview\n\n\n\n\n\nflowchart TD\n    U[\"User in Browser\"] --&gt; A[\"Presentation Layer&lt;br&gt;app.py&lt;br&gt;Streamlit tabs\"]\n    A --&gt; B[\"Business Logic Layer&lt;br&gt;services/discount_service.py&lt;br&gt;validation and rules\"]\n    B --&gt; C[\"Data Access Layer&lt;br&gt;repositories/db.py&lt;br&gt;repositories/discount_repo.py\"]\n    C --&gt; D[\"Role-Based Views&lt;br&gt;list_views / ins_views / upd_views&lt;br&gt;dbo.LOV_CUSTOMER\"]\n    D --&gt; E[\"SQL Server Database&lt;br&gt;ERPDEV\"]",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -60,11 +60,11 @@
     ]
   },
   {
-    "objectID": "index.html#what-students-should-notice",
-    "href": "index.html#what-students-should-notice",
+    "objectID": "index.html#what-you-should-notice",
+    "href": "index.html#what-you-should-notice",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.6 What Students Should Notice",
-    "text": "1.6 What Students Should Notice\n\napp.py contains no raw SQL. The presentation layer only deals with user interaction.\ndiscount_service.py contains no Streamlit code. It focuses on validation and business meaning.\ndiscount_repo.py is the only place where SQL statements are written.\n.env keeps credentials out of the source code.\n\n\n\n\n\n\n\nThis separation is not just a style preference. It makes the application easier to test, easier to explain in class, and easier to extend later.",
+    "section": "1.6 What You Should Notice",
+    "text": "1.6 What You Should Notice\n\napp.py contains no raw SQL. The presentation layer only deals with user interaction.\ndiscount_service.py contains no Streamlit code. It focuses on validation and business meaning.\ndiscount_repo.py is the only place where SQL statements are written.\n.env keeps credentials out of the source code.\n\n\n\n\n\n\n\nThis separation is not just a style preference. It makes the application easier to test, easier to explain in class, and easier to extend later.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -315,7 +315,7 @@
     "href": "mssql-vscode.html#enable-the-code-command",
     "title": "5  VS Code",
     "section": "5.3 Enable the code command",
-    "text": "5.3 Enable the code command\n\n5.3.1 macOS Terminal\n\nLaunch VS Code, press Cmd+Shift+P, and run Shell Command: Install ‘code’ command in PATH.\nClose any open Terminal windows, then open a new one and run\ncode --version\nto confirm the CLI is available.\nFrom the folder you want to open, run\ncode .\nto launch VS Code in that location.\n\n\n\n5.3.2 Windows\n\nFrom the folder you want to open, run this in Git Bash\ncode .\nto launch VS Code in that location.\nIf the command is missing, add VS Code’s bin directory to your Git Bash PATH by appending the snippet below to ~/.bashrc (create the file if it doesn’t exist):\nVS_CODE=\"/c/Users/$USERNAME/AppData/Local/Programs/Microsoft VS Code/bin\"\nif [ -d \"$VS_CODE\" ] && [[ \":$PATH:\" != *\":$VS_CODE:\"* ]]; then\n  PATH=\"$VS_CODE:$PATH\"\nfi\nReload Git Bash\nsource ~/.bashrc\nTry again:\ncode .",
+    "text": "5.3 Enable the code command\n\n5.3.1 macOS Terminal\n\nLaunch VS Code, press Cmd+Shift+P, and run Shell Command: Install ‘code’ command in PATH.\nClose any open Terminal windows, then open a new one and run\n\ncode --version\nto confirm the CLI is available.\n\nFrom the folder you want to open, run\n\ncode .\nto launch VS Code in that location.\n\n\n5.3.2 Windows\n\nFrom the folder you want to open, run this in Git Bash\n\ncode .\nto launch VS Code in that location.\n\nIf the command is missing, add VS Code’s bin directory to your Git Bash PATH by appending the snippet below to ~/.bashrc (create the file if it doesn’t exist):\n\n    VS_CODE=\"/c/Users/$USERNAME/AppData/Local/Programs/Microsoft VS Code/bin\"\n    if [ -d \"$VS_CODE\" ] && [[ \":$PATH:\" != *\":$VS_CODE:\"* ]]; then\n      PATH=\"$VS_CODE:$PATH\"\n    fi\n\nReload Git Bash\n\nsource ~/.bashrc\n\nTry again:\n\ncode .",
     "crumbs": [
       "MSSQL",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
