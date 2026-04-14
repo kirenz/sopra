@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Python Enterprise CRUD Demo",
+    "title": "Python SQL Setup Guide",
     "section": "",
     "text": "1 Python Enterprise CRUD Demo\nThis documentation walks through a small enterprise application demo.\nThe example focuses on a B2B discount maintenance scenario and demonstrates how Python applications are typically structured when they read from and write to a Microsoft SQL Server database.",
     "crumbs": [
@@ -12,7 +12,7 @@
   {
     "objectID": "index.html#course-files",
     "href": "index.html#course-files",
-    "title": "Python Enterprise CRUD Demo",
+    "title": "Python SQL Setup Guide",
     "section": "1.1 Course Files",
     "text": "1.1 Course Files\nThis book uses three GitHub repositories. Start with the small examples first, then move to the full CRUD project.\n\n\n\nStep\nRepository\nPurpose\n\n\n\n\n1\nmssql-example\nTest a plain Python connection to Microsoft SQL Server\n\n\n2\nstreamlit-mssql\nRun a small Streamlit app that queries SQL Server\n\n\n3\nsopra\nWork with the full layered CRUD application\n\n\n\nDownload or clone the full project when you reach the main application part. The repository contains all Python files used in this book, the Quarto source files, and .env.example.\n\nDownload ZIP\nOpen GitHub repository\n\nIf you use Git:\ngit clone https://github.com/kirenz/sopra.git\ncd sopra\nuv sync\nIf you download the ZIP file, unzip the folder, open it in Visual Studio Code, and then run:\nuv sync\nThe local .env file is not part of the download. Create it from .env.example and add the course-specific SQL Server credentials.\n\n\n\n\n\n\nKeep the three repositories in separate folders. Do not copy files from the warm-up repositories into the full CRUD project unless an exercise explicitly asks you to do so.",
     "crumbs": [
@@ -22,7 +22,7 @@
   {
     "objectID": "index.html#recommended-learning-path",
     "href": "index.html#recommended-learning-path",
-    "title": "Python Enterprise CRUD Demo",
+    "title": "Python SQL Setup Guide",
     "section": "1.2 Recommended Learning Path",
     "text": "1.2 Recommended Learning Path\n\nUse mssql-example to verify that the ODBC driver, .env file, and SQL Server login work.\nUse streamlit-mssql to run a small browser-based SQL query interface.\nUse this sopra project to study the larger CRUD application with presentation, business logic, and data access layers.",
     "crumbs": [
@@ -32,7 +32,7 @@
   {
     "objectID": "index.html#learning-goals",
     "href": "index.html#learning-goals",
-    "title": "Python Enterprise CRUD Demo",
+    "title": "Python SQL Setup Guide",
     "section": "1.3 Learning Goals",
     "text": "1.3 Learning Goals\nBy the end of this project, students should be able to:\n\nset up a Python 3.13 project with uv\nconnect to Microsoft SQL Server with pyodbc, sqlalchemy, and pandas\nimplement typical CRUD-style flows in a Streamlit user interface\nhandle database errors and validation messages in a user-friendly way",
     "crumbs": [
@@ -42,7 +42,7 @@
   {
     "objectID": "index.html#business-scenario",
     "href": "index.html#business-scenario",
-    "title": "Python Enterprise CRUD Demo",
+    "title": "Python SQL Setup Guide",
     "section": "1.4 Business Scenario",
     "text": "1.4 Business Scenario\nThe application manages quantity-based B2B discounts. Sales staff need an internal tool to:\n\nview existing discount rules\nadd a new discount for a selected customer\nedit an existing discount if business conditions change\n\nThe SQL Server already exposes role-based views for this workflow, so the Python application does not work directly on the base table. This mirrors a common enterprise setup where database permissions are restricted through views.",
     "crumbs": [
@@ -52,7 +52,7 @@
   {
     "objectID": "index.html#architecture-overview",
     "href": "index.html#architecture-overview",
-    "title": "Python Enterprise CRUD Demo",
+    "title": "Python SQL Setup Guide",
     "section": "1.5 Architecture Overview",
     "text": "1.5 Architecture Overview\n\n\n\n\n\nflowchart TD\n    U[\"User in Browser\"] --&gt; A[\"Presentation Layer&lt;br&gt;app.py&lt;br&gt;Streamlit tabs\"]\n    A --&gt; B[\"Business Logic Layer&lt;br&gt;services/discount_service.py&lt;br&gt;validation and rules\"]\n    B --&gt; C[\"Data Access Layer&lt;br&gt;repositories/db.py&lt;br&gt;repositories/discount_repo.py\"]\n    C --&gt; D[\"Role-Based Views&lt;br&gt;list_views / ins_views / upd_views&lt;br&gt;dbo.LOV_CUSTOMER\"]\n    D --&gt; E[\"SQL Server Database&lt;br&gt;ERPDEV\"]",
     "crumbs": [
@@ -62,7 +62,7 @@
   {
     "objectID": "index.html#database-objects-used-in-the-demo",
     "href": "index.html#database-objects-used-in-the-demo",
-    "title": "Python Enterprise CRUD Demo",
+    "title": "Python SQL Setup Guide",
     "section": "1.6 Database Objects Used in the Demo",
     "text": "1.6 Database Objects Used in the Demo\n\n\n\nPurpose\nObject\n\n\n\n\nRead discount overview\nlist_views.V_LIST_B2B_DISCOUNT\n\n\nInsert new discount\nins_views.V_INS_B2B_DISCOUNT\n\n\nUpdate existing discount\nupd_views.V_UPD_B2B_DISCOUNT\n\n\nFill customer dropdown\ndbo.LOV_CUSTOMER",
     "crumbs": [
@@ -72,7 +72,7 @@
   {
     "objectID": "index.html#project-structure",
     "href": "index.html#project-structure",
-    "title": "Python Enterprise CRUD Demo",
+    "title": "Python SQL Setup Guide",
     "section": "1.7 Project Structure",
     "text": "1.7 Project Structure\n.\n├── app.py\n├── models/discount.py\n├── repositories/db.py\n├── repositories/discount_repo.py\n├── services/discount_service.py\n├── sql_example.py\n└── README.md",
     "crumbs": [
@@ -82,7 +82,7 @@
   {
     "objectID": "index.html#what-you-should-notice",
     "href": "index.html#what-you-should-notice",
-    "title": "Python Enterprise CRUD Demo",
+    "title": "Python SQL Setup Guide",
     "section": "1.8 What You Should Notice",
     "text": "1.8 What You Should Notice\n\napp.py contains no raw SQL. The presentation layer only deals with user interaction.\ndiscount_service.py contains no Streamlit code. It focuses on validation and business meaning.\ndiscount_repo.py is the only place where SQL statements are written.\n.env keeps credentials out of the source code.\n\n\n\n\n\n\n\nThis separation is not just a style preference. It makes the application easier to test, easier to explain in class, and easier to extend later.",
     "crumbs": [
@@ -92,7 +92,7 @@
   {
     "objectID": "index.html#suggested-workflow",
     "href": "index.html#suggested-workflow",
-    "title": "Python Enterprise CRUD Demo",
+    "title": "Python SQL Setup Guide",
     "section": "1.9 Suggested Workflow",
     "text": "1.9 Suggested Workflow\n\nComplete the operating-system-specific setup steps.\nConfigure your .env file.\nTest the MSSQL connection with sql_example.py.\nStart the Streamlit application with uv run streamlit run app.py.\nInspect how each UI action maps to the business and data layers.",
     "crumbs": [
@@ -302,7 +302,7 @@
     "href": "practice-repositories.html",
     "title": "5  Warm-up Repositories",
     "section": "",
-    "text": "5.1 Repository 1: SQL Server Connection\nBefore working in the full CRUD project, use two smaller repositories to check the technical basics.\nThe goal is to separate setup problems from application design problems:\nUse this repository first:\nWith Git:\nThis repository is intentionally small. It focuses on:\nIf this step fails, fix the driver, credentials, or network access before continuing.",
+    "text": "5.1 Repository 1: SQL Server Connection\nBefore working in the full CRUD project, use two smaller repositories to check the technical basics.\nThe goal is to separate setup problems from application design problems:\nUse this repository first:\nWith Git:\nThis repository is intentionally small. It focuses on:\nIf this step fails, fix the driver, credentials, network access, or SOPRA database permissions before continuing.",
     "crumbs": [
       "Warm-up Repositories",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Warm-up Repositories</span>"
@@ -313,7 +313,7 @@
     "href": "practice-repositories.html#repository-1-sql-server-connection",
     "title": "5  Warm-up Repositories",
     "section": "",
-    "text": "Open mssql-example on GitHub\nDownload mssql-example as ZIP\n\n\ngit clone https://github.com/kirenz/mssql-example.git\ncd mssql-example\nuv sync\ncp .env.example .env\nuv run python sql_example.py\n\n\nloading database credentials from .env\nbuilding a SQLAlchemy connection\nrunning a simple SQL query\nreading the result into a pandas DataFrame",
+    "text": "Open mssql-example on GitHub\nDownload mssql-example as ZIP\n\n\ngit clone https://github.com/kirenz/mssql-example.git\ncd mssql-example\nuv sync\ncp .env.example .env\nuv run python sql_example_sopra.py\n\n\nloading database credentials from .env\nbuilding a SQLAlchemy connection\nrunning a simple SQL query against the SOPRA views\nreading the result into a pandas DataFrame",
     "crumbs": [
       "Warm-up Repositories",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Warm-up Repositories</span>"
@@ -324,7 +324,7 @@
     "href": "practice-repositories.html#repository-2-streamlit-and-sql-server",
     "title": "5  Warm-up Repositories",
     "section": "5.2 Repository 2: Streamlit and SQL Server",
-    "text": "5.2 Repository 2: Streamlit and SQL Server\nUse this repository after the plain SQL connection works:\n\nOpen streamlit-mssql on GitHub\nDownload streamlit-mssql as ZIP\n\nWith Git:\ngit clone https://github.com/kirenz/streamlit-mssql.git\ncd streamlit-mssql\nuv sync\ncp .env.example .env\nuv run streamlit run app.py\nThis repository adds the browser interface. It focuses on:\n\nstarting a Streamlit app\nconnecting Streamlit to SQL Server\nentering and running a SQL query\ndisplaying the result as a table\n\nIf this step works, the basic Streamlit and SQL Server setup is ready.",
+    "text": "5.2 Repository 2: Streamlit and SQL Server\nUse this repository after the plain SQL connection works:\n\nOpen streamlit-mssql on GitHub\nDownload streamlit-mssql as ZIP\n\nWith Git:\ngit clone https://github.com/kirenz/streamlit-mssql.git\ncd streamlit-mssql\nuv sync\ncp .env.example .env\nuv run streamlit run app.py\nThis repository adds the browser interface. It focuses on:\n\nstarting a Streamlit app\nconnecting Streamlit to SQL Server\nentering and running a SQL query against the SOPRA views\ndisplaying the result as a table\n\nIf this step works, the basic Streamlit and SQL Server setup is ready.",
     "crumbs": [
       "Warm-up Repositories",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Warm-up Repositories</span>"
@@ -489,7 +489,7 @@
     "href": "mssql-example.html",
     "title": "8  Example SQL Server Connection",
     "section": "",
-    "text": "8.1 Warm-up Repository\nNow we test the Python-based connection before we start the full Streamlit app.\nBefore running the full project script, use the smaller SQL Server connection repository:\nThis step confirms that the ODBC driver, SQL Server credentials, and network access work before you debug the larger application.",
+    "text": "8.1 Warm-up Repository\nNow we test the Python-based connection before we start the full Streamlit app.\nBefore running the full project script, use the smaller SQL Server connection repository:\nThis step confirms that the ODBC driver, SQL Server credentials, network access, and SOPRA database permissions work before you debug the larger application.",
     "crumbs": [
       "MSSQL",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
@@ -500,7 +500,7 @@
     "href": "mssql-example.html#warm-up-repository",
     "title": "8  Example SQL Server Connection",
     "section": "",
-    "text": "Open mssql-example on GitHub\nDownload mssql-example as ZIP\n\ngit clone https://github.com/kirenz/mssql-example.git\ncd mssql-example\nuv sync\ncp .env.example .env\nuv run python sql_example.py",
+    "text": "Open mssql-example on GitHub\nDownload mssql-example as ZIP\n\ngit clone https://github.com/kirenz/mssql-example.git\ncd mssql-example\nuv sync\ncp .env.example .env\nuv run python sql_example_sopra.py",
     "crumbs": [
       "MSSQL",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
@@ -577,7 +577,7 @@
     "href": "streamlit.html",
     "title": "9  Streamlit Application",
     "section": "",
-    "text": "9.1 Warm-up Repository\nThe file app.py is the presentation layer of the project. It contains the Streamlit user interface and deliberately avoids direct SQL statements.\nBefore starting the full CRUD app, use the smaller Streamlit and SQL Server repository:\nThis step confirms that Streamlit can start locally, connect to SQL Server, and display query results in the browser.",
+    "text": "9.1 Warm-up Repository\nThe file app.py is the presentation layer of the project. It contains the Streamlit user interface and deliberately avoids direct SQL statements.\nBefore starting the full CRUD app, use the smaller Streamlit and SQL Server repository:\nThis step confirms that Streamlit can start locally, connect to SQL Server, and display SOPRA query results in the browser.",
     "crumbs": [
       "Application",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Streamlit Application</span>"

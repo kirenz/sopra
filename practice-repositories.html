@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jan Kirenz">
 
-<title>5&nbsp; Warm-up Repositories – Python Enterprise CRUD Demo</title>
+<title>5&nbsp; Warm-up Repositories – Python SQL Setup Guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -139,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Python Enterprise CRUD Demo</a> 
+      <a href="./">Python SQL Setup Guide</a> 
         <div class="sidebar-tools-main">
     <div id="quarto-search" class="quarto-navigation-tool px-1" title="Search"></div>
 </div>
@@ -290,6 +290,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Then, confirm that Streamlit can display SQL query results in the browser.</li>
 <li>After that, move to the full CRUD application.</li>
 </ol>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The full SOPRA project uses <code>APP_USER</code> for audit fields when records are created or updated. The two warm-up repositories only run read queries, so they do not need <code>APP_USER</code> for their SQL logic. It is still useful to fill it consistently in <code>.env</code> when you prepare for the CRUD project.</p>
+</div>
+</div>
+</div>
 <section id="repository-1-sql-server-connection" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="repository-1-sql-server-connection"><span class="header-section-number">5.1</span> Repository 1: SQL Server Connection</h2>
 <p>Use this repository first:</p>
@@ -302,15 +312,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> mssql-example</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .env.example .env</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python sql_example.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python sql_example_sopra.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This repository is intentionally small. It focuses on:</p>
 <ul>
 <li>loading database credentials from <code>.env</code></li>
 <li>building a SQLAlchemy connection</li>
-<li>running a simple SQL query</li>
+<li>running a simple SQL query against the SOPRA views</li>
 <li>reading the result into a <code>pandas</code> DataFrame</li>
 </ul>
-<p>If this step fails, fix the driver, credentials, or network access before continuing.</p>
+<p>If this step fails, fix the driver, credentials, network access, or SOPRA database permissions before continuing.</p>
 </section>
 <section id="repository-2-streamlit-and-sql-server" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="repository-2-streamlit-and-sql-server"><span class="header-section-number">5.2</span> Repository 2: Streamlit and SQL Server</h2>
@@ -329,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>starting a Streamlit app</li>
 <li>connecting Streamlit to SQL Server</li>
-<li>entering and running a SQL query</li>
+<li>entering and running a SQL query against the SOPRA views</li>
 <li>displaying the result as a table</li>
 </ul>
 <p>If this step works, the basic Streamlit and SQL Server setup is ready.</p>
@@ -786,7 +796,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© <a href="https://www.kirenz.com/">Jan Kirenz</a>, 2026</p>
+<p>© Jan Kirenz, 2026</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
