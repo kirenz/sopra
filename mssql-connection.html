@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jan Kirenz">
 
-<title>7&nbsp; Server Connection – Python SQL Setup Guide</title>
+<title>5&nbsp; Server Connection – Python SQL Setup Guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./streamlit.html" rel="next">
+<link href="./credentials.html" rel="next">
 <link href="./mssql-vscode.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mssql-vscode.html">MSSQL</a></li><li class="breadcrumb-item"><a href="./mssql-connection.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Server Connection</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./windows-setup.html">Preparation</a></li><li class="breadcrumb-item"><a href="./mssql-connection.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Server Connection</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -164,20 +164,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./credentials.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Credentials</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./windows-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Windows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Windows</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mac-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">macOS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mssql-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mssql-connection.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
   </div>
 </li>
       </ul>
@@ -193,8 +199,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./credentials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Credentials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./practice-repositories.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Practice Repositories</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practice Repositories</span></span></a>
   </div>
 </li>
       </ul>
@@ -202,35 +214,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">MSSQL</span></a>
+ <span class="menu-text">Application</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mssql-vscode.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mssql-connection.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Application</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./streamlit.html" class="sidebar-item-text sidebar-link">
@@ -249,20 +238,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-connection-settings" id="toc-the-connection-settings" class="nav-link active" data-scroll-target="#the-connection-settings"><span class="header-section-number">7.1</span> The Connection Settings</a></li>
-  <li><a href="#why-the-connection-logic-lives-in-repositoriesdb.py" id="toc-why-the-connection-logic-lives-in-repositoriesdb.py" class="nav-link" data-scroll-target="#why-the-connection-logic-lives-in-repositoriesdb.py"><span class="header-section-number">7.2</span> Why the Connection Logic Lives in <code>repositories/db.py</code></a></li>
-  <li><a href="#how-the-connection-string-works" id="toc-how-the-connection-string-works" class="nav-link" data-scroll-target="#how-the-connection-string-works"><span class="header-section-number">7.3</span> How the Connection String Works</a></li>
-  <li><a href="#why-we-still-use-pandas" id="toc-why-we-still-use-pandas" class="nav-link" data-scroll-target="#why-we-still-use-pandas"><span class="header-section-number">7.4</span> Why We Still Use <code>pandas</code></a></li>
-  <li><a href="#next-step" id="toc-next-step" class="nav-link" data-scroll-target="#next-step"><span class="header-section-number">7.5</span> Next Step</a></li>
+  <li><a href="#the-connection-settings" id="toc-the-connection-settings" class="nav-link active" data-scroll-target="#the-connection-settings"><span class="header-section-number">5.1</span> The Connection Settings</a></li>
+  <li><a href="#why-the-connection-logic-lives-in-repositoriesdb.py" id="toc-why-the-connection-logic-lives-in-repositoriesdb.py" class="nav-link" data-scroll-target="#why-the-connection-logic-lives-in-repositoriesdb.py"><span class="header-section-number">5.2</span> Why the Connection Logic Lives in <code>repositories/db.py</code></a></li>
+  <li><a href="#how-the-connection-string-works" id="toc-how-the-connection-string-works" class="nav-link" data-scroll-target="#how-the-connection-string-works"><span class="header-section-number">5.3</span> How the Connection String Works</a></li>
+  <li><a href="#why-we-still-use-pandas" id="toc-why-we-still-use-pandas" class="nav-link" data-scroll-target="#why-we-still-use-pandas"><span class="header-section-number">5.4</span> Why We Still Use <code>pandas</code></a></li>
+  <li><a href="#next-step" id="toc-next-step" class="nav-link" data-scroll-target="#next-step"><span class="header-section-number">5.5</span> Next Step</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mssql-vscode.html">MSSQL</a></li><li class="breadcrumb-item"><a href="./mssql-connection.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Server Connection</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./windows-setup.html">Preparation</a></li><li class="breadcrumb-item"><a href="./mssql-connection.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Server Connection</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Server Connection</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Server Connection</span></h1>
 </div>
 
 
@@ -310,8 +299,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<section id="the-connection-settings" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="the-connection-settings"><span class="header-section-number">7.1</span> The Connection Settings</h2>
+<section id="the-connection-settings" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="the-connection-settings"><span class="header-section-number">5.1</span> The Connection Settings</h2>
 <p>The project stores the database configuration in <code>.env</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">MSSQL_SERVER</span><span class="op">=</span>...</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">MSSQL_DATABASE</span><span class="op">=</span>...</span>
@@ -321,8 +310,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="va">TRUST_SERVER_CERTIFICATE</span><span class="op">=</span>true</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="va">APP_USER</span><span class="op">=</span>...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="why-the-connection-logic-lives-in-repositoriesdb.py" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="why-the-connection-logic-lives-in-repositoriesdb.py"><span class="header-section-number">7.2</span> Why the Connection Logic Lives in <code>repositories/db.py</code></h2>
+<section id="why-the-connection-logic-lives-in-repositoriesdb.py" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="why-the-connection-logic-lives-in-repositoriesdb.py"><span class="header-section-number">5.2</span> Why the Connection Logic Lives in <code>repositories/db.py</code></h2>
 <p><code>repositories/db.py</code> has two responsibilities:</p>
 <ol type="1">
 <li>load and validate the environment variables</li>
@@ -335,8 +324,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>the repository layer can focus on SQL statements only</li>
 </ul>
 </section>
-<section id="how-the-connection-string-works" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="how-the-connection-string-works"><span class="header-section-number">7.3</span> How the Connection String Works</h2>
+<section id="how-the-connection-string-works" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="how-the-connection-string-works"><span class="header-section-number">5.3</span> How the Connection String Works</h2>
 <p>The SQLAlchemy engine uses the dialect <code>mssql+pyodbc</code>, which means:</p>
 <ul>
 <li>SQLAlchemy handles connection management and parameterized SQL</li>
@@ -344,8 +333,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>the actual server communication still happens through the native SQL Server driver</li>
 </ul>
 </section>
-<section id="why-we-still-use-pandas" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="why-we-still-use-pandas"><span class="header-section-number">7.4</span> Why We Still Use <code>pandas</code></h2>
+<section id="why-we-still-use-pandas" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="why-we-still-use-pandas"><span class="header-section-number">5.4</span> Why We Still Use <code>pandas</code></h2>
 <p><code>pandas.read_sql(...)</code> is convenient for read operations because the result is immediately available as a DataFrame. That is useful for:</p>
 <ul>
 <li>displaying tables in Streamlit</li>
@@ -354,8 +343,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>For writes, the repository uses parameterized SQL statements with <code>sqlalchemy.text(...)</code>, because that is clearer and safer for <code>INSERT</code> and <code>UPDATE</code>.</p>
 </section>
-<section id="next-step" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="next-step"><span class="header-section-number">7.5</span> Next Step</h2>
+<section id="next-step" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="next-step"><span class="header-section-number">5.5</span> Next Step</h2>
 <p>In the next chapter, you will run the standalone script <code>sql_example.py</code> and inspect the exact SQL views that power the CRUD application.</p>
 
 
@@ -765,12 +754,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./mssql-vscode.html" class="pagination-link" aria-label="VS Code">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">VS Code</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./streamlit.html" class="pagination-link" aria-label="Streamlit Application">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Streamlit Application</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./credentials.html" class="pagination-link" aria-label="Credentials">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Credentials</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

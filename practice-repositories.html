@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jan Kirenz">
 
-<title>5&nbsp; Practice Repositories – Python SQL Setup Guide</title>
+<title>7&nbsp; Practice Repositories – Python SQL Setup Guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mssql-vscode.html" rel="next">
-<link href="./mac-setup.html" rel="prev">
+<link href="./streamlit.html" rel="next">
+<link href="./credentials.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./practice-repositories.html">Repositories</a></li><li class="breadcrumb-item"><a href="./practice-repositories.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Practice Repositories</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./credentials.html">Repositories</a></li><li class="breadcrumb-item"><a href="./practice-repositories.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practice Repositories</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -164,20 +164,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./credentials.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Credentials</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./windows-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Windows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Windows</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mac-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">macOS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mssql-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mssql-connection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
   </div>
 </li>
       </ul>
@@ -193,8 +199,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./credentials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Credentials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./practice-repositories.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Practice Repositories</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practice Repositories</span></span></a>
   </div>
 </li>
       </ul>
@@ -202,35 +214,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">MSSQL</span></a>
+ <span class="menu-text">Application</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mssql-vscode.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mssql-connection.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Application</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./streamlit.html" class="sidebar-item-text sidebar-link">
@@ -249,18 +238,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#repository-1-sql-server-connection" id="toc-repository-1-sql-server-connection" class="nav-link active" data-scroll-target="#repository-1-sql-server-connection"><span class="header-section-number">5.1</span> Repository 1: SQL Server Connection</a></li>
-  <li><a href="#repository-2-streamlit-and-sql-server" id="toc-repository-2-streamlit-and-sql-server" class="nav-link" data-scroll-target="#repository-2-streamlit-and-sql-server"><span class="header-section-number">5.2</span> Repository 2: Streamlit and SQL Server</a></li>
-  <li><a href="#repository-3-full-crud-application" id="toc-repository-3-full-crud-application" class="nav-link" data-scroll-target="#repository-3-full-crud-application"><span class="header-section-number">5.3</span> Repository 3: Full CRUD Application</a></li>
+  <li><a href="#repository-1-sql-server-connection" id="toc-repository-1-sql-server-connection" class="nav-link active" data-scroll-target="#repository-1-sql-server-connection"><span class="header-section-number">7.1</span> Repository 1: SQL Server Connection</a></li>
+  <li><a href="#repository-2-streamlit-and-sql-server" id="toc-repository-2-streamlit-and-sql-server" class="nav-link" data-scroll-target="#repository-2-streamlit-and-sql-server"><span class="header-section-number">7.2</span> Repository 2: Streamlit and SQL Server</a></li>
+  <li><a href="#repository-3-full-crud-application" id="toc-repository-3-full-crud-application" class="nav-link" data-scroll-target="#repository-3-full-crud-application"><span class="header-section-number">7.3</span> Repository 3: Full CRUD Application</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./practice-repositories.html">Repositories</a></li><li class="breadcrumb-item"><a href="./practice-repositories.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Practice Repositories</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./credentials.html">Repositories</a></li><li class="breadcrumb-item"><a href="./practice-repositories.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practice Repositories</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Practice Repositories</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practice Repositories</span></h1>
 </div>
 
 
@@ -294,8 +283,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="repository-1-sql-server-connection" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="repository-1-sql-server-connection"><span class="header-section-number">5.1</span> Repository 1: SQL Server Connection</h2>
+<section id="repository-1-sql-server-connection" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="repository-1-sql-server-connection"><span class="header-section-number">7.1</span> Repository 1: SQL Server Connection</h2>
 <p>Use this repository first:</p>
 <ul>
 <li><a href="https://github.com/kirenz/mssql-example">Open mssql-example on GitHub</a></li>
@@ -333,8 +322,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> CUSTOMER_ID;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If this step fails, fix the driver, credentials, network access, or SOPRA database permissions before continuing.</p>
 </section>
-<section id="repository-2-streamlit-and-sql-server" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="repository-2-streamlit-and-sql-server"><span class="header-section-number">5.2</span> Repository 2: Streamlit and SQL Server</h2>
+<section id="repository-2-streamlit-and-sql-server" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="repository-2-streamlit-and-sql-server"><span class="header-section-number">7.2</span> Repository 2: Streamlit and SQL Server</h2>
 <p>Use this repository after the plain SQL connection works:</p>
 <ul>
 <li><a href="https://github.com/kirenz/streamlit-mssql">Open streamlit-mssql on GitHub</a></li>
@@ -355,8 +344,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>If this step works, the basic Streamlit and SQL Server setup is ready.</p>
 </section>
-<section id="repository-3-full-crud-application" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="repository-3-full-crud-application"><span class="header-section-number">5.3</span> Repository 3: Full CRUD Application</h2>
+<section id="repository-3-full-crud-application" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="repository-3-full-crud-application"><span class="header-section-number">7.3</span> Repository 3: Full CRUD Application</h2>
 <p>Use the main repository after the two practice steps:</p>
 <ul>
 <li><a href="https://github.com/kirenz/sopra">Open sopra on GitHub</a></li>
@@ -793,13 +782,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mac-setup.html" class="pagination-link" aria-label="macOS">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">macOS</span></span>
+      <a href="./credentials.html" class="pagination-link" aria-label="Credentials">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Credentials</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mssql-vscode.html" class="pagination-link" aria-label="VS Code">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">VS Code</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./streamlit.html" class="pagination-link" aria-label="Streamlit Application">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Streamlit Application</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

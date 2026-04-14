@@ -60,355 +60,355 @@
     ]
   },
   {
-    "objectID": "credentials.html",
-    "href": "credentials.html",
-    "title": "2  Credentials",
-    "section": "",
-    "text": "2.1 Create the .env File\nBefore you run the application, prepare the local credential file.\nIn your local copy of the repository, create a file named .env in the root folder. This file will hold the credentials for connecting to the SQL Server database.\nReplace the placeholder values (foo) with the actual credentials provided for your SQL Server instance. The file should look like this:\nMake sure to keep the .env file secure and do not share it with others, as it contains sensitive information.\nDont forget to add .env to your .gitignore file if you are using Git, to prevent it from being accidentally committed to version control.",
-    "crumbs": [
-      "Preparation",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Credentials</span>"
-    ]
-  },
-  {
-    "objectID": "credentials.html#create-the-.env-file",
-    "href": "credentials.html#create-the-.env-file",
-    "title": "2  Credentials",
-    "section": "",
-    "text": "MSSQL_SERVER=foo\nMSSQL_DATABASE=foo\nMSSQL_USERNAME=foo\nMSSQL_PASSWORD=foo\nAPP_USER=foo\n\nMSSQL_DRIVER=ODBC Driver 18 for SQL Server\nSQL_ENCRYPT=yes\nTRUST_SERVER_CERTIFICATE=true\n\n\n\n\n\n\n\n\nDo not hard-code database passwords in app.py, sql_example.py, or repository files. In enterprise projects, this is considered a serious security mistake.",
-    "crumbs": [
-      "Preparation",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Credentials</span>"
-    ]
-  },
-  {
     "objectID": "windows-setup.html",
     "href": "windows-setup.html",
-    "title": "3  Windows",
+    "title": "2  Windows",
     "section": "",
-    "text": "3.1 Basic requirements\nIf you are using Windows, follow these steps.\nFirst, make sure your system is up to date.\nNext, enable Developer Mode:",
+    "text": "2.1 Basic requirements\nIf you are using Windows, follow these steps.\nFirst, make sure your system is up to date.\nNext, enable Developer Mode:",
     "crumbs": [
       "Preparation",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Windows</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Windows</span>"
     ]
   },
   {
     "objectID": "windows-setup.html#basic-requirements",
     "href": "windows-setup.html#basic-requirements",
-    "title": "3  Windows",
+    "title": "2  Windows",
     "section": "",
     "text": "Open Settings &gt; Windows Update.\n\n\n\nOpen Settings &gt; Update & Security &gt; For developers.\nToggle Developer Mode and accept the disclaimer.",
     "crumbs": [
       "Preparation",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Windows</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Windows</span>"
     ]
   },
   {
     "objectID": "windows-setup.html#command-line-basics",
     "href": "windows-setup.html#command-line-basics",
-    "title": "3  Windows",
-    "section": "3.2 Command-line basics",
-    "text": "3.2 Command-line basics\nWe use Git Bash as our terminal. Download the latest Git for Windows installer from git-scm.com and complete the setup (Git Bash is included). After installation, open Git Bash from the Start menu.\n\n\n\n\n\n\nNoteWhy Git Bash?\n\n\n\n\n\nGit Bash provides a Unix-like terminal experience on Windows, making it easier to follow along with commands that are commonly used in macOS and Linux environments.\n\n\n\nKeep the terminal window open while you work through the chapters.\n\n3.2.1 uv\nWe use uv, a Python package manager that is extremely fast. It replaces pip, poetry, and virtualenv.\nTo install uv, follow this guide",
+    "title": "2  Windows",
+    "section": "2.2 Command-line basics",
+    "text": "2.2 Command-line basics\nWe use Git Bash as our terminal. Download the latest Git for Windows installer from git-scm.com and complete the setup (Git Bash is included). After installation, open Git Bash from the Start menu.\n\n\n\n\n\n\nNoteWhy Git Bash?\n\n\n\n\n\nGit Bash provides a Unix-like terminal experience on Windows, making it easier to follow along with commands that are commonly used in macOS and Linux environments.\n\n\n\nKeep the terminal window open while you work through the chapters.\n\n2.2.1 uv\nWe use uv, a Python package manager that is extremely fast. It replaces pip, poetry, and virtualenv.\nTo install uv, follow this guide",
     "crumbs": [
       "Preparation",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Windows</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Windows</span>"
     ]
   },
   {
     "objectID": "windows-setup.html#server-tools",
     "href": "windows-setup.html#server-tools",
-    "title": "3  Windows",
-    "section": "3.3 Server Tools",
-    "text": "3.3 Server Tools\nThe Microsoft ODBC Driver for SQL Server enables native connectivity from Windows applications to Microsoft SQL Server and Azure SQL databases.\nFollow the steps below to install the ODBC Driver (version 18) and command-line tools on your Windows machine:\n\nInstallation Instructions\n\nFor most users, the “Download Microsoft ODBC Driver 18 for SQL Server (x64)” installer is the right choice.",
+    "title": "2  Windows",
+    "section": "2.3 Server Tools",
+    "text": "2.3 Server Tools\nThe Microsoft ODBC Driver for SQL Server enables native connectivity from Windows applications to Microsoft SQL Server and Azure SQL databases.\nFollow the steps below to install the ODBC Driver (version 18) and command-line tools on your Windows machine:\n\nInstallation Instructions\n\nFor most users, the “Download Microsoft ODBC Driver 18 for SQL Server (x64)” installer is the right choice.",
     "crumbs": [
       "Preparation",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Windows</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Windows</span>"
     ]
   },
   {
     "objectID": "windows-setup.html#verify-the-tools",
     "href": "windows-setup.html#verify-the-tools",
-    "title": "3  Windows",
-    "section": "3.4 Verify the Tools",
-    "text": "3.4 Verify the Tools\nAfter the installations, check the most important commands:\nuv --version\npython --version\nsqlcmd -?",
+    "title": "2  Windows",
+    "section": "2.4 Verify the Tools",
+    "text": "2.4 Verify the Tools\nAfter the installations, check the most important commands:\nuv --version\npython --version\nsqlcmd -?",
     "crumbs": [
       "Preparation",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Windows</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Windows</span>"
     ]
   },
   {
     "objectID": "windows-setup.html#install-the-python-packages",
     "href": "windows-setup.html#install-the-python-packages",
-    "title": "3  Windows",
-    "section": "3.5 Install the Python Packages",
-    "text": "3.5 Install the Python Packages\nInside the project folder, run:\nuv sync\nThis command creates the local virtual environment and installs all packages from pyproject.toml and uv.lock.",
+    "title": "2  Windows",
+    "section": "2.5 Install the Python Packages",
+    "text": "2.5 Install the Python Packages\nInside the project folder, run:\nuv sync\nThis command creates the local virtual environment and installs all packages from pyproject.toml and uv.lock.",
     "crumbs": [
       "Preparation",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Windows</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Windows</span>"
     ]
   },
   {
     "objectID": "mac-setup.html",
     "href": "mac-setup.html",
-    "title": "4  macOS",
+    "title": "3  macOS",
     "section": "",
-    "text": "4.1 Basic requirements\nIf you are using Mac, follow these steps.\nFirst, make sure your system is up to date.\nOpen System Settings &gt; General &gt; Software Update.",
+    "text": "3.1 Basic requirements\nIf you are using Mac, follow these steps.\nFirst, make sure your system is up to date.\nOpen System Settings &gt; General &gt; Software Update.",
     "crumbs": [
       "Preparation",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>macOS</span>"
     ]
   },
   {
     "objectID": "mac-setup.html#command-line-basics",
     "href": "mac-setup.html#command-line-basics",
-    "title": "4  macOS",
-    "section": "4.2 Command-line basics",
-    "text": "4.2 Command-line basics\nLaunch Terminal (Spotlight search for “Terminal”).\nCommands in this book assume the zsh shell, which is the default on modern macOS systems.\nKeep the terminal window open while you work through the chapters.",
+    "title": "3  macOS",
+    "section": "3.2 Command-line basics",
+    "text": "3.2 Command-line basics\nLaunch Terminal (Spotlight search for “Terminal”).\nCommands in this book assume the zsh shell, which is the default on modern macOS systems.\nKeep the terminal window open while you work through the chapters.",
     "crumbs": [
       "Preparation",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>macOS</span>"
     ]
   },
   {
     "objectID": "mac-setup.html#xcode",
     "href": "mac-setup.html#xcode",
-    "title": "4  macOS",
-    "section": "4.3 Xcode",
-    "text": "4.3 Xcode\nApple’s Xcode command line tools are required to build and run some of the code.\nInstall Xcode command line tools:\nxcode-select --install\nIf you get the following message, you can skip this step:\nxcode-select: note: Command line tools are already installed. Use “Software Update” in System Settings or the softwareupdate command line interface to install updates",
+    "title": "3  macOS",
+    "section": "3.3 Xcode",
+    "text": "3.3 Xcode\nApple’s Xcode command line tools are required to build and run some of the code.\nInstall Xcode command line tools:\nxcode-select --install\nIf you get the following message, you can skip this step:\nxcode-select: note: Command line tools are already installed. Use “Software Update” in System Settings or the softwareupdate command line interface to install updates",
     "crumbs": [
       "Preparation",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>macOS</span>"
     ]
   },
   {
     "objectID": "mac-setup.html#package-manager",
     "href": "mac-setup.html#package-manager",
-    "title": "4  macOS",
-    "section": "4.4 Package manager",
-    "text": "4.4 Package manager\nHomebrew downloads applications, command line tools, and libraries with one command. You avoid manual downloads and it keeps everything organized.\n\n4.4.1 Install Homebrew\n\nOpen Terminal and run the official installer:\n\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n\nEnter your password when prompted (you won’t see any characters while typing).\nPress ENTER to continue\nWhen the script finishes, follow the on-screen instructions to add Homebrew to your shell profile (this step is required for brew to be found).\nClose the Terminal window.\nOpen a new Terminal, then verify the installation:\n\nbrew --version\n\n\n4.4.2 Update Homebrew\nIf you already have Homebrew installed, make sure everything is up to date:\nbrew update\nUse brew upgrade to actually update installed packages.\nbrew upgrade",
+    "title": "3  macOS",
+    "section": "3.4 Package manager",
+    "text": "3.4 Package manager\nHomebrew downloads applications, command line tools, and libraries with one command. You avoid manual downloads and it keeps everything organized.\n\n3.4.1 Install Homebrew\n\nOpen Terminal and run the official installer:\n\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n\nEnter your password when prompted (you won’t see any characters while typing).\nPress ENTER to continue\nWhen the script finishes, follow the on-screen instructions to add Homebrew to your shell profile (this step is required for brew to be found).\nClose the Terminal window.\nOpen a new Terminal, then verify the installation:\n\nbrew --version\n\n\n3.4.2 Update Homebrew\nIf you already have Homebrew installed, make sure everything is up to date:\nbrew update\nUse brew upgrade to actually update installed packages.\nbrew upgrade",
     "crumbs": [
       "Preparation",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>macOS</span>"
     ]
   },
   {
     "objectID": "mac-setup.html#uv",
     "href": "mac-setup.html#uv",
-    "title": "4  macOS",
-    "section": "4.5 uv",
-    "text": "4.5 uv\nWe use uv, a Python package manager that is extremely fast. It replaces pip, poetry, and virtualenv.\nTo install uv, follow this guide",
+    "title": "3  macOS",
+    "section": "3.5 uv",
+    "text": "3.5 uv\nWe use uv, a Python package manager that is extremely fast. It replaces pip, poetry, and virtualenv.\nTo install uv, follow this guide",
     "crumbs": [
       "Preparation",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>macOS</span>"
     ]
   },
   {
     "objectID": "mac-setup.html#server-tools",
     "href": "mac-setup.html#server-tools",
-    "title": "4  macOS",
-    "section": "4.6 Server Tools",
-    "text": "4.6 Server Tools\nWe need to install some drivers for Microsoft SQL Server.\n\n4.6.1 Install Server Tools\nOpen your Terminal and run:\nbrew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release\nACCEPT_EULA=Y brew install msodbcsql18 mssql-tools unixodbc\n\nmsodbcsql18 is the latest Microsoft ODBC Driver for SQL Server.\nmssql-tools installs sqlcmd and bcp for command-line access.\nunixodbc provides the shared ODBC libraries Python will load.\n\n\n\n\n\n\n\nThe ACCEPT_EULA=Y prefix lets the installer know you accept the Microsoft end-user license agreement. Without it the install stops halfway through.\n\n\n\n\nClose and reopen Terminal.\n\n\n\n4.6.2 Test the installation\nConfirm that the ODBC driver registered correctly:\nodbcinst -j\nLook for lines referencing Driver Manager: unixODBC.\nYour Mac is now ready to connect to SQL Server databases from VS Code and Python.\n\n\n4.6.3 Troubleshooting\nSome shells require an extra step to expose the SQL Server utilities. Add the following line to ~/.zshrc or ~/.bash_profile if sqlcmd is not found after reopening Terminal:\nexport PATH=\"/opt/homebrew/opt/msodbcsql18/bin:/opt/homebrew/opt/mssql-tools/bin:$PATH\"\nIntel Macs should use /usr/local/opt/ instead of /opt/homebrew/opt/.\nReload your shell:\nsource ~/.zshrc",
+    "title": "3  macOS",
+    "section": "3.6 Server Tools",
+    "text": "3.6 Server Tools\nWe need to install some drivers for Microsoft SQL Server.\n\n3.6.1 Install Server Tools\nOpen your Terminal and run:\nbrew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release\nACCEPT_EULA=Y brew install msodbcsql18 mssql-tools unixodbc\n\nmsodbcsql18 is the latest Microsoft ODBC Driver for SQL Server.\nmssql-tools installs sqlcmd and bcp for command-line access.\nunixodbc provides the shared ODBC libraries Python will load.\n\n\n\n\n\n\n\nThe ACCEPT_EULA=Y prefix lets the installer know you accept the Microsoft end-user license agreement. Without it the install stops halfway through.\n\n\n\n\nClose and reopen Terminal.\n\n\n\n3.6.2 Test the installation\nConfirm that the ODBC driver registered correctly:\nodbcinst -j\nLook for lines referencing Driver Manager: unixODBC.\nYour Mac is now ready to connect to SQL Server databases from VS Code and Python.\n\n\n3.6.3 Troubleshooting\nSome shells require an extra step to expose the SQL Server utilities. Add the following line to ~/.zshrc or ~/.bash_profile if sqlcmd is not found after reopening Terminal:\nexport PATH=\"/opt/homebrew/opt/msodbcsql18/bin:/opt/homebrew/opt/mssql-tools/bin:$PATH\"\nIntel Macs should use /usr/local/opt/ instead of /opt/homebrew/opt/.\nReload your shell:\nsource ~/.zshrc",
     "crumbs": [
       "Preparation",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>macOS</span>"
     ]
   },
   {
     "objectID": "mac-setup.html#install-the-python-packages",
     "href": "mac-setup.html#install-the-python-packages",
-    "title": "4  macOS",
-    "section": "4.7 Install the Python Packages",
-    "text": "4.7 Install the Python Packages\nInside the project folder, run:\nuv sync\nThis command creates the local virtual environment and installs all Python dependencies for the demo application.",
+    "title": "3  macOS",
+    "section": "3.7 Install the Python Packages",
+    "text": "3.7 Install the Python Packages\nInside the project folder, run:\nuv sync\nThis command creates the local virtual environment and installs all Python dependencies for the demo application.",
     "crumbs": [
       "Preparation",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
-    ]
-  },
-  {
-    "objectID": "practice-repositories.html",
-    "href": "practice-repositories.html",
-    "title": "5  Practice Repositories",
-    "section": "",
-    "text": "5.1 Repository 1: SQL Server Connection\nBefore working in the full project, we use two smaller repositories to check the technical basics.\nThe goal is to separate setup problems from application design problems:\nUse this repository first:\nWith Git, use the following commands in your terminal (one at a time):\nThis repository is intentionally small. It focuses on:\nThe SOPRA example script reads the discount overview:\nIt also reads the customer list of values used later by the Streamlit dropdown:\nIf this step fails, fix the driver, credentials, network access, or SOPRA database permissions before continuing.",
-    "crumbs": [
-      "Repositories",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Practice Repositories</span>"
-    ]
-  },
-  {
-    "objectID": "practice-repositories.html#repository-1-sql-server-connection",
-    "href": "practice-repositories.html#repository-1-sql-server-connection",
-    "title": "5  Practice Repositories",
-    "section": "",
-    "text": "Open mssql-example on GitHub\nDownload mssql-example as ZIP\n\n\ngit clone https://github.com/kirenz/mssql-example.git\ncd mssql-example\nuv sync\ncp .env.example .env\nuv run python sql_example_sopra.py\n\n\nloading database credentials from .env\nbuilding a SQLAlchemy connection\nrunning a simple SQL query against the SOPRA views\nreading the result into a pandas DataFrame\n\n\nSELECT TOP (5)\n    RabattID,\n    Kunde,\n    MengeVon,\n    MengeBis,\n    RabattProzent,\n    GiltVon,\n    GiltBis\nFROM list_views.V_LIST_B2B_DISCOUNT\nORDER BY RabattID DESC;\n\nSELECT TOP (5)\n    CUSTOMER_ID,\n    CUSTOMER_LONG\nFROM dbo.LOV_CUSTOMER\nORDER BY CUSTOMER_ID;",
-    "crumbs": [
-      "Repositories",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Practice Repositories</span>"
-    ]
-  },
-  {
-    "objectID": "practice-repositories.html#repository-2-streamlit-and-sql-server",
-    "href": "practice-repositories.html#repository-2-streamlit-and-sql-server",
-    "title": "5  Practice Repositories",
-    "section": "5.2 Repository 2: Streamlit and SQL Server",
-    "text": "5.2 Repository 2: Streamlit and SQL Server\nUse this repository after the plain SQL connection works:\n\nOpen streamlit-mssql on GitHub\nDownload streamlit-mssql as ZIP\n\nWith Git:\ngit clone https://github.com/kirenz/streamlit-mssql.git\ncd streamlit-mssql\nuv sync\ncp .env.example .env\nuv run streamlit run app.py\nThis repository adds the browser interface. It focuses on:\n\nstarting a Streamlit app\nconnecting Streamlit to SQL Server\nentering and running a SQL query against the SOPRA views\ndisplaying the result as a table\n\nIf this step works, the basic Streamlit and SQL Server setup is ready.",
-    "crumbs": [
-      "Repositories",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Practice Repositories</span>"
-    ]
-  },
-  {
-    "objectID": "practice-repositories.html#repository-3-full-crud-application",
-    "href": "practice-repositories.html#repository-3-full-crud-application",
-    "title": "5  Practice Repositories",
-    "section": "5.3 Repository 3: Full CRUD Application",
-    "text": "5.3 Repository 3: Full CRUD Application\nUse the main repository after the two practice steps:\n\nOpen sopra on GitHub\nDownload sopra as ZIP\n\nWith Git:\ngit clone https://github.com/kirenz/sopra.git\ncd sopra\nuv sync\ncp .env.example .env\nuv run python sql_example.py\nuv run streamlit run app.py\nThe main project introduces the application architecture:\n\napp.py handles the Streamlit user interface\nservices/ contains business rules and validation\nrepositories/ contains SQL Server access\nmodels/ contains domain data structures\n\n\n\n\n\n\n\nEach repository has its own .env file. Credentials stay local on your machine and are not committed to GitHub.",
-    "crumbs": [
-      "Repositories",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Practice Repositories</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>macOS</span>"
     ]
   },
   {
     "objectID": "mssql-vscode.html",
     "href": "mssql-vscode.html",
-    "title": "6  VS Code",
+    "title": "4  VS Code",
     "section": "",
-    "text": "6.1 Install VS Code\nVisual Studio Code acts as your code editor, terminal, and database explorer. In this project, it is useful for both Python development and direct SQL inspection.\nIf you haven’t already, install Visual Studio Code:\nLaunch VS Code once to allow it to finish installing components.",
+    "text": "4.1 Install VS Code\nVisual Studio Code acts as your code editor, terminal, and database explorer. In this project, it is useful for both Python development and direct SQL inspection.\nIf you haven’t already, install Visual Studio Code:\nLaunch VS Code once to allow it to finish installing components.",
     "crumbs": [
-      "MSSQL",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-vscode.html#install-vs-code",
     "href": "mssql-vscode.html#install-vs-code",
-    "title": "6  VS Code",
+    "title": "4  VS Code",
     "section": "",
     "text": "macOS: Download the from code.visualstudio.com and drag Visual Studio Code into Applications.\nWindows: Download the installer and click through the setup, leaving the default options enabled (add to PATH, register the code command, etc.).",
     "crumbs": [
-      "MSSQL",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-vscode.html#essential-extensions",
     "href": "mssql-vscode.html#essential-extensions",
-    "title": "6  VS Code",
-    "section": "6.2 Essential extensions",
-    "text": "6.2 Essential extensions\nOpen the Extensions view and install:\n\nPython (ms-python.python) – language support and linting.\nSQL Server (mssql) (ms-mssql.mssql) – database connections and query runner.\nvscode-icons (vscode-icons-team.vscode-icons) – optional, but helpful for identifying files quickly.",
+    "title": "4  VS Code",
+    "section": "4.2 Essential extensions",
+    "text": "4.2 Essential extensions\nOpen the Extensions view and install:\n\nPython (ms-python.python) – language support and linting.\nSQL Server (mssql) (ms-mssql.mssql) – database connections and query runner.\nvscode-icons (vscode-icons-team.vscode-icons) – optional, but helpful for identifying files quickly.",
     "crumbs": [
-      "MSSQL",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-vscode.html#enable-the-code-command",
     "href": "mssql-vscode.html#enable-the-code-command",
-    "title": "6  VS Code",
-    "section": "6.3 Enable the code command",
-    "text": "6.3 Enable the code command\n\n6.3.1 macOS Terminal\n\nLaunch VS Code, press Cmd+Shift+P, and run Shell Command: Install ‘code’ command in PATH.\nClose any open Terminal windows, then open a new one and run\n\ncode --version\nto confirm the CLI is available.\n\nFrom the folder you want to open, run\n\ncode .\nto launch VS Code in that location.\n\n\n6.3.2 Windows\n\nFrom the folder you want to open, run this in Git Bash\n\ncode .\nto launch VS Code in that location.\n\nIf the command is missing, add VS Code’s bin directory to your Git Bash PATH by appending the snippet below to ~/.bashrc (create the file if it doesn’t exist):\n\n    VS_CODE=\"/c/Users/$USERNAME/AppData/Local/Programs/Microsoft VS Code/bin\"\n    if [ -d \"$VS_CODE\" ] && [[ \":$PATH:\" != *\":$VS_CODE:\"* ]]; then\n      PATH=\"$VS_CODE:$PATH\"\n    fi\n\nReload Git Bash\n\nsource ~/.bashrc\n\nTry again:\n\ncode .",
+    "title": "4  VS Code",
+    "section": "4.3 Enable the code command",
+    "text": "4.3 Enable the code command\n\n4.3.1 macOS Terminal\n\nLaunch VS Code, press Cmd+Shift+P, and run Shell Command: Install ‘code’ command in PATH.\nClose any open Terminal windows, then open a new one and run\n\ncode --version\nto confirm the CLI is available.\n\nFrom the folder you want to open, run\n\ncode .\nto launch VS Code in that location.\n\n\n4.3.2 Windows\n\nFrom the folder you want to open, run this in Git Bash\n\ncode .\nto launch VS Code in that location.\n\nIf the command is missing, add VS Code’s bin directory to your Git Bash PATH by appending the snippet below to ~/.bashrc (create the file if it doesn’t exist):\n\n    VS_CODE=\"/c/Users/$USERNAME/AppData/Local/Programs/Microsoft VS Code/bin\"\n    if [ -d \"$VS_CODE\" ] && [[ \":$PATH:\" != *\":$VS_CODE:\"* ]]; then\n      PATH=\"$VS_CODE:$PATH\"\n    fi\n\nReload Git Bash\n\nsource ~/.bashrc\n\nTry again:\n\ncode .",
     "crumbs": [
-      "MSSQL",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-vscode.html#integrated-terminal-tips",
     "href": "mssql-vscode.html#integrated-terminal-tips",
-    "title": "6  VS Code",
-    "section": "6.4 Integrated terminal tips",
-    "text": "6.4 Integrated terminal tips\n\nOpen the integrated terminal in VS Code. On Windows, set Git Bash as the default shell so every VS Code terminal matches the rest of this guide.\nSet your default terminal profile via Terminal &gt; Configure Default Profile… so that VS Code opens the same shell you used during installation.",
+    "title": "4  VS Code",
+    "section": "4.4 Integrated terminal tips",
+    "text": "4.4 Integrated terminal tips\n\nOpen the integrated terminal in VS Code. On Windows, set Git Bash as the default shell so every VS Code terminal matches the rest of this guide.\nSet your default terminal profile via Terminal &gt; Configure Default Profile… so that VS Code opens the same shell you used during installation.",
     "crumbs": [
-      "MSSQL",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-vscode.html#create-the-sql-server-connection",
     "href": "mssql-vscode.html#create-the-sql-server-connection",
-    "title": "6  VS Code",
-    "section": "6.5 Create the SQL Server Connection",
-    "text": "6.5 Create the SQL Server Connection\nUse the SQL Server extension to create a saved connection profile.\n\nOpen the SQL Server view.\nClick Add Connection.\nFill in the connection dialog:\n\nServer name: edu.hdm-server.eu\nAuthentication type: SQL Login\nUser name: use your course login\nPassword: use the matching password\nDatabase name: ERPDEV\nTrust server certificate: true\n\nSave the profile so you can reuse it later.",
+    "title": "4  VS Code",
+    "section": "4.5 Create the SQL Server Connection",
+    "text": "4.5 Create the SQL Server Connection\nUse the SQL Server extension to create a saved connection profile.\n\nOpen the SQL Server view.\nClick Add Connection.\nFill in the connection dialog:\n\nServer name: edu.hdm-server.eu\nAuthentication type: SQL Login\nUser name: use your course login\nPassword: use the matching password\nDatabase name: ERPDEV\nTrust server certificate: true\n\nSave the profile so you can reuse it later.",
     "crumbs": [
-      "MSSQL",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-vscode.html#first-query",
     "href": "mssql-vscode.html#first-query",
-    "title": "6  VS Code",
-    "section": "6.6 First Query",
-    "text": "6.6 First Query\nAfter the connection is established, create a new SQL file and run:\nSELECT TOP (10)\n    RabattID,\n    Kunde,\n    MengeVon,\n    MengeBis,\n    RabattProzent,\n    GiltVon,\n    GiltBis\nFROM list_views.V_LIST_B2B_DISCOUNT\nORDER BY RabattID DESC;\nIf you see rows in the results grid, your VS Code setup is ready.",
+    "title": "4  VS Code",
+    "section": "4.6 First Query",
+    "text": "4.6 First Query\nAfter the connection is established, create a new SQL file and run:\nSELECT TOP (10)\n    RabattID,\n    Kunde,\n    MengeVon,\n    MengeBis,\n    RabattProzent,\n    GiltVon,\n    GiltBis\nFROM list_views.V_LIST_B2B_DISCOUNT\nORDER BY RabattID DESC;\nIf you see rows in the results grid, your VS Code setup is ready.",
     "crumbs": [
-      "MSSQL",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>VS Code</span>"
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>VS Code</span>"
     ]
   },
   {
     "objectID": "mssql-connection.html",
     "href": "mssql-connection.html",
-    "title": "7  Server Connection",
+    "title": "5  Server Connection",
     "section": "",
-    "text": "7.1 The Connection Settings\nWe connect to SQL Server from Python with four building blocks:\nThe project stores the database configuration in .env:",
+    "text": "5.1 The Connection Settings\nWe connect to SQL Server from Python with four building blocks:\nThe project stores the database configuration in .env:",
     "crumbs": [
-      "MSSQL",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Server Connection</span>"
+      "Preparation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-connection.html#the-connection-settings",
     "href": "mssql-connection.html#the-connection-settings",
-    "title": "7  Server Connection",
+    "title": "5  Server Connection",
     "section": "",
     "text": "MSSQL_SERVER=...\nMSSQL_DATABASE=...\nMSSQL_USERNAME=...\nMSSQL_PASSWORD=...\nMSSQL_DRIVER=ODBC Driver 18 for SQL Server\nTRUST_SERVER_CERTIFICATE=true\nAPP_USER=...",
     "crumbs": [
-      "MSSQL",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Server Connection</span>"
+      "Preparation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-connection.html#why-the-connection-logic-lives-in-repositoriesdb.py",
     "href": "mssql-connection.html#why-the-connection-logic-lives-in-repositoriesdb.py",
-    "title": "7  Server Connection",
-    "section": "7.2 Why the Connection Logic Lives in repositories/db.py",
-    "text": "7.2 Why the Connection Logic Lives in repositories/db.py\nrepositories/db.py has two responsibilities:\n\nload and validate the environment variables\ncreate one shared SQLAlchemy engine for the application\n\nThis keeps the rest of the project clean:\n\nthe Streamlit UI does not need to know how ODBC strings work\nthe service layer does not need to know where credentials come from\nthe repository layer can focus on SQL statements only",
+    "title": "5  Server Connection",
+    "section": "5.2 Why the Connection Logic Lives in repositories/db.py",
+    "text": "5.2 Why the Connection Logic Lives in repositories/db.py\nrepositories/db.py has two responsibilities:\n\nload and validate the environment variables\ncreate one shared SQLAlchemy engine for the application\n\nThis keeps the rest of the project clean:\n\nthe Streamlit UI does not need to know how ODBC strings work\nthe service layer does not need to know where credentials come from\nthe repository layer can focus on SQL statements only",
     "crumbs": [
-      "MSSQL",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Server Connection</span>"
+      "Preparation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-connection.html#how-the-connection-string-works",
     "href": "mssql-connection.html#how-the-connection-string-works",
-    "title": "7  Server Connection",
-    "section": "7.3 How the Connection String Works",
-    "text": "7.3 How the Connection String Works\nThe SQLAlchemy engine uses the dialect mssql+pyodbc, which means:\n\nSQLAlchemy handles connection management and parameterized SQL\npyodbc uses the installed Microsoft ODBC Driver 18 underneath\nthe actual server communication still happens through the native SQL Server driver",
+    "title": "5  Server Connection",
+    "section": "5.3 How the Connection String Works",
+    "text": "5.3 How the Connection String Works\nThe SQLAlchemy engine uses the dialect mssql+pyodbc, which means:\n\nSQLAlchemy handles connection management and parameterized SQL\npyodbc uses the installed Microsoft ODBC Driver 18 underneath\nthe actual server communication still happens through the native SQL Server driver",
     "crumbs": [
-      "MSSQL",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Server Connection</span>"
+      "Preparation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-connection.html#why-we-still-use-pandas",
     "href": "mssql-connection.html#why-we-still-use-pandas",
-    "title": "7  Server Connection",
-    "section": "7.4 Why We Still Use pandas",
-    "text": "7.4 Why We Still Use pandas\npandas.read_sql(...) is convenient for read operations because the result is immediately available as a DataFrame. That is useful for:\n\ndisplaying tables in Streamlit\nfiltering data\nchecking business rules, such as overlapping discounts\n\nFor writes, the repository uses parameterized SQL statements with sqlalchemy.text(...), because that is clearer and safer for INSERT and UPDATE.",
+    "title": "5  Server Connection",
+    "section": "5.4 Why We Still Use pandas",
+    "text": "5.4 Why We Still Use pandas\npandas.read_sql(...) is convenient for read operations because the result is immediately available as a DataFrame. That is useful for:\n\ndisplaying tables in Streamlit\nfiltering data\nchecking business rules, such as overlapping discounts\n\nFor writes, the repository uses parameterized SQL statements with sqlalchemy.text(...), because that is clearer and safer for INSERT and UPDATE.",
     "crumbs": [
-      "MSSQL",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Server Connection</span>"
+      "Preparation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Server Connection</span>"
     ]
   },
   {
     "objectID": "mssql-connection.html#next-step",
     "href": "mssql-connection.html#next-step",
-    "title": "7  Server Connection",
-    "section": "7.5 Next Step",
-    "text": "7.5 Next Step\nIn the next chapter, you will run the standalone script sql_example.py and inspect the exact SQL views that power the CRUD application.",
+    "title": "5  Server Connection",
+    "section": "5.5 Next Step",
+    "text": "5.5 Next Step\nIn the next chapter, you will run the standalone script sql_example.py and inspect the exact SQL views that power the CRUD application.",
     "crumbs": [
-      "MSSQL",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Server Connection</span>"
+      "Preparation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "credentials.html",
+    "href": "credentials.html",
+    "title": "6  Credentials",
+    "section": "",
+    "text": "6.1 Create the .env File\nBefore you run the applications, you always need to prepare the local credential file.\nIn your local copy of the repository, create a file named .env in the root folder. This file will hold the credentials for connecting to the SQL Server database.\nReplace the placeholder values (foo) with the actual credentials provided for your SQL Server instance. The file should look like this:\nMake sure to keep the .env file secure and do not share it with others, as it contains sensitive information.\nDont forget to add .env to your .gitignore file if you are using Git, to prevent it from being accidentally committed to version control.",
+    "crumbs": [
+      "Repositories",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Credentials</span>"
+    ]
+  },
+  {
+    "objectID": "credentials.html#create-the-.env-file",
+    "href": "credentials.html#create-the-.env-file",
+    "title": "6  Credentials",
+    "section": "",
+    "text": "MSSQL_SERVER=foo\nMSSQL_DATABASE=foo\nMSSQL_USERNAME=foo\nMSSQL_PASSWORD=foo\nAPP_USER=foo\n\nMSSQL_DRIVER=ODBC Driver 18 for SQL Server\nSQL_ENCRYPT=yes\nTRUST_SERVER_CERTIFICATE=true\n\n\n\n\n\n\n\n\nDo not hard-code database passwords in app.py, sql_example.py, or repository files. In enterprise projects, this is considered a serious security mistake.",
+    "crumbs": [
+      "Repositories",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Credentials</span>"
+    ]
+  },
+  {
+    "objectID": "practice-repositories.html",
+    "href": "practice-repositories.html",
+    "title": "7  Practice Repositories",
+    "section": "",
+    "text": "7.1 Repository 1: SQL Server Connection\nBefore working in the full project, we use two smaller repositories to check the technical basics.\nThe goal is to separate setup problems from application design problems:\nUse this repository first:\nWith Git, use the following commands in your terminal (one at a time):\nThis repository is intentionally small. It focuses on:\nThe SOPRA example script reads the discount overview:\nIt also reads the customer list of values used later by the Streamlit dropdown:\nIf this step fails, fix the driver, credentials, network access, or SOPRA database permissions before continuing.",
+    "crumbs": [
+      "Repositories",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Practice Repositories</span>"
+    ]
+  },
+  {
+    "objectID": "practice-repositories.html#repository-1-sql-server-connection",
+    "href": "practice-repositories.html#repository-1-sql-server-connection",
+    "title": "7  Practice Repositories",
+    "section": "",
+    "text": "Open mssql-example on GitHub\nDownload mssql-example as ZIP\n\n\ngit clone https://github.com/kirenz/mssql-example.git\ncd mssql-example\nuv sync\ncp .env.example .env\nuv run python sql_example_sopra.py\n\n\nloading database credentials from .env\nbuilding a SQLAlchemy connection\nrunning a simple SQL query against the SOPRA views\nreading the result into a pandas DataFrame\n\n\nSELECT TOP (5)\n    RabattID,\n    Kunde,\n    MengeVon,\n    MengeBis,\n    RabattProzent,\n    GiltVon,\n    GiltBis\nFROM list_views.V_LIST_B2B_DISCOUNT\nORDER BY RabattID DESC;\n\nSELECT TOP (5)\n    CUSTOMER_ID,\n    CUSTOMER_LONG\nFROM dbo.LOV_CUSTOMER\nORDER BY CUSTOMER_ID;",
+    "crumbs": [
+      "Repositories",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Practice Repositories</span>"
+    ]
+  },
+  {
+    "objectID": "practice-repositories.html#repository-2-streamlit-and-sql-server",
+    "href": "practice-repositories.html#repository-2-streamlit-and-sql-server",
+    "title": "7  Practice Repositories",
+    "section": "7.2 Repository 2: Streamlit and SQL Server",
+    "text": "7.2 Repository 2: Streamlit and SQL Server\nUse this repository after the plain SQL connection works:\n\nOpen streamlit-mssql on GitHub\nDownload streamlit-mssql as ZIP\n\nWith Git:\ngit clone https://github.com/kirenz/streamlit-mssql.git\ncd streamlit-mssql\nuv sync\ncp .env.example .env\nuv run streamlit run app.py\nThis repository adds the browser interface. It focuses on:\n\nstarting a Streamlit app\nconnecting Streamlit to SQL Server\nentering and running a SQL query against the SOPRA views\ndisplaying the result as a table\n\nIf this step works, the basic Streamlit and SQL Server setup is ready.",
+    "crumbs": [
+      "Repositories",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Practice Repositories</span>"
+    ]
+  },
+  {
+    "objectID": "practice-repositories.html#repository-3-full-crud-application",
+    "href": "practice-repositories.html#repository-3-full-crud-application",
+    "title": "7  Practice Repositories",
+    "section": "7.3 Repository 3: Full CRUD Application",
+    "text": "7.3 Repository 3: Full CRUD Application\nUse the main repository after the two practice steps:\n\nOpen sopra on GitHub\nDownload sopra as ZIP\n\nWith Git:\ngit clone https://github.com/kirenz/sopra.git\ncd sopra\nuv sync\ncp .env.example .env\nuv run python sql_example.py\nuv run streamlit run app.py\nThe main project introduces the application architecture:\n\napp.py handles the Streamlit user interface\nservices/ contains business rules and validation\nrepositories/ contains SQL Server access\nmodels/ contains domain data structures\n\n\n\n\n\n\n\nEach repository has its own .env file. Credentials stay local on your machine and are not committed to GitHub.",
+    "crumbs": [
+      "Repositories",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Practice Repositories</span>"
     ]
   },
   {

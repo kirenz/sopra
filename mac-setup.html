@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jan Kirenz">
 
-<title>4&nbsp; macOS – Python SQL Setup Guide</title>
+<title>3&nbsp; macOS – Python SQL Setup Guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./practice-repositories.html" rel="next">
+<link href="./mssql-vscode.html" rel="next">
 <link href="./windows-setup.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./credentials.html">Preparation</a></li><li class="breadcrumb-item"><a href="./mac-setup.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">macOS</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./windows-setup.html">Preparation</a></li><li class="breadcrumb-item"><a href="./mac-setup.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -164,20 +164,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./credentials.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Credentials</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./windows-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Windows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Windows</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mac-setup.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">macOS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mssql-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mssql-connection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
   </div>
 </li>
       </ul>
@@ -193,8 +199,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./credentials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Credentials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./practice-repositories.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Practice Repositories</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practice Repositories</span></span></a>
   </div>
 </li>
       </ul>
@@ -202,35 +214,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">MSSQL</span></a>
+ <span class="menu-text">Application</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mssql-vscode.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">VS Code</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mssql-connection.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Server Connection</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Application</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./streamlit.html" class="sidebar-item-text sidebar-link">
@@ -249,31 +238,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#basic-requirements" id="toc-basic-requirements" class="nav-link active" data-scroll-target="#basic-requirements"><span class="header-section-number">4.1</span> Basic requirements</a></li>
-  <li><a href="#command-line-basics" id="toc-command-line-basics" class="nav-link" data-scroll-target="#command-line-basics"><span class="header-section-number">4.2</span> Command-line basics</a></li>
-  <li><a href="#xcode" id="toc-xcode" class="nav-link" data-scroll-target="#xcode"><span class="header-section-number">4.3</span> Xcode</a></li>
-  <li><a href="#package-manager" id="toc-package-manager" class="nav-link" data-scroll-target="#package-manager"><span class="header-section-number">4.4</span> Package manager</a>
+  <li><a href="#basic-requirements" id="toc-basic-requirements" class="nav-link active" data-scroll-target="#basic-requirements"><span class="header-section-number">3.1</span> Basic requirements</a></li>
+  <li><a href="#command-line-basics" id="toc-command-line-basics" class="nav-link" data-scroll-target="#command-line-basics"><span class="header-section-number">3.2</span> Command-line basics</a></li>
+  <li><a href="#xcode" id="toc-xcode" class="nav-link" data-scroll-target="#xcode"><span class="header-section-number">3.3</span> Xcode</a></li>
+  <li><a href="#package-manager" id="toc-package-manager" class="nav-link" data-scroll-target="#package-manager"><span class="header-section-number">3.4</span> Package manager</a>
   <ul class="collapse">
-  <li><a href="#install-homebrew" id="toc-install-homebrew" class="nav-link" data-scroll-target="#install-homebrew"><span class="header-section-number">4.4.1</span> Install Homebrew</a></li>
-  <li><a href="#update-homebrew" id="toc-update-homebrew" class="nav-link" data-scroll-target="#update-homebrew"><span class="header-section-number">4.4.2</span> Update Homebrew</a></li>
+  <li><a href="#install-homebrew" id="toc-install-homebrew" class="nav-link" data-scroll-target="#install-homebrew"><span class="header-section-number">3.4.1</span> Install Homebrew</a></li>
+  <li><a href="#update-homebrew" id="toc-update-homebrew" class="nav-link" data-scroll-target="#update-homebrew"><span class="header-section-number">3.4.2</span> Update Homebrew</a></li>
   </ul></li>
-  <li><a href="#uv" id="toc-uv" class="nav-link" data-scroll-target="#uv"><span class="header-section-number">4.5</span> uv</a></li>
-  <li><a href="#server-tools" id="toc-server-tools" class="nav-link" data-scroll-target="#server-tools"><span class="header-section-number">4.6</span> Server Tools</a>
+  <li><a href="#uv" id="toc-uv" class="nav-link" data-scroll-target="#uv"><span class="header-section-number">3.5</span> uv</a></li>
+  <li><a href="#server-tools" id="toc-server-tools" class="nav-link" data-scroll-target="#server-tools"><span class="header-section-number">3.6</span> Server Tools</a>
   <ul class="collapse">
-  <li><a href="#install-server-tools" id="toc-install-server-tools" class="nav-link" data-scroll-target="#install-server-tools"><span class="header-section-number">4.6.1</span> Install Server Tools</a></li>
-  <li><a href="#test-the-installation" id="toc-test-the-installation" class="nav-link" data-scroll-target="#test-the-installation"><span class="header-section-number">4.6.2</span> Test the installation</a></li>
-  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting"><span class="header-section-number">4.6.3</span> Troubleshooting</a></li>
+  <li><a href="#install-server-tools" id="toc-install-server-tools" class="nav-link" data-scroll-target="#install-server-tools"><span class="header-section-number">3.6.1</span> Install Server Tools</a></li>
+  <li><a href="#test-the-installation" id="toc-test-the-installation" class="nav-link" data-scroll-target="#test-the-installation"><span class="header-section-number">3.6.2</span> Test the installation</a></li>
+  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting"><span class="header-section-number">3.6.3</span> Troubleshooting</a></li>
   </ul></li>
-  <li><a href="#install-the-python-packages" id="toc-install-the-python-packages" class="nav-link" data-scroll-target="#install-the-python-packages"><span class="header-section-number">4.7</span> Install the Python Packages</a></li>
+  <li><a href="#install-the-python-packages" id="toc-install-the-python-packages" class="nav-link" data-scroll-target="#install-the-python-packages"><span class="header-section-number">3.7</span> Install the Python Packages</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./credentials.html">Preparation</a></li><li class="breadcrumb-item"><a href="./mac-setup.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">macOS</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./windows-setup.html">Preparation</a></li><li class="breadcrumb-item"><a href="./mac-setup.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">macOS</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">macOS</span></h1>
 </div>
 
 
@@ -291,30 +280,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>If you are using Mac, follow these steps.</p>
-<section id="basic-requirements" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="basic-requirements"><span class="header-section-number">4.1</span> Basic requirements</h2>
+<section id="basic-requirements" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="basic-requirements"><span class="header-section-number">3.1</span> Basic requirements</h2>
 <p>First, make sure your system is up to date.</p>
 <p>Open <code>System Settings</code> &gt; General &gt; Software Update.</p>
 </section>
-<section id="command-line-basics" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="command-line-basics"><span class="header-section-number">4.2</span> Command-line basics</h2>
+<section id="command-line-basics" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="command-line-basics"><span class="header-section-number">3.2</span> Command-line basics</h2>
 <p>Launch <strong>Terminal</strong> (Spotlight search for “Terminal”).</p>
 <p>Commands in this book assume the <code>zsh</code> shell, which is the default on modern macOS systems.</p>
 <p>Keep the terminal window open while you work through the chapters.</p>
 </section>
-<section id="xcode" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="xcode"><span class="header-section-number">4.3</span> Xcode</h2>
+<section id="xcode" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="xcode"><span class="header-section-number">3.3</span> Xcode</h2>
 <p>Apple’s Xcode command line tools are required to build and run some of the code.</p>
 <p>Install Xcode command line tools:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If you get the following message, you can skip this step:</p>
 <p><em>xcode-select: note: Command line tools are already installed. Use “Software Update” in System Settings or the softwareupdate command line interface to install updates</em></p>
 </section>
-<section id="package-manager" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="package-manager"><span class="header-section-number">4.4</span> Package manager</h2>
+<section id="package-manager" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="package-manager"><span class="header-section-number">3.4</span> Package manager</h2>
 <p><a href="https://brew.sh/"><strong>Homebrew</strong></a> downloads applications, command line tools, and libraries with one command. You avoid manual downloads and it keeps everything organized.</p>
-<section id="install-homebrew" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="install-homebrew"><span class="header-section-number">4.4.1</span> Install Homebrew</h3>
+<section id="install-homebrew" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="install-homebrew"><span class="header-section-number">3.4.1</span> Install Homebrew</h3>
 <ol type="1">
 <li>Open Terminal and run the official installer:</li>
 </ol>
@@ -328,24 +317,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="update-homebrew" class="level3" data-number="4.4.2">
-<h3 data-number="4.4.2" class="anchored" data-anchor-id="update-homebrew"><span class="header-section-number">4.4.2</span> Update Homebrew</h3>
+<section id="update-homebrew" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="update-homebrew"><span class="header-section-number">3.4.2</span> Update Homebrew</h3>
 <p>If you already have Homebrew installed, make sure everything is up to date:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> update</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Use <code>brew upgrade</code> to actually update installed packages.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> upgrade</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="uv" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="uv"><span class="header-section-number">4.5</span> uv</h2>
+<section id="uv" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="uv"><span class="header-section-number">3.5</span> uv</h2>
 <p>We use <strong>uv</strong>, a Python package manager that is extremely fast. It replaces <code>pip</code>, <code>poetry</code>, and <code>virtualenv</code>.</p>
 <p>To install uv, follow <a href="https://github.com/kirenz/uv-setup">this guide</a></p>
 </section>
-<section id="server-tools" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="server-tools"><span class="header-section-number">4.6</span> Server Tools</h2>
+<section id="server-tools" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="server-tools"><span class="header-section-number">3.6</span> Server Tools</h2>
 <p>We need to install some drivers for Microsoft SQL Server.</p>
-<section id="install-server-tools" class="level3" data-number="4.6.1">
-<h3 data-number="4.6.1" class="anchored" data-anchor-id="install-server-tools"><span class="header-section-number">4.6.1</span> Install Server Tools</h3>
+<section id="install-server-tools" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="install-server-tools"><span class="header-section-number">3.6.1</span> Install Server Tools</h3>
 <p>Open your Terminal and run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">ACCEPT_EULA</span><span class="op">=</span>Y <span class="ex">brew</span> install msodbcsql18 mssql-tools unixodbc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -368,15 +357,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Close and reopen Terminal.</li>
 </ul>
 </section>
-<section id="test-the-installation" class="level3" data-number="4.6.2">
-<h3 data-number="4.6.2" class="anchored" data-anchor-id="test-the-installation"><span class="header-section-number">4.6.2</span> Test the installation</h3>
+<section id="test-the-installation" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="test-the-installation"><span class="header-section-number">3.6.2</span> Test the installation</h3>
 <p>Confirm that the ODBC driver registered correctly:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">odbcinst</span> <span class="at">-j</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Look for lines referencing <code>Driver Manager: unixODBC</code>.</p>
 <p>Your Mac is now ready to connect to SQL Server databases from VS Code and Python.</p>
 </section>
-<section id="troubleshooting" class="level3" data-number="4.6.3">
-<h3 data-number="4.6.3" class="anchored" data-anchor-id="troubleshooting"><span class="header-section-number">4.6.3</span> Troubleshooting</h3>
+<section id="troubleshooting" class="level3" data-number="3.6.3">
+<h3 data-number="3.6.3" class="anchored" data-anchor-id="troubleshooting"><span class="header-section-number">3.6.3</span> Troubleshooting</h3>
 <p>Some shells require an extra step to expose the SQL Server utilities. Add the following line to <code>~/.zshrc</code> or <code>~/.bash_profile</code> if <code>sqlcmd</code> is not found after reopening Terminal:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="st">"/opt/homebrew/opt/msodbcsql18/bin:/opt/homebrew/opt/mssql-tools/bin:</span><span class="va">$PATH</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Intel Macs should use <code>/usr/local/opt/</code> instead of <code>/opt/homebrew/opt/</code>.</p>
@@ -384,8 +373,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.zshrc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="install-the-python-packages" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="install-the-python-packages"><span class="header-section-number">4.7</span> Install the Python Packages</h2>
+<section id="install-the-python-packages" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="install-the-python-packages"><span class="header-section-number">3.7</span> Install the Python Packages</h2>
 <p>Inside the project folder, run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This command creates the local virtual environment and installs all Python dependencies for the demo application.</p>
@@ -797,12 +786,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./windows-setup.html" class="pagination-link" aria-label="Windows">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Windows</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Windows</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./practice-repositories.html" class="pagination-link" aria-label="Practice Repositories">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Practice Repositories</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mssql-vscode.html" class="pagination-link" aria-label="VS Code">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">VS Code</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
