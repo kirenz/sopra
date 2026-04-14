@@ -1,0 +1,92 @@
+---
+title: "Warm-up Repositories"
+---
+
+Before working in the full CRUD project, use two smaller repositories to check the technical basics.
+
+The goal is to separate setup problems from application design problems:
+
+1. First, confirm that Python can connect to SQL Server.
+2. Then, confirm that Streamlit can display SQL query results in the browser.
+3. After that, move to the full CRUD application.
+
+## Repository 1: SQL Server Connection
+
+Use this repository first:
+
+- [Open mssql-example on GitHub](https://github.com/kirenz/mssql-example)
+- [Download mssql-example as ZIP](https://github.com/kirenz/mssql-example/archive/refs/heads/main.zip)
+
+With Git:
+
+```bash
+git clone https://github.com/kirenz/mssql-example.git
+cd mssql-example
+uv sync
+cp .env.example .env
+uv run python sql_example.py
+```
+
+This repository is intentionally small. It focuses on:
+
+- loading database credentials from `.env`
+- building a SQLAlchemy connection
+- running a simple SQL query
+- reading the result into a `pandas` DataFrame
+
+If this step fails, fix the driver, credentials, or network access before continuing.
+
+## Repository 2: Streamlit and SQL Server
+
+Use this repository after the plain SQL connection works:
+
+- [Open streamlit-mssql on GitHub](https://github.com/kirenz/streamlit-mssql)
+- [Download streamlit-mssql as ZIP](https://github.com/kirenz/streamlit-mssql/archive/refs/heads/main.zip)
+
+With Git:
+
+```bash
+git clone https://github.com/kirenz/streamlit-mssql.git
+cd streamlit-mssql
+uv sync
+cp .env.example .env
+uv run streamlit run app.py
+```
+
+This repository adds the browser interface. It focuses on:
+
+- starting a Streamlit app
+- connecting Streamlit to SQL Server
+- entering and running a SQL query
+- displaying the result as a table
+
+If this step works, the basic Streamlit and SQL Server setup is ready.
+
+## Repository 3: Full CRUD Application
+
+Use the main repository after the two warm-up steps:
+
+- [Open sopra on GitHub](https://github.com/kirenz/sopra)
+- [Download sopra as ZIP](https://github.com/kirenz/sopra/archive/refs/heads/main.zip)
+
+With Git:
+
+```bash
+git clone https://github.com/kirenz/sopra.git
+cd sopra
+uv sync
+cp .env.example .env
+uv run python sql_example.py
+uv run streamlit run app.py
+```
+
+The main project introduces the application architecture:
+
+- `app.py` handles the Streamlit user interface
+- `services/` contains business rules and validation
+- `repositories/` contains SQL Server access
+- `models/` contains domain data structures
+
+:::{.callout-note}
+Each repository has its own `.env` file. Credentials stay local on your machine and are not committed to GitHub.
+:::

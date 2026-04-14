@@ -24,6 +24,9 @@ book:
         - accounts.qmd
         - windows-setup.qmd
         - mac-setup.qmd
+    - part: "Warm-up Repositories"
+      chapters:
+        - practice-repositories.qmd
     - part: "MSSQL"
       chapters:
         - mssql-vscode.qmd

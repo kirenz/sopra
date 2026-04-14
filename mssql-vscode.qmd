@@ -28,48 +28,48 @@ Open the Extensions view and install:
 - Launch VS Code, press `Cmd+Shift+P`, and run Shell Command: Install 'code' command in PATH.
 - Close any open Terminal windows, then open a new one and run
 
-  ```bash
-  code --version
-  ```
+```bash
+code --version
+```
 
   to confirm the CLI is available.
 
 - From the folder you want to open, run 
 
-  ```bash
-  code .
-  ```
+```bash
+code .
+```
   to launch VS Code in that location.
 
 ### Windows
 
 - From the folder you want to open, run this in Git Bash
 
-  ```bash
-  code .
-  ```
+```bash
+code .
+```
 
   to launch VS Code in that location.  
 
 - If the command is missing, add VS Code's `bin` directory to your Git Bash PATH by appending the snippet below to `~/.bashrc` (create the file if it doesn't exist):
 
-    ```bash
+```bash
     VS_CODE="/c/Users/$USERNAME/AppData/Local/Programs/Microsoft VS Code/bin"
     if [ -d "$VS_CODE" ] && [[ ":$PATH:" != *":$VS_CODE:"* ]]; then
       PATH="$VS_CODE:$PATH"
     fi
-    ```
+```
 
 - Reload Git Bash 
 
-  ```bash
-  source ~/.bashrc
-  ```
+```bash
+source ~/.bashrc
+```
 - Try again:
 
-  ```bash
-  code .
-  ```
+```bash
+code .
+```
 
 
 ## Integrated terminal tips

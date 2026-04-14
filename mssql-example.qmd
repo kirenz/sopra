@@ -4,7 +4,26 @@ title: "Example SQL Server Connection"
 
 Now we test the Python-based connection before we start the full Streamlit app.
 
+## Warm-up Repository
+
+Before running the full project script, use the smaller SQL Server connection repository:
+
+- [Open mssql-example on GitHub](https://github.com/kirenz/mssql-example)
+- [Download mssql-example as ZIP](https://github.com/kirenz/mssql-example/archive/refs/heads/main.zip)
+
+```bash
+git clone https://github.com/kirenz/mssql-example.git
+cd mssql-example
+uv sync
+cp .env.example .env
+uv run python sql_example.py
+```
+
+This step confirms that the ODBC driver, SQL Server credentials, and network access work before you debug the larger application.
+
 ## Run the Example Script
+
+After the warm-up repository works, return to the full `sopra` project and run:
 
 ```bash
 uv run python sql_example.py

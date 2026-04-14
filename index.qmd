@@ -1,29 +1,65 @@
 # Python Enterprise CRUD Demo
 
-This Quarto book walks through a small but realistic enterprise application for third-semester Management Information Systems students. The example focuses on a B2B discount maintenance scenario and demonstrates how Python applications are typically structured when they read from and write to a Microsoft SQL Server database.
+This documentation walks through a small enterprise application demo. 
+
+The example focuses on a B2B discount maintenance scenario and demonstrates how Python applications are typically structured when they read from and write to a Microsoft SQL Server database.
 
 ::: {.overview-grid}
 ::: {.overview-item}
 ::: {.overview-label}
 Stack
 :::
-Python 3.13, `uv`, Streamlit, `pandas`, `sqlalchemy`, `pyodbc`, and Quarto.
+Python 3.13, `uv`, Streamlit, `pandas`, `sqlalchemy`, `pyodbc`
 :::
 
 ::: {.overview-item}
 ::: {.overview-label}
 Database
 :::
-Read, insert, and update operations are routed through role-based SQL Server views instead of the base table.
+MSSQL Server with role-based views for data access
+:::
 :::
 
-::: {.overview-item}
-::: {.overview-label}
-Architecture
+## Course Files
+
+This book uses three GitHub repositories. Start with the small examples first, then move to the full CRUD project.
+
+| Step | Repository | Purpose |
+| --- | --- | --- |
+| 1 | [mssql-example](https://github.com/kirenz/mssql-example) | Test a plain Python connection to Microsoft SQL Server |
+| 2 | [streamlit-mssql](https://github.com/kirenz/streamlit-mssql) | Run a small Streamlit app that queries SQL Server |
+| 3 | [sopra](https://github.com/kirenz/sopra) | Work with the full layered CRUD application |
+
+Download or clone the full project when you reach the main application part. The repository contains all Python files used in this book, the Quarto source files, and `.env.example`.
+
+- [Download ZIP](https://github.com/kirenz/sopra/archive/refs/heads/main.zip)
+- [Open GitHub repository](https://github.com/kirenz/sopra)
+
+If you use Git:
+
+```bash
+git clone https://github.com/kirenz/sopra.git
+cd sopra
+uv sync
+```
+
+If you download the ZIP file, unzip the folder, open it in Visual Studio Code, and then run:
+
+```bash
+uv sync
+```
+
+The local `.env` file is not part of the download. Create it from `.env.example` and add the course-specific SQL Server credentials.
+
+:::{.callout-tip}
+Keep the three repositories in separate folders. Do not copy files from the warm-up repositories into the full CRUD project unless an exercise explicitly asks you to do so.
 :::
-The codebase is separated into presentation, business logic, and data access so each layer has one clear responsibility.
-:::
-:::
+
+## Recommended Learning Path
+
+1. Use `mssql-example` to verify that the ODBC driver, `.env` file, and SQL Server login work.
+2. Use `streamlit-mssql` to run a small browser-based SQL query interface.
+3. Use this `sopra` project to study the larger CRUD application with presentation, business logic, and data access layers.
 
 ## Learning Goals
 
@@ -31,7 +67,6 @@ By the end of this project, students should be able to:
 
 - set up a Python 3.13 project with `uv`
 - connect to Microsoft SQL Server with `pyodbc`, `sqlalchemy`, and `pandas`
-- separate presentation, business logic, and data access into clear layers
 - implement typical CRUD-style flows in a Streamlit user interface
 - handle database errors and validation messages in a user-friendly way
 
@@ -48,7 +83,7 @@ The SQL Server already exposes role-based views for this workflow, so the Python
 ## Architecture Overview
 
 ```{mermaid}
-flowchart LR
+flowchart TD
     U["User in Browser"] --> A["Presentation Layer<br>app.py<br>Streamlit tabs"]
     A --> B["Business Logic Layer<br>services/discount_service.py<br>validation and rules"]
     B --> C["Data Access Layer<br>repositories/db.py<br>repositories/discount_repo.py"]
@@ -78,7 +113,7 @@ flowchart LR
 └── README.md
 ```
 
-## What Students Should Notice
+## What You Should Notice
 
 - `app.py` contains no raw SQL. The presentation layer only deals with user interaction.
 - `discount_service.py` contains no Streamlit code. It focuses on validation and business meaning.
