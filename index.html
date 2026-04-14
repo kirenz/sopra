@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -205,7 +240,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#python-enterprise-crud-demo" id="toc-python-enterprise-crud-demo" class="nav-link active" data-scroll-target="#python-enterprise-crud-demo"><span class="header-section-number">1</span> Python Enterprise CRUD Demo</a></li>
+  <li><a href="#python-enterprise-crud-demo" id="toc-python-enterprise-crud-demo" class="nav-link active" data-scroll-target="#python-enterprise-crud-demo"><span class="header-section-number">1</span> Python Enterprise CRUD Demo</a>
+  <ul class="collapse">
+  <li><a href="#course-files" id="toc-course-files" class="nav-link" data-scroll-target="#course-files"><span class="header-section-number">1.1</span> Course Files</a></li>
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals"><span class="header-section-number">1.2</span> Learning Goals</a></li>
+  <li><a href="#business-scenario" id="toc-business-scenario" class="nav-link" data-scroll-target="#business-scenario"><span class="header-section-number">1.3</span> Business Scenario</a></li>
+  <li><a href="#architecture-overview" id="toc-architecture-overview" class="nav-link" data-scroll-target="#architecture-overview"><span class="header-section-number">1.4</span> Architecture Overview</a></li>
+  <li><a href="#database-objects-used-in-the-demo" id="toc-database-objects-used-in-the-demo" class="nav-link" data-scroll-target="#database-objects-used-in-the-demo"><span class="header-section-number">1.5</span> Database Objects Used in the Demo</a></li>
+  <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure"><span class="header-section-number">1.6</span> Project Structure</a></li>
+  <li><a href="#what-you-should-notice" id="toc-what-you-should-notice" class="nav-link" data-scroll-target="#what-you-should-notice"><span class="header-section-number">1.7</span> What You Should Notice</a></li>
+  <li><a href="#suggested-workflow" id="toc-suggested-workflow" class="nav-link" data-scroll-target="#suggested-workflow"><span class="header-section-number">1.8</span> Suggested Workflow</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -249,8 +294,24 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>MSSQL Server with role-based views for data access</p>
 </div>
-<section id="learning-goals" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="learning-goals"><span class="header-section-number">1.1</span> Learning Goals</h2>
+</div>
+<section id="course-files" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="course-files"><span class="header-section-number">1.1</span> Course Files</h2>
+<p>Download or clone the full project before you start. The repository contains all Python files used in this book, the Quarto source files, and <code>.env.example</code>.</p>
+<ul>
+<li><a href="https://github.com/kirenz/sopra/archive/refs/heads/main.zip">Download ZIP</a></li>
+<li><a href="https://github.com/kirenz/sopra">Open GitHub repository</a></li>
+</ul>
+<p>If you use Git:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/kirenz/sopra.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> sopra</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you download the ZIP file, unzip the folder, open it in Visual Studio Code, and then run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The local <code>.env</code> file is not part of the download. Create it from <code>.env.example</code> and add the course-specific SQL Server credentials.</p>
+</section>
+<section id="learning-goals" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="learning-goals"><span class="header-section-number">1.2</span> Learning Goals</h2>
 <p>By the end of this project, students should be able to:</p>
 <ul>
 <li>set up a Python 3.13 project with <code>uv</code></li>
@@ -259,8 +320,8 @@ ul.task-list li input[type="checkbox"] {
 <li>handle database errors and validation messages in a user-friendly way</li>
 </ul>
 </section>
-<section id="business-scenario" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="business-scenario"><span class="header-section-number">1.2</span> Business Scenario</h2>
+<section id="business-scenario" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="business-scenario"><span class="header-section-number">1.3</span> Business Scenario</h2>
 <p>The application manages quantity-based B2B discounts. Sales staff need an internal tool to:</p>
 <ul>
 <li>view existing discount rules</li>
@@ -269,8 +330,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>The SQL Server already exposes role-based views for this workflow, so the Python application does not work directly on the base table. This mirrors a common enterprise setup where database permissions are restricted through views.</p>
 </section>
-<section id="architecture-overview" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="architecture-overview"><span class="header-section-number">1.3</span> Architecture Overview</h2>
+<section id="architecture-overview" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="architecture-overview"><span class="header-section-number">1.4</span> Architecture Overview</h2>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -289,8 +350,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="database-objects-used-in-the-demo" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="database-objects-used-in-the-demo"><span class="header-section-number">1.4</span> Database Objects Used in the Demo</h2>
+<section id="database-objects-used-in-the-demo" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="database-objects-used-in-the-demo"><span class="header-section-number">1.5</span> Database Objects Used in the Demo</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -318,8 +379,8 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="project-structure" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="project-structure"><span class="header-section-number">1.5</span> Project Structure</h2>
+<section id="project-structure" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="project-structure"><span class="header-section-number">1.6</span> Project Structure</h2>
 <pre class="text"><code>.
 ├── app.py
 ├── models/discount.py
@@ -329,8 +390,8 @@ ul.task-list li input[type="checkbox"] {
 ├── sql_example.py
 └── README.md</code></pre>
 </section>
-<section id="what-you-should-notice" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="what-you-should-notice"><span class="header-section-number">1.6</span> What You Should Notice</h2>
+<section id="what-you-should-notice" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="what-you-should-notice"><span class="header-section-number">1.7</span> What You Should Notice</h2>
 <ul>
 <li><code>app.py</code> contains no raw SQL. The presentation layer only deals with user interaction.</li>
 <li><code>discount_service.py</code> contains no Streamlit code. It focuses on validation and business meaning.</li>
@@ -348,8 +409,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="suggested-workflow" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="suggested-workflow"><span class="header-section-number">1.7</span> Suggested Workflow</h2>
+<section id="suggested-workflow" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="suggested-workflow"><span class="header-section-number">1.8</span> Suggested Workflow</h2>
 <ol type="1">
 <li>Complete the operating-system-specific setup steps.</li>
 <li>Configure your <code>.env</code> file.</li>
@@ -360,7 +421,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 </section>
-</div>
 </section>
 
 </main> <!-- /main -->

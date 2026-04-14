@@ -10,11 +10,21 @@
     ]
   },
   {
+    "objectID": "index.html#course-files",
+    "href": "index.html#course-files",
+    "title": "Python Enterprise CRUD Demo",
+    "section": "1.1 Course Files",
+    "text": "1.1 Course Files\nDownload or clone the full project before you start. The repository contains all Python files used in this book, the Quarto source files, and .env.example.\n\nDownload ZIP\nOpen GitHub repository\n\nIf you use Git:\ngit clone https://github.com/kirenz/sopra.git\ncd sopra\nuv sync\nIf you download the ZIP file, unzip the folder, open it in Visual Studio Code, and then run:\nuv sync\nThe local .env file is not part of the download. Create it from .env.example and add the course-specific SQL Server credentials.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
+    ]
+  },
+  {
     "objectID": "index.html#learning-goals",
     "href": "index.html#learning-goals",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.1 Learning Goals",
-    "text": "1.1 Learning Goals\nBy the end of this project, students should be able to:\n\nset up a Python 3.13 project with uv\nconnect to Microsoft SQL Server with pyodbc, sqlalchemy, and pandas\nimplement typical CRUD-style flows in a Streamlit user interface\nhandle database errors and validation messages in a user-friendly way",
+    "section": "1.2 Learning Goals",
+    "text": "1.2 Learning Goals\nBy the end of this project, students should be able to:\n\nset up a Python 3.13 project with uv\nconnect to Microsoft SQL Server with pyodbc, sqlalchemy, and pandas\nimplement typical CRUD-style flows in a Streamlit user interface\nhandle database errors and validation messages in a user-friendly way",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -23,8 +33,8 @@
     "objectID": "index.html#business-scenario",
     "href": "index.html#business-scenario",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.2 Business Scenario",
-    "text": "1.2 Business Scenario\nThe application manages quantity-based B2B discounts. Sales staff need an internal tool to:\n\nview existing discount rules\nadd a new discount for a selected customer\nedit an existing discount if business conditions change\n\nThe SQL Server already exposes role-based views for this workflow, so the Python application does not work directly on the base table. This mirrors a common enterprise setup where database permissions are restricted through views.",
+    "section": "1.3 Business Scenario",
+    "text": "1.3 Business Scenario\nThe application manages quantity-based B2B discounts. Sales staff need an internal tool to:\n\nview existing discount rules\nadd a new discount for a selected customer\nedit an existing discount if business conditions change\n\nThe SQL Server already exposes role-based views for this workflow, so the Python application does not work directly on the base table. This mirrors a common enterprise setup where database permissions are restricted through views.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -33,8 +43,8 @@
     "objectID": "index.html#architecture-overview",
     "href": "index.html#architecture-overview",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.3 Architecture Overview",
-    "text": "1.3 Architecture Overview\n\n\n\n\n\nflowchart TD\n    U[\"User in Browser\"] --&gt; A[\"Presentation Layer&lt;br&gt;app.py&lt;br&gt;Streamlit tabs\"]\n    A --&gt; B[\"Business Logic Layer&lt;br&gt;services/discount_service.py&lt;br&gt;validation and rules\"]\n    B --&gt; C[\"Data Access Layer&lt;br&gt;repositories/db.py&lt;br&gt;repositories/discount_repo.py\"]\n    C --&gt; D[\"Role-Based Views&lt;br&gt;list_views / ins_views / upd_views&lt;br&gt;dbo.LOV_CUSTOMER\"]\n    D --&gt; E[\"SQL Server Database&lt;br&gt;ERPDEV\"]",
+    "section": "1.4 Architecture Overview",
+    "text": "1.4 Architecture Overview\n\n\n\n\n\nflowchart TD\n    U[\"User in Browser\"] --&gt; A[\"Presentation Layer&lt;br&gt;app.py&lt;br&gt;Streamlit tabs\"]\n    A --&gt; B[\"Business Logic Layer&lt;br&gt;services/discount_service.py&lt;br&gt;validation and rules\"]\n    B --&gt; C[\"Data Access Layer&lt;br&gt;repositories/db.py&lt;br&gt;repositories/discount_repo.py\"]\n    C --&gt; D[\"Role-Based Views&lt;br&gt;list_views / ins_views / upd_views&lt;br&gt;dbo.LOV_CUSTOMER\"]\n    D --&gt; E[\"SQL Server Database&lt;br&gt;ERPDEV\"]",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -43,8 +53,8 @@
     "objectID": "index.html#database-objects-used-in-the-demo",
     "href": "index.html#database-objects-used-in-the-demo",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.4 Database Objects Used in the Demo",
-    "text": "1.4 Database Objects Used in the Demo\n\n\n\nPurpose\nObject\n\n\n\n\nRead discount overview\nlist_views.V_LIST_B2B_DISCOUNT\n\n\nInsert new discount\nins_views.V_INS_B2B_DISCOUNT\n\n\nUpdate existing discount\nupd_views.V_UPD_B2B_DISCOUNT\n\n\nFill customer dropdown\ndbo.LOV_CUSTOMER",
+    "section": "1.5 Database Objects Used in the Demo",
+    "text": "1.5 Database Objects Used in the Demo\n\n\n\nPurpose\nObject\n\n\n\n\nRead discount overview\nlist_views.V_LIST_B2B_DISCOUNT\n\n\nInsert new discount\nins_views.V_INS_B2B_DISCOUNT\n\n\nUpdate existing discount\nupd_views.V_UPD_B2B_DISCOUNT\n\n\nFill customer dropdown\ndbo.LOV_CUSTOMER",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -53,8 +63,8 @@
     "objectID": "index.html#project-structure",
     "href": "index.html#project-structure",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.5 Project Structure",
-    "text": "1.5 Project Structure\n.\n├── app.py\n├── models/discount.py\n├── repositories/db.py\n├── repositories/discount_repo.py\n├── services/discount_service.py\n├── sql_example.py\n└── README.md",
+    "section": "1.6 Project Structure",
+    "text": "1.6 Project Structure\n.\n├── app.py\n├── models/discount.py\n├── repositories/db.py\n├── repositories/discount_repo.py\n├── services/discount_service.py\n├── sql_example.py\n└── README.md",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -63,8 +73,8 @@
     "objectID": "index.html#what-you-should-notice",
     "href": "index.html#what-you-should-notice",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.6 What You Should Notice",
-    "text": "1.6 What You Should Notice\n\napp.py contains no raw SQL. The presentation layer only deals with user interaction.\ndiscount_service.py contains no Streamlit code. It focuses on validation and business meaning.\ndiscount_repo.py is the only place where SQL statements are written.\n.env keeps credentials out of the source code.\n\n\n\n\n\n\n\nThis separation is not just a style preference. It makes the application easier to test, easier to explain in class, and easier to extend later.",
+    "section": "1.7 What You Should Notice",
+    "text": "1.7 What You Should Notice\n\napp.py contains no raw SQL. The presentation layer only deals with user interaction.\ndiscount_service.py contains no Streamlit code. It focuses on validation and business meaning.\ndiscount_repo.py is the only place where SQL statements are written.\n.env keeps credentials out of the source code.\n\n\n\n\n\n\n\nThis separation is not just a style preference. It makes the application easier to test, easier to explain in class, and easier to extend later.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
@@ -73,8 +83,8 @@
     "objectID": "index.html#suggested-workflow",
     "href": "index.html#suggested-workflow",
     "title": "Python Enterprise CRUD Demo",
-    "section": "1.7 Suggested Workflow",
-    "text": "1.7 Suggested Workflow\n\nComplete the operating-system-specific setup steps.\nConfigure your .env file.\nTest the MSSQL connection with sql_example.py.\nStart the Streamlit application with uv run streamlit run app.py.\nInspect how each UI action maps to the business and data layers.",
+    "section": "1.8 Suggested Workflow",
+    "text": "1.8 Suggested Workflow\n\nComplete the operating-system-specific setup steps.\nConfigure your .env file.\nTest the MSSQL connection with sql_example.py.\nStart the Streamlit application with uv run streamlit run app.py.\nInspect how each UI action maps to the business and data layers.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
     ]
