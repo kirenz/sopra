@@ -1,0 +1,577 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Python Enterprise CRUD Demo",
+    "section": "",
+    "text": "1 Python Enterprise CRUD Demo\nThis Quarto book walks through a small but realistic enterprise application for third-semester Management Information Systems students. The example focuses on a B2B discount maintenance scenario and demonstrates how Python applications are typically structured when they read from and write to a Microsoft SQL Server database.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#learning-goals",
+    "href": "index.html#learning-goals",
+    "title": "Python Enterprise CRUD Demo",
+    "section": "1.1 Learning Goals",
+    "text": "1.1 Learning Goals\nBy the end of this project, students should be able to:\n\nset up a Python 3.13 project with uv\nconnect to Microsoft SQL Server with pyodbc, sqlalchemy, and pandas\nseparate presentation, business logic, and data access into clear layers\nimplement typical CRUD-style flows in a Streamlit user interface\nhandle database errors and validation messages in a user-friendly way",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#business-scenario",
+    "href": "index.html#business-scenario",
+    "title": "Python Enterprise CRUD Demo",
+    "section": "1.2 Business Scenario",
+    "text": "1.2 Business Scenario\nThe application manages quantity-based B2B discounts. Sales staff need an internal tool to:\n\nview existing discount rules\nadd a new discount for a selected customer\nedit an existing discount if business conditions change\n\nThe SQL Server already exposes role-based views for this workflow, so the Python application does not work directly on the base table. This mirrors a common enterprise setup where database permissions are restricted through views.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#architecture-overview",
+    "href": "index.html#architecture-overview",
+    "title": "Python Enterprise CRUD Demo",
+    "section": "1.3 Architecture Overview",
+    "text": "1.3 Architecture Overview\n\n\n\n\n\nflowchart LR\n    U[\"User in Browser\"] --&gt; A[\"Presentation Layer&lt;br&gt;app.py&lt;br&gt;Streamlit tabs\"]\n    A --&gt; B[\"Business Logic Layer&lt;br&gt;services/discount_service.py&lt;br&gt;validation and rules\"]\n    B --&gt; C[\"Data Access Layer&lt;br&gt;repositories/db.py&lt;br&gt;repositories/discount_repo.py\"]\n    C --&gt; D[\"Role-Based Views&lt;br&gt;list_views / ins_views / upd_views&lt;br&gt;dbo.LOV_CUSTOMER\"]\n    D --&gt; E[\"SQL Server Database&lt;br&gt;ERPDEV\"]",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#database-objects-used-in-the-demo",
+    "href": "index.html#database-objects-used-in-the-demo",
+    "title": "Python Enterprise CRUD Demo",
+    "section": "1.4 Database Objects Used in the Demo",
+    "text": "1.4 Database Objects Used in the Demo\n\n\n\nPurpose\nObject\n\n\n\n\nRead discount overview\nlist_views.V_LIST_B2B_DISCOUNT\n\n\nInsert new discount\nins_views.V_INS_B2B_DISCOUNT\n\n\nUpdate existing discount\nupd_views.V_UPD_B2B_DISCOUNT\n\n\nFill customer dropdown\ndbo.LOV_CUSTOMER",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#project-structure",
+    "href": "index.html#project-structure",
+    "title": "Python Enterprise CRUD Demo",
+    "section": "1.5 Project Structure",
+    "text": "1.5 Project Structure\n.\n├── app.py\n├── models/discount.py\n├── repositories/db.py\n├── repositories/discount_repo.py\n├── services/discount_service.py\n├── sql_example.py\n└── README.md",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#what-students-should-notice",
+    "href": "index.html#what-students-should-notice",
+    "title": "Python Enterprise CRUD Demo",
+    "section": "1.6 What Students Should Notice",
+    "text": "1.6 What Students Should Notice\n\napp.py contains no raw SQL. The presentation layer only deals with user interaction.\ndiscount_service.py contains no Streamlit code. It focuses on validation and business meaning.\ndiscount_repo.py is the only place where SQL statements are written.\n.env keeps credentials out of the source code.\n\n\n\n\n\n\n\nThis separation is not just a style preference. It makes the application easier to test, easier to explain in class, and easier to extend later.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#suggested-workflow",
+    "href": "index.html#suggested-workflow",
+    "title": "Python Enterprise CRUD Demo",
+    "section": "1.7 Suggested Workflow",
+    "text": "1.7 Suggested Workflow\n\nComplete the operating-system-specific setup steps.\nConfigure your .env file.\nTest the MSSQL connection with sql_example.py.\nStart the Streamlit application with uv run streamlit run app.py.\nInspect how each UI action maps to the business and data layers.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Enterprise CRUD Demo</span>"
+    ]
+  },
+  {
+    "objectID": "accounts.html",
+    "href": "accounts.html",
+    "title": "2  Credentials",
+    "section": "",
+    "text": "2.1 Open the Project\nBefore you run the application, prepare the repository and the local credential file.\nClone the repository or open the provided template folder in VS Code:",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Credentials</span>"
+    ]
+  },
+  {
+    "objectID": "accounts.html#open-the-project",
+    "href": "accounts.html#open-the-project",
+    "title": "2  Credentials",
+    "section": "",
+    "text": "code .",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Credentials</span>"
+    ]
+  },
+  {
+    "objectID": "accounts.html#create-the-.env-file",
+    "href": "accounts.html#create-the-.env-file",
+    "title": "2  Credentials",
+    "section": "2.2 Create the .env File",
+    "text": "2.2 Create the .env File\nThe application reads all connection settings from a local .env file. Start by copying the example file:\ncp .env.example .env\nNow open .env and replace the placeholder values with the credentials that were shared in class.\nMSSQL_SERVER=...\nMSSQL_DATABASE=...\nMSSQL_USERNAME=...\nMSSQL_PASSWORD=...\nMSSQL_DRIVER=ODBC Driver 18 for SQL Server\nTRUST_SERVER_CERTIFICATE=true\nAPP_USER=...",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Credentials</span>"
+    ]
+  },
+  {
+    "objectID": "accounts.html#why-use-.env",
+    "href": "accounts.html#why-use-.env",
+    "title": "2  Credentials",
+    "section": "2.3 Why Use .env?",
+    "text": "2.3 Why Use .env?\n\ncredentials stay outside the Python source files\ndifferent students can use different logins without changing the code\nthe same code can later be reused for another server or database",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Credentials</span>"
+    ]
+  },
+  {
+    "objectID": "accounts.html#why-is-there-also-a-.env.example",
+    "href": "accounts.html#why-is-there-also-a-.env.example",
+    "title": "2  Credentials",
+    "section": "2.4 Why Is There Also a .env.example?",
+    "text": "2.4 Why Is There Also a .env.example?\n.env.example documents which keys are required, but it must not contain real secrets.\nThe real .env file is listed in .gitignore so it does not get committed accidentally.\n\n\n\n\n\n\nDo not hard-code database passwords in app.py, sql_example.py, or repository files. In enterprise projects, this is considered a serious security mistake.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Credentials</span>"
+    ]
+  },
+  {
+    "objectID": "windows-setup.html",
+    "href": "windows-setup.html",
+    "title": "3  Windows",
+    "section": "",
+    "text": "3.1 Basic requirements\nIf you are using Windows, follow these steps.\nFirst, make sure your system is up to date.\nNext, enable Developer Mode:",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Windows</span>"
+    ]
+  },
+  {
+    "objectID": "windows-setup.html#basic-requirements",
+    "href": "windows-setup.html#basic-requirements",
+    "title": "3  Windows",
+    "section": "",
+    "text": "Open Settings &gt; Windows Update.\n\n\n\nOpen Settings &gt; Update & Security &gt; For developers.\nToggle Developer Mode and accept the disclaimer.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Windows</span>"
+    ]
+  },
+  {
+    "objectID": "windows-setup.html#command-line-basics",
+    "href": "windows-setup.html#command-line-basics",
+    "title": "3  Windows",
+    "section": "3.2 Command-line basics",
+    "text": "3.2 Command-line basics\nWe use Git Bash as our terminal. Download the latest Git for Windows installer from git-scm.com and complete the setup (Git Bash is included). After installation, open Git Bash from the Start menu.\n\n\n\n\n\n\nNoteWhy Git Bash?\n\n\n\n\n\nGit Bash provides a Unix-like terminal experience on Windows, making it easier to follow along with commands that are commonly used in macOS and Linux environments.\n\n\n\nKeep the terminal window open while you work through the chapters.\n\n3.2.1 uv\nWe use uv, a Python package manager that is extremely fast. It replaces pip, poetry, and virtualenv.\nTo install uv, follow this guide",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Windows</span>"
+    ]
+  },
+  {
+    "objectID": "windows-setup.html#server-tools",
+    "href": "windows-setup.html#server-tools",
+    "title": "3  Windows",
+    "section": "3.3 Server Tools",
+    "text": "3.3 Server Tools\nThe Microsoft ODBC Driver for SQL Server enables native connectivity from Windows applications to Microsoft SQL Server and Azure SQL databases.\nFollow the steps below to install the ODBC Driver (version 18) and command-line tools on your Windows machine:\n\nInstallation Instructions\n\nFor most users, the “Download Microsoft ODBC Driver 18 for SQL Server (x64)” installer is the right choice.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Windows</span>"
+    ]
+  },
+  {
+    "objectID": "windows-setup.html#verify-the-tools",
+    "href": "windows-setup.html#verify-the-tools",
+    "title": "3  Windows",
+    "section": "3.4 Verify the Tools",
+    "text": "3.4 Verify the Tools\nAfter the installations, check the most important commands:\nuv --version\npython --version\nsqlcmd -?",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Windows</span>"
+    ]
+  },
+  {
+    "objectID": "windows-setup.html#install-the-python-packages",
+    "href": "windows-setup.html#install-the-python-packages",
+    "title": "3  Windows",
+    "section": "3.5 Install the Python Packages",
+    "text": "3.5 Install the Python Packages\nInside the project folder, run:\nuv sync\nThis command creates the local virtual environment and installs all packages from pyproject.toml and uv.lock.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Windows</span>"
+    ]
+  },
+  {
+    "objectID": "mac-setup.html",
+    "href": "mac-setup.html",
+    "title": "4  macOS",
+    "section": "",
+    "text": "4.1 Basic requirements\nIf you are using Mac, follow these steps.\nFirst, make sure your system is up to date.\nOpen System Settings &gt; General &gt; Software Update.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
+    ]
+  },
+  {
+    "objectID": "mac-setup.html#command-line-basics",
+    "href": "mac-setup.html#command-line-basics",
+    "title": "4  macOS",
+    "section": "4.2 Command-line basics",
+    "text": "4.2 Command-line basics\nLaunch Terminal (Spotlight search for “Terminal”).\nCommands in this book assume the zsh shell, which is the default on modern macOS systems.\nKeep the terminal window open while you work through the chapters.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
+    ]
+  },
+  {
+    "objectID": "mac-setup.html#xcode",
+    "href": "mac-setup.html#xcode",
+    "title": "4  macOS",
+    "section": "4.3 Xcode",
+    "text": "4.3 Xcode\nApple’s Xcode command line tools are required to build and run some of the code.\nInstall Xcode command line tools:\nxcode-select --install\nIf you get the following message, you can skip this step:\nxcode-select: note: Command line tools are already installed. Use “Software Update” in System Settings or the softwareupdate command line interface to install updates",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
+    ]
+  },
+  {
+    "objectID": "mac-setup.html#package-manager",
+    "href": "mac-setup.html#package-manager",
+    "title": "4  macOS",
+    "section": "4.4 Package manager",
+    "text": "4.4 Package manager\nHomebrew downloads applications, command line tools, and libraries with one command. You avoid manual downloads and it keeps everything organized.\n\n4.4.1 Install Homebrew\n\nOpen Terminal and run the official installer:\n\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n\nEnter your password when prompted (you won’t see any characters while typing).\nPress ENTER to continue\nWhen the script finishes, follow the on-screen instructions to add Homebrew to your shell profile (this step is required for brew to be found).\nClose the Terminal window.\nOpen a new Terminal, then verify the installation:\n\nbrew --version\n\n\n4.4.2 Update Homebrew\nIf you already have Homebrew installed, make sure everything is up to date:\nbrew update\nUse brew upgrade to actually update installed packages.\nbrew upgrade",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
+    ]
+  },
+  {
+    "objectID": "mac-setup.html#uv",
+    "href": "mac-setup.html#uv",
+    "title": "4  macOS",
+    "section": "4.5 uv",
+    "text": "4.5 uv\nWe use uv, a Python package manager that is extremely fast. It replaces pip, poetry, and virtualenv.\nTo install uv, follow this guide",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
+    ]
+  },
+  {
+    "objectID": "mac-setup.html#server-tools",
+    "href": "mac-setup.html#server-tools",
+    "title": "4  macOS",
+    "section": "4.6 Server Tools",
+    "text": "4.6 Server Tools\nWe need to install some drivers for Microsoft SQL Server.\n\n4.6.1 Install Server Tools\nOpen your Terminal and run:\nbrew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release\nACCEPT_EULA=Y brew install msodbcsql18 mssql-tools unixodbc\n\nmsodbcsql18 is the latest Microsoft ODBC Driver for SQL Server.\nmssql-tools installs sqlcmd and bcp for command-line access.\nunixodbc provides the shared ODBC libraries Python will load.\n\n\n\n\n\n\n\nThe ACCEPT_EULA=Y prefix lets the installer know you accept the Microsoft end-user license agreement. Without it the install stops halfway through.\n\n\n\n\nClose and reopen Terminal.\n\n\n\n4.6.2 Test the installation\nConfirm that the ODBC driver registered correctly:\nodbcinst -j\nLook for lines referencing Driver Manager: unixODBC.\nYour Mac is now ready to connect to SQL Server databases from VS Code and Python.\n\n\n4.6.3 Troubleshooting\nSome shells require an extra step to expose the SQL Server utilities. Add the following line to ~/.zshrc or ~/.bash_profile if sqlcmd is not found after reopening Terminal:\nexport PATH=\"/opt/homebrew/opt/msodbcsql18/bin:/opt/homebrew/opt/mssql-tools/bin:$PATH\"\nIntel Macs should use /usr/local/opt/ instead of /opt/homebrew/opt/.\nReload your shell:\nsource ~/.zshrc",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
+    ]
+  },
+  {
+    "objectID": "mac-setup.html#install-the-python-packages",
+    "href": "mac-setup.html#install-the-python-packages",
+    "title": "4  macOS",
+    "section": "4.7 Install the Python Packages",
+    "text": "4.7 Install the Python Packages\nInside the project folder, run:\nuv sync\nThis command creates the local virtual environment and installs all Python dependencies for the demo application.",
+    "crumbs": [
+      "Preparation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>macOS</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-vscode.html",
+    "href": "mssql-vscode.html",
+    "title": "5  VS Code",
+    "section": "",
+    "text": "5.1 Install VS Code\nVisual Studio Code acts as your code editor, terminal, and database explorer. In this project, it is useful for both Python development and direct SQL inspection.\nIf you haven’t already, install Visual Studio Code:\nLaunch VS Code once to allow it to finish installing components.",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-vscode.html#install-vs-code",
+    "href": "mssql-vscode.html#install-vs-code",
+    "title": "5  VS Code",
+    "section": "",
+    "text": "macOS: Download the from code.visualstudio.com and drag Visual Studio Code into Applications.\nWindows: Download the installer and click through the setup, leaving the default options enabled (add to PATH, register the code command, etc.).",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-vscode.html#essential-extensions",
+    "href": "mssql-vscode.html#essential-extensions",
+    "title": "5  VS Code",
+    "section": "5.2 Essential extensions",
+    "text": "5.2 Essential extensions\nOpen the Extensions view and install:\n\nPython (ms-python.python) – language support and linting.\nSQL Server (mssql) (ms-mssql.mssql) – database connections and query runner.\nvscode-icons (vscode-icons-team.vscode-icons) – optional, but helpful for identifying files quickly.",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-vscode.html#enable-the-code-command",
+    "href": "mssql-vscode.html#enable-the-code-command",
+    "title": "5  VS Code",
+    "section": "5.3 Enable the code command",
+    "text": "5.3 Enable the code command\n\n5.3.1 macOS Terminal\n\nLaunch VS Code, press Cmd+Shift+P, and run Shell Command: Install ‘code’ command in PATH.\nClose any open Terminal windows, then open a new one and run\ncode --version\nto confirm the CLI is available.\nFrom the folder you want to open, run\ncode .\nto launch VS Code in that location.\n\n\n\n5.3.2 Windows\n\nFrom the folder you want to open, run this in Git Bash\ncode .\nto launch VS Code in that location.\nIf the command is missing, add VS Code’s bin directory to your Git Bash PATH by appending the snippet below to ~/.bashrc (create the file if it doesn’t exist):\nVS_CODE=\"/c/Users/$USERNAME/AppData/Local/Programs/Microsoft VS Code/bin\"\nif [ -d \"$VS_CODE\" ] && [[ \":$PATH:\" != *\":$VS_CODE:\"* ]]; then\n  PATH=\"$VS_CODE:$PATH\"\nfi\nReload Git Bash\nsource ~/.bashrc\nTry again:\ncode .",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-vscode.html#integrated-terminal-tips",
+    "href": "mssql-vscode.html#integrated-terminal-tips",
+    "title": "5  VS Code",
+    "section": "5.4 Integrated terminal tips",
+    "text": "5.4 Integrated terminal tips\n\nOpen the integrated terminal in VS Code. On Windows, set Git Bash as the default shell so every VS Code terminal matches the rest of this guide.\nSet your default terminal profile via Terminal &gt; Configure Default Profile… so that VS Code opens the same shell you used during installation.",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-vscode.html#create-the-sql-server-connection",
+    "href": "mssql-vscode.html#create-the-sql-server-connection",
+    "title": "5  VS Code",
+    "section": "5.5 Create the SQL Server Connection",
+    "text": "5.5 Create the SQL Server Connection\nUse the SQL Server extension to create a saved connection profile.\n\nOpen the SQL Server view.\nClick Add Connection.\nFill in the connection dialog:\n\nServer name: edu.hdm-server.eu\nAuthentication type: SQL Login\nUser name: use your course login\nPassword: use the matching password\nDatabase name: ERPDEV\nTrust server certificate: true\n\nSave the profile so you can reuse it later.",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-vscode.html#first-query",
+    "href": "mssql-vscode.html#first-query",
+    "title": "5  VS Code",
+    "section": "5.6 First Query",
+    "text": "5.6 First Query\nAfter the connection is established, create a new SQL file and run:\nSELECT TOP (10)\n    RabattID,\n    Kunde,\n    MengeVon,\n    MengeBis,\n    RabattProzent,\n    GiltVon,\n    GiltBis\nFROM list_views.V_LIST_B2B_DISCOUNT\nORDER BY RabattID DESC;\nIf you see rows in the results grid, your VS Code setup is ready.",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>VS Code</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-connection.html",
+    "href": "mssql-connection.html",
+    "title": "6  Server Connection",
+    "section": "",
+    "text": "6.1 The Connection Settings\nWe connect to SQL Server from Python with four building blocks:\nThe project stores the database configuration in .env:",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-connection.html#the-connection-settings",
+    "href": "mssql-connection.html#the-connection-settings",
+    "title": "6  Server Connection",
+    "section": "",
+    "text": "MSSQL_SERVER=...\nMSSQL_DATABASE=...\nMSSQL_USERNAME=...\nMSSQL_PASSWORD=...\nMSSQL_DRIVER=ODBC Driver 18 for SQL Server\nTRUST_SERVER_CERTIFICATE=true\nAPP_USER=...",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-connection.html#why-the-connection-logic-lives-in-repositoriesdb.py",
+    "href": "mssql-connection.html#why-the-connection-logic-lives-in-repositoriesdb.py",
+    "title": "6  Server Connection",
+    "section": "6.2 Why the Connection Logic Lives in repositories/db.py",
+    "text": "6.2 Why the Connection Logic Lives in repositories/db.py\nrepositories/db.py has two responsibilities:\n\nload and validate the environment variables\ncreate one shared SQLAlchemy engine for the application\n\nThis keeps the rest of the project clean:\n\nthe Streamlit UI does not need to know how ODBC strings work\nthe service layer does not need to know where credentials come from\nthe repository layer can focus on SQL statements only",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-connection.html#how-the-connection-string-works",
+    "href": "mssql-connection.html#how-the-connection-string-works",
+    "title": "6  Server Connection",
+    "section": "6.3 How the Connection String Works",
+    "text": "6.3 How the Connection String Works\nThe SQLAlchemy engine uses the dialect mssql+pyodbc, which means:\n\nSQLAlchemy handles connection management and parameterized SQL\npyodbc uses the installed Microsoft ODBC Driver 18 underneath\nthe actual server communication still happens through the native SQL Server driver",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-connection.html#why-we-still-use-pandas",
+    "href": "mssql-connection.html#why-we-still-use-pandas",
+    "title": "6  Server Connection",
+    "section": "6.4 Why We Still Use pandas",
+    "text": "6.4 Why We Still Use pandas\npandas.read_sql(...) is convenient for read operations because the result is immediately available as a DataFrame. That is useful for:\n\ndisplaying tables in Streamlit\nfiltering data\nchecking business rules, such as overlapping discounts\n\nFor writes, the repository uses parameterized SQL statements with sqlalchemy.text(...), because that is clearer and safer for INSERT and UPDATE.",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-connection.html#next-step",
+    "href": "mssql-connection.html#next-step",
+    "title": "6  Server Connection",
+    "section": "6.5 Next Step",
+    "text": "6.5 Next Step\nIn the next chapter, you will run the standalone script sql_example.py and inspect the exact SQL views that power the CRUD application.",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-example.html",
+    "href": "mssql-example.html",
+    "title": "7  Example SQL Server Connection",
+    "section": "",
+    "text": "7.1 Run the Example Script\nNow we test the Python-based connection before we start the full Streamlit app.\nThe script does three things:",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-example.html#run-the-example-script",
+    "href": "mssql-example.html#run-the-example-script",
+    "title": "7  Example SQL Server Connection",
+    "section": "",
+    "text": "uv run python sql_example.py\n\n\nopens the SQLAlchemy engine from repositories/db.py\nprints the SQL Server version\nloads sample rows from the discount view and the customer LOV table",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-example.html#example-read-query",
+    "href": "mssql-example.html#example-read-query",
+    "title": "7  Example SQL Server Connection",
+    "section": "7.2 Example Read Query",
+    "text": "7.2 Example Read Query\nThe script reads from the overview view:\nSELECT TOP (5)\n    RabattID,\n    Kunde,\n    MengeVon,\n    MengeBis,\n    RabattProzent,\n    GiltVon,\n    GiltBis\nFROM list_views.V_LIST_B2B_DISCOUNT\nORDER BY RabattID DESC;",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-example.html#example-lov-query",
+    "href": "mssql-example.html#example-lov-query",
+    "title": "7  Example SQL Server Connection",
+    "section": "7.3 Example LOV Query",
+    "text": "7.3 Example LOV Query\nThe customer dropdown in the Streamlit app is populated from:\nSELECT TOP (5)\n    CUSTOMER_ID,\n    CUSTOMER_LONG\nFROM dbo.LOV_CUSTOMER\nORDER BY CUSTOMER_ID;",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-example.html#insert-example",
+    "href": "mssql-example.html#insert-example",
+    "title": "7  Example SQL Server Connection",
+    "section": "7.4 Insert Example",
+    "text": "7.4 Insert Example\nThe Create tab uses the insert view:\nINSERT INTO ins_views.V_INS_B2B_DISCOUNT (\n    KundenNr,\n    MengeVon,\n    MengeBis,\n    RabattProzent,\n    GiltVon,\n    GiltBis,\n    Bemerkung,\n    ErfasstAm,\n    GeaendertVon\n)\nVALUES (\n    51,\n    100,\n    250,\n    12.50,\n    '2026-05-01',\n    '2026-06-30',\n    'Semester demo',\n    'your_user',\n    'your_user'\n);\n\n\n\n\n\n\nThe insert view exposes one audit column under a confusing alias: ErfasstAm actually maps to the insert user in the base table. The repository hides this detail so the rest of the Python code can stay readable.",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-example.html#update-example",
+    "href": "mssql-example.html#update-example",
+    "title": "7  Example SQL Server Connection",
+    "section": "7.5 Update Example",
+    "text": "7.5 Update Example\nThe Edit tab uses the update view:\nUPDATE upd_views.V_UPD_B2B_DISCOUNT\nSET\n    RabattProzent = 15.00,\n    Bemerkung = 'Updated during class',\n    GeaendertAm = CURRENT_TIMESTAMP,\n    GeaendertVon = 'your_user'\nWHERE RabattID = 1003;",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "mssql-example.html#why-we-test-here-first",
+    "href": "mssql-example.html#why-we-test-here-first",
+    "title": "7  Example SQL Server Connection",
+    "section": "7.6 Why We Test Here First",
+    "text": "7.6 Why We Test Here First\nIf sql_example.py works, you know that:\n\nthe ODBC driver is installed correctly\nthe .env file is loaded correctly\nthe SQL login can reach the required views\n\nThat removes a large source of confusion before you start debugging the Streamlit user interface.",
+    "crumbs": [
+      "MSSQL",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Example SQL Server Connection</span>"
+    ]
+  },
+  {
+    "objectID": "streamlit.html",
+    "href": "streamlit.html",
+    "title": "8  Streamlit Application",
+    "section": "",
+    "text": "8.1 Start the App\nThe file app.py is the presentation layer of the project. It contains the Streamlit user interface and deliberately avoids direct SQL statements.",
+    "crumbs": [
+      "Application",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+    ]
+  },
+  {
+    "objectID": "streamlit.html#start-the-app",
+    "href": "streamlit.html#start-the-app",
+    "title": "8  Streamlit Application",
+    "section": "",
+    "text": "uv run streamlit run app.py",
+    "crumbs": [
+      "Application",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+    ]
+  },
+  {
+    "objectID": "streamlit.html#user-interface-structure",
+    "href": "streamlit.html#user-interface-structure",
+    "title": "8  Streamlit Application",
+    "section": "8.2 User Interface Structure",
+    "text": "8.2 User Interface Structure\nThe application uses three tabs:\n\nList Discounts\nCreate Discount\nEdit Discount\n\nThis mirrors a classic CRUD workflow and makes the mapping between UI actions and backend logic very explicit.",
+    "crumbs": [
+      "Application",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+    ]
+  },
+  {
+    "objectID": "streamlit.html#layer-responsibilities",
+    "href": "streamlit.html#layer-responsibilities",
+    "title": "8  Streamlit Application",
+    "section": "8.3 Layer Responsibilities",
+    "text": "8.3 Layer Responsibilities\n\n8.3.1 Presentation Layer\napp.py is responsible for:\n\nrendering Streamlit widgets\ncollecting user input\nshowing success and error messages\ncalling the service layer\n\n\n\n8.3.2 Business Logic Layer\nservices/discount_service.py is responsible for:\n\nvalidating quantities, dates, and discount percentages\npreventing overlapping discounts for the same customer\ntranslating repository errors into business-oriented messages\n\n\n\n8.3.3 Data Access Layer\nrepositories/discount_repo.py is responsible for:\n\nreading the overview and LOV data with pandas.read_sql(...)\ninserting rows through ins_views.V_INS_B2B_DISCOUNT\nupdating rows through upd_views.V_UPD_B2B_DISCOUNT\nisolating SQL-specific details from the rest of the code",
+    "crumbs": [
+      "Application",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+    ]
+  },
+  {
+    "objectID": "streamlit.html#why-this-separation-matters",
+    "href": "streamlit.html#why-this-separation-matters",
+    "title": "8  Streamlit Application",
+    "section": "8.4 Why This Separation Matters",
+    "text": "8.4 Why This Separation Matters\nThis design makes it easier to reason about the application:\n\nif the SQL is wrong, you inspect the repository\nif the business rule is wrong, you inspect the service\nif the layout or form flow is wrong, you inspect the Streamlit UI\n\nThat is exactly why layered architectures are common in enterprise systems.",
+    "crumbs": [
+      "Application",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+    ]
+  },
+  {
+    "objectID": "streamlit.html#error-handling",
+    "href": "streamlit.html#error-handling",
+    "title": "8  Streamlit Application",
+    "section": "8.5 Error Handling",
+    "text": "8.5 Error Handling\nThe application demonstrates two important error categories:\n\nlocal validation errors, such as invalid quantity ranges\ndatabase errors returned by SQL Server\n\nStudents should notice that both categories are shown to the user, but they originate in different layers.",
+    "crumbs": [
+      "Application",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+    ]
+  },
+  {
+    "objectID": "streamlit.html#suggested-exercises",
+    "href": "streamlit.html#suggested-exercises",
+    "title": "8  Streamlit Application",
+    "section": "8.6 Suggested Exercises",
+    "text": "8.6 Suggested Exercises\n\nadd a delete workflow with a separate database view\nadd unit tests for the validation rules\nadd more business rules, for example maximum discount thresholds by customer type\nadd a detail page or KPI cards above the table",
+    "crumbs": [
+      "Application",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Streamlit Application</span>"
+    ]
+  }
+]
