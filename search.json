@@ -379,11 +379,11 @@
     ]
   },
   {
-    "objectID": "mssql-connection.html#what-students-should-notice",
-    "href": "mssql-connection.html#what-students-should-notice",
+    "objectID": "mssql-connection.html#what-you-should-notice",
+    "href": "mssql-connection.html#what-you-should-notice",
     "title": "6  Server Connection",
-    "section": "6.4 What Students Should Notice",
-    "text": "6.4 What Students Should Notice\nThe full application separates three concerns:\n\napp.py handles the user interface\nservices/ handles business rules and validation\nrepositories/ handles SQL Server access\n\nThe connection setup belongs in repositories/db.py because it is infrastructure code. The user interface should not contain database passwords, connection strings, or driver details.",
+    "section": "6.4 What You Should Notice",
+    "text": "6.4 What You Should Notice\nThe full application separates three concerns:\n\napp.py handles the user interface\nservices/ handles business rules and validation\nrepositories/ handles SQL Server access\n\nThe connection setup belongs in repositories/db.py because it is infrastructure code. The user interface should not contain database passwords, connection strings, or driver details.",
     "crumbs": [
       "Application",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Server Connection</span>"
