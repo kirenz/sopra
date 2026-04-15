@@ -40,23 +40,3 @@ Follow the steps below to install the ODBC Driver (version 18) and command-line 
 - [Installation Instructions](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver17)   
 
 For most users, the "**Download Microsoft ODBC Driver 18 for SQL Server (x64)**" installer is the right choice.
-
-## Verify the Tools
-
-After the installations, check the most important commands:
-
-```bash
-uv --version
-python --version
-sqlcmd -?
-```
-
-## Install the Python Packages
-
-Inside the project folder, run:
-
-```bash
-uv sync
-```
-
-This command creates the local virtual environment and installs all packages from `pyproject.toml` and `uv.lock`.

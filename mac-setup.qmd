@@ -133,13 +133,3 @@ Reload your shell:
 ```bash
 source ~/.zshrc
 ```
-
-## Install the Python Packages
-
-Inside the project folder, run:
-
-```bash
-uv sync
-```
-
-This command creates the local virtual environment and installs all Python dependencies for the demo application.
