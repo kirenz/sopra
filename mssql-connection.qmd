@@ -38,7 +38,7 @@ This keeps the rest of the application simpler:
 - the service layer does not need to know where credentials come from
 - the repository layer can focus on SQL statements only
 
-## What Students Should Notice
+## What You Should Notice
 
 The full application separates three concerns:
 

@@ -4,7 +4,7 @@ title: "Example SQL Server Connection"
 
 Now we test the Python-based connection before we start the full Streamlit app.
 
-## Warm-up Repository
+## Practice Repository
 
 Before running the full project script, use the smaller SQL Server connection repository:
 
