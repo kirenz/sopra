@@ -99,7 +99,7 @@ def render_list_tab(service: DiscountService) -> None:
     st.metric("Rows returned", len(discounts))
     st.dataframe(
         _prepare_discount_frame_for_display(discounts),
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 

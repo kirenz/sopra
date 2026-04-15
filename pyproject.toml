@@ -1,7 +1,7 @@
 [project]
 name = "sopra"
-version = "0.1.0"
-description = "Enterprise CRUD demo with Streamlit, pandas, SQLAlchemy, and Microsoft SQL Server"
+version = "1.0.0"
+description = "CRUD demo with Streamlit, pandas, SQLAlchemy, and Microsoft SQL Server"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
