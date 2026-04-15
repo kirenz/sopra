@@ -104,28 +104,6 @@
     ]
   },
   {
-    "objectID": "windows-setup.html#verify-the-tools",
-    "href": "windows-setup.html#verify-the-tools",
-    "title": "2  Windows",
-    "section": "2.4 Verify the Tools",
-    "text": "2.4 Verify the Tools\nAfter the installations, check the most important commands:\nuv --version\npython --version\nsqlcmd -?",
-    "crumbs": [
-      "Preparation",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Windows</span>"
-    ]
-  },
-  {
-    "objectID": "windows-setup.html#install-the-python-packages",
-    "href": "windows-setup.html#install-the-python-packages",
-    "title": "2  Windows",
-    "section": "2.5 Install the Python Packages",
-    "text": "2.5 Install the Python Packages\nInside the project folder, run:\nuv sync\nThis command creates the local virtual environment and installs all packages from pyproject.toml and uv.lock.",
-    "crumbs": [
-      "Preparation",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Windows</span>"
-    ]
-  },
-  {
     "objectID": "mac-setup.html",
     "href": "mac-setup.html",
     "title": "3  macOS",
@@ -186,17 +164,6 @@
     "title": "3  macOS",
     "section": "3.6 Server Tools",
     "text": "3.6 Server Tools\nWe need to install some drivers for Microsoft SQL Server.\n\n3.6.1 Install Server Tools\nOpen your Terminal and run:\nbrew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release\nACCEPT_EULA=Y brew install msodbcsql18 mssql-tools unixodbc\n\nmsodbcsql18 is the latest Microsoft ODBC Driver for SQL Server.\nmssql-tools installs sqlcmd and bcp for command-line access.\nunixodbc provides the shared ODBC libraries Python will load.\n\n\n\n\n\n\n\nThe ACCEPT_EULA=Y prefix lets the installer know you accept the Microsoft end-user license agreement. Without it the install stops halfway through.\n\n\n\n\nClose and reopen Terminal.\n\n\n\n3.6.2 Test the installation\nConfirm that the ODBC driver registered correctly:\nodbcinst -j\nLook for lines referencing Driver Manager: unixODBC.\nYour Mac is now ready to connect to SQL Server databases from VS Code and Python.\n\n\n3.6.3 Troubleshooting\nSome shells require an extra step to expose the SQL Server utilities. Add the following line to ~/.zshrc or ~/.bash_profile if sqlcmd is not found after reopening Terminal:\nexport PATH=\"/opt/homebrew/opt/msodbcsql18/bin:/opt/homebrew/opt/mssql-tools/bin:$PATH\"\nIntel Macs should use /usr/local/opt/ instead of /opt/homebrew/opt/.\nReload your shell:\nsource ~/.zshrc",
-    "crumbs": [
-      "Preparation",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>macOS</span>"
-    ]
-  },
-  {
-    "objectID": "mac-setup.html#install-the-python-packages",
-    "href": "mac-setup.html#install-the-python-packages",
-    "title": "3  macOS",
-    "section": "3.7 Install the Python Packages",
-    "text": "3.7 Install the Python Packages\nInside the project folder, run:\nuv sync\nThis command creates the local virtual environment and installs all Python dependencies for the demo application.",
     "crumbs": [
       "Preparation",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>macOS</span>"
